@@ -3,13 +3,15 @@
       <input type="text" placeholder="Search" />
     </div> -->
     <div class="main-nav-icons" style="left: 700px;">
-      <em class="bx bx-search" />
+      <i class="bx bx-search" />
     </div>
     <div class="main-nav-icons" style="left: 800px;" >
       <i class="bx bx-bell" />
     </div>
     <div class="main-nav-icons" style="left: 900px;">
-      <em class="bx bx-cog" />
+        <span>
+          <i class="bx bx-cog" />
+        </span>
     </div>
     <div class="main-nav-icons" style="left: 1000px;">
       <img
@@ -25,7 +27,7 @@
     <h1>Dashboard</h1>
   </div>
   <div class="main-nav-date">
-    <input type="date" default="1-2-2012" />
+    <input type="date" value="2022-02-12" />
   </div>
 </template>
 
@@ -38,10 +40,6 @@ export default {
       type: String,
       default: require("../../assets/admin.png"),
     },
-    // profileName: {
-    //   type: String,
-    //   default: "Admin Name",
-    // },
   },
   data() {
     return {};
