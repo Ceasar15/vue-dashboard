@@ -3,23 +3,23 @@
       <input type="text" placeholder="Search" />
     </div> -->
     <div class="main-nav-icons" style="left: 700px;">
-      <i class="bx bx-search" />
+      <i class="bx bx-search" style="font-size: 25px"/>
     </div>
     <div class="main-nav-icons" style="left: 800px;" >
-      <i class="bx bx-bell" />
+      <i class="bx bx-bell" style="font-size: 25px" />
     </div>
     <div class="main-nav-icons" style="left: 900px;">
         <span>
-          <i class="bx bx-cog" />
+          <i class="bx bx-cog" style="font-size: 25px" />
         </span>
     </div>
     <div class="main-nav-icons" style="left: 1000px;">
+    <!-- <span><i class="bx bx-user" style="font-size: 25px"></i></span> -->
       <img
         v-if="profileImg"
         :src="profileImg"
         alt="profileImg"
-        width="50"
-        height="50"
+        style="width: 25px; height: 25px"
       />
     </div>
   <div class="main-nav-dash">
