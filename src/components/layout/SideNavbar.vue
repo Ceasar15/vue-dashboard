@@ -40,7 +40,12 @@
             <span class="tooltip">{{ searchTooltip }}</span>
           </li> -->
 
-          <span>Main</span>
+          <span style="
+                font-size:14px;
+                margin-left: 5px; 
+                text-align-last: left;
+                "
+                 >Main</span>
           <span v-for="(menuItem, index) in menuItems" :key="index">
             <li>
               <a :href="menuItem.link">
@@ -52,7 +57,7 @@
               }}</span>
             </li>
           </span>
-          <span>Side Channels</span>
+          <span style="font-size:14px" >Side Channels</span>
           <span v-for="(channelItem, index) in channelItems" :key="index">
             <li>
               <a :href="channelItem.link">
