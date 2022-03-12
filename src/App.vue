@@ -1,14 +1,18 @@
 <template>
   <MainNavbar></MainNavbar>
+  <SideNavbar></SideNavbar>
 </template>
 
 <script>
 import MainNavbar from './components/layout/MainNavbar.vue'
+import SideNavbar from './components/layout/SideNavbar.vue'
+
 
 export default {
   name: 'App',
   components: {
-    MainNavbar
+    MainNavbar,
+    SideNavbar
   },
 }
 </script>
