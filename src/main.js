@@ -6,4 +6,4 @@ import App from './App.vue'
 import router from './router'
 
 /* eslint-disable no-new */
-createApp(App).use(router).mount('#app')
+createApp(App).mount('#app')
