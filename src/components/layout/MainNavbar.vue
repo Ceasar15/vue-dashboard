@@ -1,27 +1,26 @@
 <template>
-  <div class="main-nav-icons">
-      <div>
-        <input type="text" placeholder="Search" />
-      </div>
-      <div>
-        <em class="bx bx-search" :class="menuIcon" />
-      </div>
-      <div>
-        <em class="bx bx-cog" :class="menuIcon" />
-      </div>
-      <div>
-        <em class="bx bx-bell" :class="menuIcon" />
-      </div>
-      <div>
-        <img
-          v-if="profileImg"
-          :src="profileImg"
-          alt="profileImg"
-          width="50"
-          height="50"
-        />
-      </div>
-  </div>
+    <!-- <div class="main-nav-icons" style="left: 400px; ">
+      <input type="text" placeholder="Search" />
+    </div> -->
+    <div class="main-nav-icons" style="left: 700px;">
+      <em class="bx bx-search" />
+    </div>
+    <div class="main-nav-icons" style="left: 800px;" >
+      <i class="bx bx-bell" />
+    </div>
+    <div class="main-nav-icons" style="left: 900px;">
+      <em class="bx bx-cog" />
+    </div>
+    <div class="main-nav-icons" style="left: 1000px;">
+      <img
+        v-if="profileImg"
+        :src="profileImg"
+        alt="profileImg"
+        width="50"
+        height="50"
+
+      />
+    </div>
   <div class="main-nav-dash">
     <h1>Dashboard</h1>
   </div>
@@ -72,9 +71,9 @@ body {
 }
 .main-nav-icons {
   position: fixed;
-  top: 0px;
   right: 50px;
   float: right;
+  top: 40px;
   margin-left: 90px;
   color: #aaa3a3fa;
   /* background-color: rgba(230, 247, 0, 0.9); */
