@@ -1,31 +1,24 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Overview from '@/views/Overview.vue';
+import { createWebHistory, createRouter } from 'vue-router';
+import OverView from '@/views/Overview.vue'
 
 
-Vue.use(Router);
 
-export default new Router({
-    mode: 'history',
-    baseUrl: process.env.BASE_URl,
-    linkActiveClass: 'active',
-    linkExactiveClass: 'exact-active',
-    scrollBehavior () {
-        return {
-            x: 0,
-            y: 0,
-        }
-    },
-    routes: [
+
+const routes = [
         {
             path: '/',
-            redirect: '/overview'
+            redirect: '/overview',
         },
         {
-            path: '/overview',
-            name: 'overview',
-            componenet: Overview,
-        }
-    ]
+            path: "/overview",
+            name: "overview",
+            componenet: OverView,
+        },
+    ];
 
+const router = createRouter({
+    history: createWebHistory(),
+    routes,
 });
+
+export default router;
