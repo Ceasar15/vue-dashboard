@@ -20,7 +20,6 @@
         alt="profileImg"
         width="50"
         height="50"
-
       />
     </div>
   <div class="main-nav-dash">
