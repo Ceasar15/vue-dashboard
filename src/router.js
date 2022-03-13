@@ -16,7 +16,7 @@ const routes = [{
     },
     {
         path: "/dashboard",
-        name: "Admindashboard",
+        name: "AdminDashboard",
         componenet: AdminDashboard,
     },
     {

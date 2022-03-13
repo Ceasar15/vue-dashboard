@@ -1,7 +1,7 @@
 <template>
-  <d-container fluid class="main-content-container px-4 pb-4">
+  <d-container >
     <div class="error">
-      <div class="error__content">
+      <div>
         <h2>Admin Orders</h2>
         <h3>Admin Order Details, Table</h3>
         <p>
@@ -23,6 +23,8 @@
 <script>
 export default {
   name: "AdminOrders",
-  components: "",
+  data () {
+    return 'ff'
+  }
 };
 </script>
