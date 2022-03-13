@@ -48,10 +48,10 @@
                  >Main</div>
           <span v-for="(menuItem, index) in menuItems" :key="index">
             <li>
-              <router-link :href="menuItem.link">
+              <a :href="menuItem.link">
                 <i class="bx" :class="menuItem.icon || 'bx-square-rounded'" />
                 <span class="links_name">{{ menuItem.name }}</span>
-              </router-link>
+              </a>
               <span class="tooltip">{{
                 menuItem.tooltip || menuItem.name
               }}</span>
