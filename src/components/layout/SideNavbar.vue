@@ -48,10 +48,10 @@
                  >Main</div>
           <span v-for="(menuItem, index) in menuItems" :key="index">
             <li>
-              <a :href="menuItem.link">
+              <router-link :href="menuItem.link">
                 <i class="bx" :class="menuItem.icon || 'bx-square-rounded'" />
                 <span class="links_name">{{ menuItem.name }}</span>
-              </a>
+              </router-link>
               <span class="tooltip">{{
                 menuItem.tooltip || menuItem.name
               }}</span>
@@ -134,13 +134,13 @@ export default {
       type: Array,
       default: () => [
         {
-          link: "#",
+          link: "/dashboard",
           name: "Dashboard",
           tooltip: "Dashboard",
           icon: "bx-grid-alt",
         },
         {
-          link: "#",
+          link: "/admin-orders",
           name: "Orders",
           tooltip: "User",
           icon: "bx-grid",

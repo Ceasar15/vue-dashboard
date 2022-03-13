@@ -1,15 +1,27 @@
 <template>
-  <component :is="layout">
-    <router-view/>
-  </component>
+  <MainNavbar></MainNavbar>
+  <SideNavbar></SideNavbar>
 </template>
 
 <script>
+import MainNavbar from './components/layout/MainNavbar.vue'
+import SideNavbar from './components/layout/SideNavbar.vue'
 export default {
-  computed: {
-    layout() {
-      return `${this.$route.meta.layout || 'default'}-layout`;
-    },
+  name: 'App',
+  components: {
+    MainNavbar,
+    SideNavbar
   },
-};
+}
 </script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
