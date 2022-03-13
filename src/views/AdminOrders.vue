@@ -24,7 +24,9 @@
 export default {
   name: "AdminOrders",
   data () {
-    return 'ff'
+    return {
+      'dd': 'ff'
+    }
   }
 };
 </script>

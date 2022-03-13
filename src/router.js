@@ -5,7 +5,7 @@ import {
 
 
 import AdminDashboard from './views/Dashboard.vue';
-import AdminOrders from '@/views/AdminOrders.vue';
+const AdminOrders = () => import('./views/AdminOrders.vue')
 import AdminAnalytics from '@/views/AdminAnalytics.vue';
 import PageNotFound from '@/views/PageNotFound.vue'
 
@@ -17,12 +17,12 @@ const routes = [{
     {
         path: "/dashboard",
         name: "AdminDashboard",
-        componenet: AdminDashboard,
+        component: AdminDashboard,
     },
     {
         path: "/admin-orders",
         name: "AdminOrders",
-        componenet: AdminOrders,
+        component: AdminOrders,
     },
     {
         path: "/admin-analytics",

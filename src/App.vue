@@ -1,16 +1,12 @@
 <template>
   <MainNavbar></MainNavbar>
   <SideNavbar></SideNavbar>
-  <router-view v-slot="{ Component }">
-    <transition>
-      <component :is="Component" />
-    </transition>
-  </router-view>
+  <router-view></router-view>
 </template>
 
 <script>
-import MainNavbar from "./components/layout/MainNavbar.vue";
-import SideNavbar from "./components/layout/SideNavbar.vue";
+import MainNavbar from "./layouts/MainNavbar.vue";
+import SideNavbar from "./layouts/SideNavbar.vue";
 
 export default {
   name: "App",
