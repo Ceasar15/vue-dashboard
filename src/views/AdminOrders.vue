@@ -1,5 +1,5 @@
 <template>
-  <d-container >
+  <div >
     <div class="error">
       <div>
         <h2>Admin Orders</h2>
@@ -13,10 +13,9 @@
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
-        <d-button pill>&larr; Go Back</d-button>
       </div>
     </div>
-  </d-container>
+  </div>
 </template>
 
 
