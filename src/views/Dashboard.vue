@@ -10,9 +10,7 @@
 
 <script>
 export default {
-    name: 'OverView',
-
-
+    name: 'AdminDashboard',
 }
 
 
