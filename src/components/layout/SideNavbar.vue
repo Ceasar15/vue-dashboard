@@ -136,19 +136,19 @@ export default {
         {
           link: "/dashboard",
           name: "Dashboard",
-          tooltip: "Dashboard",
+          tooltip: "Admindashboard",
           icon: "bx-grid-alt",
         },
         {
           link: "/admin-orders",
           name: "Orders",
-          tooltip: "User",
+          tooltip: "AdminOrders",
           icon: "bx-grid",
         },
         {
-          link: "#",
+          link: "/doesnotexist",
           name: "Analytics",
-          tooltip: "Messages",
+          tooltip: "AdminAnalytics",
           icon: "bx-chat",
         },
         {

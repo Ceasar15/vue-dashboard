@@ -5,8 +5,9 @@ import {
 
 
 import AdminDashboard from './views/Dashboard.vue';
-import AdminOrders from './views/AdminOrders.vue';
-import AdminAnalytics from './views/AdminAnalytics.vue';
+import AdminOrders from '@/views/AdminOrders.vue';
+import AdminAnalytics from '@/views/AdminAnalytics.vue';
+import PageNotFound from '@/views/PageNotFound.vue'
 
 
 const routes = [{
@@ -27,6 +28,11 @@ const routes = [{
         path: "/admin-analytics",
         name: "AdminAnalytics",
         componenet: AdminAnalytics,
+    },
+    {
+        path: '/:catchAll(.*)*',
+        name: "PageNotFound",
+        component: PageNotFound,
     },
 ]
 
