@@ -1,18 +1,29 @@
 import { createWebHistory, createRouter } from 'vue-router';
-import OverView from '@/views/Overview.vue'
-
+import Dashboard from '@/views/Dashboard.vue';
+import AdminOrders from '@/views/AdminOrders.vue';
+import AdminAnalytics from '@/views/AdminAnalytics.vue';
 
 
 
 const routes = [
         {
             path: '/',
-            redirect: '/overview',
+            redirect: '/dashboard',
         },
         {
-            path: "/overview",
-            name: "overview",
-            componenet: OverView,
+            path: "/dashboard",
+            name: "dashboard",
+            componenet: Dashboard,
+        },
+        {
+            path: "/admin-orders",
+            name: "AdminOrders",
+            componenet: AdminOrders,
+        },
+        {
+            path: "/admin-analytics",
+            name: "AdminAnalytics",
+            componenet: AdminAnalytics,
         },
     ];
 
