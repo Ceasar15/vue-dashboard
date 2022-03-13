@@ -4,7 +4,6 @@ import AdminOrders from '@/views/AdminOrders.vue';
 import AdminAnalytics from '@/views/AdminAnalytics.vue';
 
 
-
 const routes = [
         {
             path: '/',
