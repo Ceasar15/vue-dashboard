@@ -27,7 +27,7 @@ const routes = [{
     {
         path: "/admin-analytics",
         name: "AdminAnalytics",
-        componenet: AdminAnalytics,
+        component: AdminAnalytics,
     },
     {
         path: '/:catchAll(.*)*',

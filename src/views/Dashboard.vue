@@ -1,4 +1,77 @@
 <template>
+  <v-row>
+    <v-col
+        cols="6"
+        md="6"
+    >
+      <v-card
+          class="pa-2"
+          outlined
+          tile
+      >
+        .col-12 .col-md-8
+      </v-card>
+    </v-col>
+    <v-col
+        cols="3"
+        md="3"
+    >
+      <v-card
+          class="pa-2"
+          outlined
+          tile
+      >
+        .col-6 .col-md-4
+      </v-card>
+    </v-col>
+    <v-col
+        cols="3"
+        md="3"
+    >
+      <v-card
+          class="pa-2"
+          outlined
+          tile
+      >
+        .col-6 .col-md-4
+      </v-card>
+    </v-col>
+  </v-row>
+  <v-card
+      :loading="loading"
+      class="mx-auto my-12"
+      max-width="374"
+  >
+    <template>
+      <v-progress-linear
+          color="deep-purple"
+          height="10"
+          indeterminate
+      ></v-progress-linear>
+    </template>
+
+    <v-card-title>Customers</v-card-title>
+
+    <v-card-text>
+      <v-row
+          align="center"
+          class="mx-0"
+      >
+
+        <div class="grey--text ms-4">
+          4.5 (413)
+        </div>
+      </v-row>
+
+      <div class="my-4 text-subtitle-1">
+        $ • Italian, Cafe
+      </div>
+
+      <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+    </v-card-text>
+
+
+      </v-card>
   <div class="p-10">
     <!--Card 1-->
     <div class="max-w-sm mt-[40px] rounded overflow-hidden shadow-lg">
@@ -88,7 +161,20 @@
 <script>
 export default {
   name: "AdminDashboard",
+  data: () => ({
+    loading: false,
+    selection: 1,
+  }),
+
+  methods: {
+    reserve () {
+      this.loading = true
+
+      setTimeout(() => (this.loading = false), 2000)
+    },
+  },
 };
+
 </script>
 
 <style scoped>
