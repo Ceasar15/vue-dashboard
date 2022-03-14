@@ -1,5 +1,30 @@
 <template>
   <v-row>
+
+    <v-col
+        cols="3"
+        md="3"
+    >
+      <v-card
+          class="pa-2"
+          outlined
+          tile
+      >
+        .col-6 .col-md-4
+      </v-card>
+    </v-col>
+    <v-col
+        cols="3"
+        md="3"
+    >
+      <v-card
+          class="pa-2"
+          outlined
+          tile
+      >
+        .col-6 .col-md-4
+      </v-card>
+    </v-col>
     <v-col
         cols="6"
         md="6"
@@ -36,6 +61,54 @@
         .col-6 .col-md-4
       </v-card>
     </v-col>
+
+  </v-row>
+  <v-row>
+  <v-col cols="9">
+    <v-card
+        class="pa-2"
+        outlined
+        tile
+    >
+      <v-simple-table
+          fixed-header
+          height="300px"
+      >
+        <template v-slot:default>
+          <thead>
+          <tr>
+            <th class="text-left">
+              Name
+            </th>
+            <th class="text-left">
+              Calories
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr
+              v-for="item in desserts"
+              :key="item.name"
+          >
+            <td>{{ item.name }}</td>
+            <td>{{ item.calories }}</td>
+          </tr>
+          </tbody>
+        </template>
+      </v-simple-table>
+
+
+    </v-card>
+  </v-col>
+  <v-col cols="3">
+    <v-card
+        class="pa-2"
+        outlined
+        tile
+    >
+      .col-6<br>Subsequent columns continue along the new line.
+    </v-card>
+  </v-col>
   </v-row>
   <v-card
       :loading="loading"
@@ -164,6 +237,91 @@ export default {
   data: () => ({
     loading: false,
     selection: 1,
+    desserts: [
+      {
+        name: 'Frozen Yogurt',
+        calories: 159,
+        date: "23-4-12",
+        price: 45,
+        quantity:3
+      },
+      {
+        name: 'Ice cream sandwich',
+        calories: 237,
+        date: "23-4-12",
+        price: 45,
+        quantity:3
+      },
+      {
+        name: 'Eclair',
+        calories: 262,
+        date: "23-4-12",
+        price: 45,
+        quantity:3
+      },
+      {
+        name: 'Cupcake',
+        calories: 305,
+        date: "23-4-12",
+        price: 45,
+        quantity:3
+      },
+      {
+        name: 'Gingerbread',
+        calories: 356,
+        date: "23-4-12",
+        price: 45,
+        quantity:3
+      },
+      {
+        name: 'Jelly bean',
+        calories: 375,
+        date: "23-4-12",
+        price: 45,
+        quantity:3
+      },
+      {
+        name: 'Lollipop',
+        calories: 392,
+        date: "23-4-12",
+        price: 45,
+        quantity:3
+      },
+      {
+        name: 'Honeycomb',
+        calories: 408,
+        date: "23-4-12",
+        price: 45,
+        quantity:3
+      },
+      {
+        name: 'Donut',
+        calories: 452,
+        date: "23-4-12",
+        price: 45,
+        quantity:3
+      },
+      {
+        name: 'KitKat',
+        calories: 518,
+        date: "23-4-12",
+        price: 45,
+        quantity:3
+      },
+    ],
+    headers: [
+      {
+        text: 'Dessert (100g serving)',
+        align: 'start',
+        sortable: false,
+        value: 'name',
+      },
+      { text: 'Calories', value: 'calories' },
+      { text: 'Fat (g)', value: 'date' },
+      { text: 'Carbs (g)', value: 'price' },
+      { text: 'Protein (g)', value: 'price' },
+      { text: 'Iron (%)', value: 'quantity' },
+    ],
   }),
 
   methods: {
