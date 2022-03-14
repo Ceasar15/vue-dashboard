@@ -23,7 +23,7 @@
       />
     </div>
   <div class="main-nav-dash">
-    <h1>Dashboard</h1>
+    <h1 className="text-4xl" >Dashboard</h1>
   </div>
   <div class="main-nav-date">
     <input type="date" value="2022-02-12" />
