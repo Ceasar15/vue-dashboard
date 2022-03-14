@@ -1,31 +1,23 @@
 <template>
-  <MainNavbar></MainNavbar>
-  <SideNavbar></SideNavbar>
-  <keep-alive>
-    <router-view></router-view> 
-  </keep-alive>
+  <v-app>
+    <v-main>
+      <HelloWorld/>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import MainNavbar from "./layouts/MainNavbar.vue";
-import SideNavbar from "./layouts/SideNavbar.vue";
+import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: "App",
-  components: {
-    MainNavbar,
-    SideNavbar,
-  },
-};
-</script>
+  name: 'App',
 
-<style >
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  components: {
+    HelloWorld,
+  },
+
+  data: () => ({
+    //
+  }),
 }
-</style>
+</script>
