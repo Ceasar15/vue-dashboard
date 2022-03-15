@@ -28,8 +28,8 @@ export default {
   name: 'App',
 
   components: {
-    SideNavBar,
-    MainNavbar
+    SideNavBar: SideNavBar,
+    MainNavbar: MainNavbar
 
   },
 
