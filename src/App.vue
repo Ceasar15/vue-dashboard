@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-app-bar absolute
+               fixed
                elevation="10" app
                elevate-on-scroll
                scroll-target="#scrolling-techniques-7"
@@ -11,7 +12,7 @@
     <v-main>
       <SideNavBar></SideNavBar>
       <v-container fluid>
-      <router-view></router-view>
+        <router-view></router-view>
       </v-container>
     </v-main>
     <v-footer app>

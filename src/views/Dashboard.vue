@@ -154,18 +154,21 @@
       >
         <v-card-title>Visits</v-card-title>
         <v-card-text>
-          <div class="grey--text ms-4">
-            4,532
+          <div class="my-4 grey--text" style="font-weight: bold">
+            <v-icon>mdi-search-web</v-icon>
+            456
           </div>
-          <div class="my-4 text-subtitle-1">
-            $ • Italian, Cafe
+          <div class="my-4 text-subtitle-1" style="color: green; font-weight: bold">
+            <v-icon>mdi-arrow-up</v-icon>
+            <span>26 %</span>
           </div>
+
           <div>since last month</div>
         </v-card-text>
       </v-card>
     </v-col>
-
   </v-row>
+  <!--  Table and Chart-->
   <v-row>
     <v-col cols="9">
       <v-card
@@ -173,36 +176,15 @@
           outlined
           tile
       >
-        <v-simple-table
-            fixed-header
-            height="300px"
-        >
-          <template v-slot:default>
-            <thead>
-            <tr>
-              <th class="text-left">
-                Name
-              </th>
-              <th class="text-left">
-                Calories
-              </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr
-                v-for="item in desserts"
-                :key="item.name"
-            >
-              <td>{{ item.name }}</td>
-              <td>{{ item.calories }}</td>
-            </tr>
-            </tbody>
-          </template>
-        </v-simple-table>
-
-
+        <v-data-table
+            :headers="headers"
+            :items="desserts"
+            :items-per-page="5"
+            class="elevation-1"
+        ></v-data-table>
       </v-card>
     </v-col>
+    <!--    Side Graph -->
     <v-col cols="3">
       <v-card
           class="pa-2"
@@ -298,6 +280,7 @@
     <p>Total Sales</p>
     <p>Pie Chart</p>
   </div>
+
 </template>
 
 <script>
@@ -320,8 +303,8 @@ export default {
   name: "AdminDashboard",
   components: {DoughnutChart, LineChart, BarChart},
 
-  data: () => ({
-    testData: testData,
+  data () {
+    return {
     loading: false,
     selection: 1,
     desserts: [
@@ -409,7 +392,9 @@ export default {
       {text: 'Protein (g)', value: 'price'},
       {text: 'Iron (%)', value: 'quantity'},
     ],
-  }),
+    testData: testData,
+
+  }},
   methods: {
     reserve() {
       this.loading = true
