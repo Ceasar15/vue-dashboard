@@ -82,13 +82,13 @@
       >
         <v-card-title>Customers</v-card-title>
         <v-card-text>
-          <div class="grey--text ms-4" style="font-weight: bold">
+          <div class="my-4 grey--text" style="font-weight: bold">
             <v-icon>mdi-human-male</v-icon>
-            812,837
+            12,837
           </div>
-
-          <div class="my-4 text-subtitle-1">
-            $ • Italian, Cafe
+          <div class="my-4 text-subtitle-1" style="color: red; font-weight: bold">
+            <v-icon>mdi-arrow-down</v-icon>
+            <span>91 %</span>
           </div>
 
           <div>since last month</div>
@@ -105,20 +105,14 @@
           tile
       >
         <v-card-title>Views</v-card-title>
-
         <v-card-text>
-          <v-row
-              align="center"
-              class="mx-0"
-          >
-
-            <div class="grey--text ms-4">
-              4,532
-            </div>
-          </v-row>
-
-          <div class="my-4 text-subtitle-1">
-            $ • Italian, Cafe
+          <div class="my-4 grey--text" style="font-weight: bold">
+            <v-icon>mdi-camera</v-icon>
+            829,424
+          </div>
+          <div class="my-4 text-subtitle-1" style="color: orange; font-weight: bold">
+            <v-icon>mdi-arrow-up</v-icon>
+            <span>7 %</span>
           </div>
 
           <div>since last month</div>
@@ -137,16 +131,9 @@
         <v-card-title>Growth</v-card-title>
 
         <v-card-text>
-          <v-row
-              align="center"
-              class="mx-0"
-          >
-
             <div class="grey--text ms-4">
               4,532
             </div>
-          </v-row>
-
           <div class="my-4 text-subtitle-1">
             $ • Italian, Cafe
           </div>
