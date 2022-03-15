@@ -69,20 +69,19 @@
           tile
       >
         3
-        <v-sparkline
-            :value="value"
-            :gradient="gradient"
-            :smooth="radius || false"
-            :padding="padding"
-            :line-width="width"
-            :stroke-linecap="lineCap"
-            :gradient-direction="gradientDirection"
-            :fill="fill"
-            :type="type"
-            :auto-line-width="autoLineWidth"
-            auto-draw
-        ></v-sparkline>
         3
+
+        <v-sheet color="transparent">
+          <v-sparkline
+              :key="String(avg)"
+              :smooth="16"
+              :gradient="['#f72047', '#ffd200', '#1feaea']"
+              :line-width="3"
+              :value="heartbeats"
+              auto-draw
+              stroke-linecap="round"
+          ></v-sparkline>
+        </v-sheet>
       </v-card>
     </v-col>
     <v-col
@@ -279,29 +278,10 @@
 </template>
 
 <script>
-const gradients = [
-  ['#222'],
-  ['#42b3f4'],
-  ['red', 'orange', 'yellow'],
-  ['purple', 'violet'],
-  ['#00c6ff', '#F0F', '#FF0'],
-  ['#f72047', '#ffd200', '#1feaea'],
-]
 
 export default {
   name: "AdminDashboard",
   data: () => ({
-    width: 2,
-    radius: 10,
-    padding: 8,
-    lineCap: 'round',
-    gradient: gradients[5],
-    value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
-    gradientDirection: 'top',
-    gradients,
-    fill: false,
-    type: 'trend',
-    autoLineWidth: false,
     loading: false,
     selection: 1,
     desserts: [
@@ -390,7 +370,6 @@ export default {
       { text: 'Iron (%)', value: 'quantity' },
     ],
   }),
-
   methods: {
     reserve () {
       this.loading = true
