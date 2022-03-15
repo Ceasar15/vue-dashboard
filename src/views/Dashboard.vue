@@ -11,7 +11,7 @@
           tile
       >
         <v-card-title>Earnings</v-card-title>
-        <DoughnutChart :chartData="testData" />
+        <DoughnutChart :chartData="testData"/>
 
         <v-card-text>
 
@@ -27,7 +27,8 @@
           </div>
 
           <div>since last month</div>
-        </v-card-text>      </v-card>
+        </v-card-text>
+      </v-card>
     </v-col>
     <v-col
         cols="3"
@@ -40,7 +41,7 @@
       >
         <v-card-title>Orders</v-card-title>
 
-        <BarChart :chartData="testData" />
+        <BarChart :chartData="testData"/>
 
         <v-card-text>
 
@@ -52,9 +53,9 @@
             <v-icon>mdi-arrow-up</v-icon>
             <span>91 %</span>
           </div>
-
           <div>since last month</div>
-        </v-card-text>      </v-card>
+        </v-card-text>
+      </v-card>
     </v-col>
     <v-col
         cols="6"
@@ -66,7 +67,7 @@
           tile
       >
         <v-card-title>Revenue</v-card-title>
-        <LineChart :chartData="testData" />
+        <LineChart :chartData="testData"/>
 
       </v-card>
     </v-col>
@@ -80,24 +81,19 @@
           tile
       >
         <v-card-title>Customers</v-card-title>
-
         <v-card-text>
-          <v-row
-              align="center"
-              class="mx-0"
-          >
-
-            <div class="grey--text ms-4">
-              4,532
-            </div>
-          </v-row>
+          <div class="grey--text ms-4" style="font-weight: bold">
+            <v-icon>mdi-human-male</v-icon>
+            812,837
+          </div>
 
           <div class="my-4 text-subtitle-1">
             $ • Italian, Cafe
           </div>
 
           <div>since last month</div>
-        </v-card-text>      </v-card>
+        </v-card-text>
+      </v-card>
     </v-col>
     <v-col
         cols="3"
@@ -126,7 +122,8 @@
           </div>
 
           <div>since last month</div>
-        </v-card-text>      </v-card>
+        </v-card-text>
+      </v-card>
     </v-col>
     <v-col
         cols="3"
@@ -155,7 +152,8 @@
           </div>
 
           <div>since last month</div>
-        </v-card-text>      </v-card>
+        </v-card-text>
+      </v-card>
     </v-col>
     <v-col
         cols="3"
@@ -183,56 +181,57 @@
           </div>
 
           <div>since last month</div>
-        </v-card-text>      </v-card>
+        </v-card-text>
+      </v-card>
     </v-col>
 
   </v-row>
   <v-row>
-  <v-col cols="9">
-    <v-card
-        class="pa-2"
-        outlined
-        tile
-    >
-      <v-simple-table
-          fixed-header
-          height="300px"
+    <v-col cols="9">
+      <v-card
+          class="pa-2"
+          outlined
+          tile
       >
-        <template v-slot:default>
-          <thead>
-          <tr>
-            <th class="text-left">
-              Name
-            </th>
-            <th class="text-left">
-              Calories
-            </th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr
-              v-for="item in desserts"
-              :key="item.name"
-          >
-            <td>{{ item.name }}</td>
-            <td>{{ item.calories }}</td>
-          </tr>
-          </tbody>
-        </template>
-      </v-simple-table>
+        <v-simple-table
+            fixed-header
+            height="300px"
+        >
+          <template v-slot:default>
+            <thead>
+            <tr>
+              <th class="text-left">
+                Name
+              </th>
+              <th class="text-left">
+                Calories
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr
+                v-for="item in desserts"
+                :key="item.name"
+            >
+              <td>{{ item.name }}</td>
+              <td>{{ item.calories }}</td>
+            </tr>
+            </tbody>
+          </template>
+        </v-simple-table>
 
 
-    </v-card>
-  </v-col>
-  <v-col cols="3">
-    <v-card
-        class="pa-2"
-        outlined
-        tile
-    >
-      .col-6<br>Subsequent columns continue along the new line.
-    </v-card>
-  </v-col>
+      </v-card>
+    </v-col>
+    <v-col cols="3">
+      <v-card
+          class="pa-2"
+          outlined
+          tile
+      >
+        .col-6<br>Subsequent columns continue along the new line.
+      </v-card>
+    </v-col>
   </v-row>
 
   <div class="p-10">
@@ -244,7 +243,7 @@
       </div>
       &nbsp;
       <div
-        class="
+          class="
           inline-block
           text-sm
           font-semibold
@@ -283,48 +282,48 @@
     </div>
   </div>
 
-<div>
+  <div>
     <p>Revenue</p>
     <p>Previous Week</p>
     <p>Current Week</p>
     <p>Graph Goes Here</p>
 
-</div>
-<div>
+  </div>
+  <div>
     <p>Top Selling Products</p>
     <em>Export Icon</em>
     <table class="table">
-        <thead>
-            <tr>
-                <th>Product name</th>
-                <th>Date Time</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td scope="row">Product 1</td>
-                <td>9 April, 3020</td>
-                <td>$230</td>
-            </tr>
-            <tr>
-                <td scope="row">Product 2</td>
-                <td>8 May, 2930</td>
-                <td>$989</td>
-            </tr>   
-        </tbody>
+      <thead>
+      <tr>
+        <th>Product name</th>
+        <th>Date Time</th>
+        <th>Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td scope="row">Product 1</td>
+        <td>9 April, 3020</td>
+        <td>$230</td>
+      </tr>
+      <tr>
+        <td scope="row">Product 2</td>
+        <td>8 May, 2930</td>
+        <td>$989</td>
+      </tr>
+      </tbody>
     </table>
-</div>
-<div>
+  </div>
+  <div>
     <p>Total Sales</p>
     <p>Pie Chart</p>
-</div>
+  </div>
 </template>
 
 <script>
 // import { defineComponent } from 'vue';
-import { DoughnutChart, LineChart, BarChart } from 'vue-chart-3';
-import { Chart, registerables } from "chart.js";
+import {DoughnutChart, LineChart, BarChart} from 'vue-chart-3';
+import {Chart, registerables} from "chart.js";
 
 Chart.register(...registerables);
 
@@ -339,7 +338,7 @@ const testData = {
 }
 export default {
   name: "AdminDashboard",
-  components: { DoughnutChart,LineChart,BarChart },
+  components: {DoughnutChart, LineChart, BarChart},
 
   data: () => ({
     testData: testData,
@@ -351,70 +350,70 @@ export default {
         calories: 159,
         date: "23-4-12",
         price: 45,
-        quantity:3
+        quantity: 3
       },
       {
         name: 'Ice cream sandwich',
         calories: 237,
         date: "23-4-12",
         price: 45,
-        quantity:3
+        quantity: 3
       },
       {
         name: 'Eclair',
         calories: 262,
         date: "23-4-12",
         price: 45,
-        quantity:3
+        quantity: 3
       },
       {
         name: 'Cupcake',
         calories: 305,
         date: "23-4-12",
         price: 45,
-        quantity:3
+        quantity: 3
       },
       {
         name: 'Gingerbread',
         calories: 356,
         date: "23-4-12",
         price: 45,
-        quantity:3
+        quantity: 3
       },
       {
         name: 'Jelly bean',
         calories: 375,
         date: "23-4-12",
         price: 45,
-        quantity:3
+        quantity: 3
       },
       {
         name: 'Lollipop',
         calories: 392,
         date: "23-4-12",
         price: 45,
-        quantity:3
+        quantity: 3
       },
       {
         name: 'Honeycomb',
         calories: 408,
         date: "23-4-12",
         price: 45,
-        quantity:3
+        quantity: 3
       },
       {
         name: 'Donut',
         calories: 452,
         date: "23-4-12",
         price: 45,
-        quantity:3
+        quantity: 3
       },
       {
         name: 'KitKat',
         calories: 518,
         date: "23-4-12",
         price: 45,
-        quantity:3
+        quantity: 3
       },
     ],
     headers: [
@@ -424,15 +423,15 @@ export default {
         sortable: false,
         value: 'name',
       },
-      { text: 'Calories', value: 'calories' },
-      { text: 'Fat (g)', value: 'date' },
-      { text: 'Carbs (g)', value: 'price' },
-      { text: 'Protein (g)', value: 'price' },
-      { text: 'Iron (%)', value: 'quantity' },
+      {text: 'Calories', value: 'calories'},
+      {text: 'Fat (g)', value: 'date'},
+      {text: 'Carbs (g)', value: 'price'},
+      {text: 'Protein (g)', value: 'price'},
+      {text: 'Iron (%)', value: 'quantity'},
     ],
   }),
   methods: {
-    reserve () {
+    reserve() {
       this.loading = true
 
       setTimeout(() => (this.loading = false), 2000)
