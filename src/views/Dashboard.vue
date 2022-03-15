@@ -10,7 +10,8 @@
           outlined
           tile
       >
-        <v-card-title>Customers</v-card-title>
+        <v-card-title>Earnings</v-card-title>
+        <DoughnutChart :chartData="testData" />
 
         <v-card-text>
           <v-row
@@ -39,7 +40,9 @@
           outlined
           tile
       >
-        <v-card-title>Customers</v-card-title>
+        <v-card-title>Orders</v-card-title>
+
+        <BarChart :chartData="testData" />
 
         <v-card-text>
           <v-row
@@ -68,20 +71,16 @@
           outlined
           tile
       >
-        3
-        3
+        <v-card-title>Revenue</v-card-title>
+        <LineChart :chartData="testData" />
+        <div class="grey--text ms-4">
+          4,532
+        </div>
+<!--        <div>Small, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>-->
+<!--        <div>Small, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>-->
+<!--        <div>Small, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>-->
 
-        <v-sheet color="transparent">
-          <v-sparkline
-              :key="String(avg)"
-              :smooth="16"
-              :gradient="['#f72047', '#ffd200', '#1feaea']"
-              :line-width="3"
-              :value="heartbeats"
-              auto-draw
-              stroke-linecap="round"
-          ></v-sparkline>
-        </v-sheet>
+
       </v-card>
     </v-col>
     <v-col
@@ -110,7 +109,7 @@
             $ • Italian, Cafe
           </div>
 
-          <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+          <div>Small, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
         </v-card-text>      </v-card>
     </v-col>
     <v-col
@@ -122,7 +121,65 @@
           outlined
           tile
       >
-        <v-card-title>Customers</v-card-title>
+        <v-card-title>Views</v-card-title>
+
+        <v-card-text>
+          <v-row
+              align="center"
+              class="mx-0"
+          >
+
+            <div class="grey--text ms-4">
+              4,532
+            </div>
+          </v-row>
+
+          <div class="my-4 text-subtitle-1">
+            $ • Italian, Cafe
+          </div>
+
+          <div>Small, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+        </v-card-text>      </v-card>
+    </v-col>
+    <v-col
+        cols="3"
+        md="3"
+    >
+      <v-card
+          class="pa-2"
+          outlined
+          tile
+      >
+        <v-card-title>Growth</v-card-title>
+
+        <v-card-text>
+          <v-row
+              align="center"
+              class="mx-0"
+          >
+
+            <div class="grey--text ms-4">
+              4,532
+            </div>
+          </v-row>
+
+          <div class="my-4 text-subtitle-1">
+            $ • Italian, Cafe
+          </div>
+
+          <div>Small, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+        </v-card-text>      </v-card>
+    </v-col>
+    <v-col
+        cols="3"
+        md="3"
+    >
+      <v-card
+          class="pa-2"
+          outlined
+          tile
+      >
+        <v-card-title>Visits</v-card-title>
 
         <v-card-text>
           <v-row
@@ -278,10 +335,28 @@
 </template>
 
 <script>
+// import { defineComponent } from 'vue';
+import { DoughnutChart, LineChart, BarChart } from 'vue-chart-3';
+import { Chart, registerables } from "chart.js";
+
+Chart.register(...registerables);
+
+const testData = {
+  labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
+  datasets: [
+    {
+      data: [30, 40, 60, 70, 5],
+      backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
+    },
+  ]
+}
 
 export default {
   name: "AdminDashboard",
+  components: { DoughnutChart,LineChart,BarChart },
+
   data: () => ({
+    testData: testData,
     loading: false,
     selection: 1,
     desserts: [
