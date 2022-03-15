@@ -68,9 +68,6 @@
         <v-card-title>Revenue</v-card-title>
         <LineChart :chartData="testData" />
 
-
-
-
       </v-card>
     </v-col>
     <v-col
@@ -340,7 +337,6 @@ const testData = {
     },
   ]
 }
-
 export default {
   name: "AdminDashboard",
   components: { DoughnutChart,LineChart,BarChart },
