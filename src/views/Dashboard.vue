@@ -129,13 +129,14 @@
           tile
       >
         <v-card-title>Growth</v-card-title>
-
         <v-card-text>
-            <div class="grey--text ms-4">
-              4,532
-            </div>
-          <div class="my-4 text-subtitle-1">
-            $ • Italian, Cafe
+          <div class="my-4 grey--text" style="font-weight: bold">
+            <v-icon>mdi-chart-areaspline</v-icon>
+            Increase
+          </div>
+          <div class="my-4 text-subtitle-1" style="color: red; font-weight: bold">
+            <v-icon>mdi-arrow-down</v-icon>
+            <span>64 %</span>
           </div>
 
           <div>since last month</div>
@@ -152,21 +153,13 @@
           tile
       >
         <v-card-title>Visits</v-card-title>
-
         <v-card-text>
-          <v-row
-              align="center"
-              class="mx-0"
-          >
-            <div class="grey--text ms-4">
-              4,532
-            </div>
-          </v-row>
-
+          <div class="grey--text ms-4">
+            4,532
+          </div>
           <div class="my-4 text-subtitle-1">
             $ • Italian, Cafe
           </div>
-
           <div>since last month</div>
         </v-card-text>
       </v-card>
