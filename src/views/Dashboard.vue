@@ -14,21 +14,16 @@
         <DoughnutChart :chartData="testData" />
 
         <v-card-text>
-<!--          <v-row-->
-<!--              align="center"-->
-<!--              class="mx-0"-->
-<!--          >-->
 
-<!--&lt;!&ndash;            <div class="grey&#45;&#45;text ms-4">&ndash;&gt;-->
-<!--&lt;!&ndash;              4,532&ndash;&gt;-->
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
-<!--          </v-row>-->
+          <div class="my-4 text-subtitle-1" style="font-weight: bold">
+            <v-icon>mdi-currency-usd</v-icon>
+            9,494
 
-          <div class="my-4 text-subtitle-1">
-            $ • Italian, Cafe
           </div>
-          <div class="my-4 text-subtitle-1">
-            $ • Italian, Cafe
+          <div class="my-4 text-subtitle-1" style="color: green; font-weight: bold">
+            <v-icon>mdi-arrow-up</v-icon>
+            <span>525 %</span>
+
           </div>
 
           <div>since last month</div>
@@ -49,12 +44,13 @@
 
         <v-card-text>
 
-          <div class="my-4 text-subtitle-1">
-            $ 4,564
+          <div class="my-4 text-subtitle-1" style="font-weight: bold">
+            <v-icon>mdi-cart-outline</v-icon>
+            4,564
           </div>
           <div class="my-4  text-subtitle-1" style="color: green; font-weight: bold">
             <v-icon>mdi-arrow-up</v-icon>
-            <span>525%</span>
+            <span>91 %</span>
           </div>
 
           <div>since last month</div>
@@ -71,12 +67,8 @@
       >
         <v-card-title>Revenue</v-card-title>
         <LineChart :chartData="testData" />
-        <div class="grey--text ms-4">
-          4,532
-        </div>
-<!--        <div>since last month</div>-->
-<!--        <div>since last month</div>-->
-<!--        <div>since last month</div>-->
+
+
 
 
       </v-card>
@@ -343,7 +335,7 @@ const testData = {
   labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
   datasets: [
     {
-      data: [30, 40, 60, 70, 5],
+      data: [30, 40, 60, 70, 5, 90],
       backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
     },
   ]
