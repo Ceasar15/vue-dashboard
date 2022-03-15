@@ -14,21 +14,24 @@
         <DoughnutChart :chartData="testData" />
 
         <v-card-text>
-          <v-row
-              align="center"
-              class="mx-0"
-          >
+<!--          <v-row-->
+<!--              align="center"-->
+<!--              class="mx-0"-->
+<!--          >-->
 
-            <div class="grey--text ms-4">
-              4,532
-            </div>
-          </v-row>
+<!--&lt;!&ndash;            <div class="grey&#45;&#45;text ms-4">&ndash;&gt;-->
+<!--&lt;!&ndash;              4,532&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--          </v-row>-->
 
           <div class="my-4 text-subtitle-1">
             $ • Italian, Cafe
           </div>
+          <div class="my-4 text-subtitle-1">
+            $ • Italian, Cafe
+          </div>
 
-          <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+          <div>since last month</div>
         </v-card-text>      </v-card>
     </v-col>
     <v-col
@@ -45,21 +48,16 @@
         <BarChart :chartData="testData" />
 
         <v-card-text>
-          <v-row
-              align="center"
-              class="mx-0"
-          >
-
-            <div class="grey--text ms-4">
-              4,532
-            </div>
-          </v-row>
 
           <div class="my-4 text-subtitle-1">
-            $ • Italian, Cafe
+            $ 4,564
+          </div>
+          <div class="my-4  text-subtitle-1" style="color: green; font-weight: bold">
+            <v-icon>mdi-arrow-up</v-icon>
+            <span>525%</span>
           </div>
 
-          <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+          <div>since last month</div>
         </v-card-text>      </v-card>
     </v-col>
     <v-col
@@ -76,9 +74,9 @@
         <div class="grey--text ms-4">
           4,532
         </div>
-<!--        <div>Small, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>-->
-<!--        <div>Small, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>-->
-<!--        <div>Small, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>-->
+<!--        <div>since last month</div>-->
+<!--        <div>since last month</div>-->
+<!--        <div>since last month</div>-->
 
 
       </v-card>
@@ -109,7 +107,7 @@
             $ • Italian, Cafe
           </div>
 
-          <div>Small, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+          <div>since last month</div>
         </v-card-text>      </v-card>
     </v-col>
     <v-col
@@ -138,7 +136,7 @@
             $ • Italian, Cafe
           </div>
 
-          <div>Small, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+          <div>since last month</div>
         </v-card-text>      </v-card>
     </v-col>
     <v-col
@@ -167,7 +165,7 @@
             $ • Italian, Cafe
           </div>
 
-          <div>Small, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+          <div>since last month</div>
         </v-card-text>      </v-card>
     </v-col>
     <v-col
@@ -195,7 +193,7 @@
             $ • Italian, Cafe
           </div>
 
-          <div>Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.</div>
+          <div>since last month</div>
         </v-card-text>      </v-card>
     </v-col>
 
