@@ -170,128 +170,116 @@
   </v-row>
   <!--  Table and Chart-->
   <v-row>
-    <v-col cols="9">
+    <v-col class="products-column" cols="6" style="border-radius: 24px;">
+      <v-card
+          class="pa-2 products-card"
+          outlined
+          tile
+      >
+        <v-simple-table
+            fixed-header
+            height="300px"
+        >
+          <template v-slot:default>
+            <thead id="table-head">
+            <tr>
+              <th class="table-headers text-left">
+                Name
+              </th>
+              <th class=" table-headers text-left">
+                Calories
+              </th>
+              <th class="table-headers text-left">
+                Date
+              </th>
+              <th class="table-headers text-left">
+                Price
+              </th>
+              <th class="table-headers text-left">
+                Quantity
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr
+                v-for="item in desserts"
+                :key="item.name"
+            >
+              <td style="padding: 1rem" class="text-pray-300">{{ item.name }}</td>
+              <td style="padding: 1rem">{{ item.calories }}</td>
+              <td style="padding: 1rem">{{ item.date }}</td>
+              <td style="padding: 1rem">{{ item.price }}</td>
+              <td style="padding: 1rem">{{ item.quantity }}</td>
+            </tr>
+            </tbody>
+          </template>
+        </v-simple-table>
+      </v-card>
+    </v-col>
+    <!--    Side Graph -->
+    <v-col class="chat-side-graph" cols="6">
       <v-card
           class="pa-2"
           outlined
           tile
       >
-        <v-data-table
-            :headers="headers"
-            :items="desserts"
-            :items-per-page="5"
-            class="elevation-1"
-        ></v-data-table>
+        <v-list three-line>
+          <template v-for="(item, index) in items">
+            <v-subheader
+                v-if="item.header"
+                :key="item.header"
+                v-text="item.header"
+            ></v-subheader>
+
+            <v-divider
+                v-else-if="item.divider"
+                :key="index"
+                :inset="item.inset"
+            ></v-divider>
+
+            <v-list-item
+                v-else
+                :key="item.title"
+                class="list-item"
+            >
+              <v-list-item-avatar
+              >
+                <v-img :src="item.avatar">
+                </v-img>
+              </v-list-item-avatar>
+
+              <v-list-item-content>
+                <v-list-item-title v-html="item.title"></v-list-item-title>
+                <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
+              </v-list-item-content>
+              <!--              <div class="field created-at"> 9:89</div>-->
+            </v-list-item>
+          </template>
+        </v-list>
       </v-card>
     </v-col>
-    <!--    Side Graph -->
     <v-col cols="3">
       <v-card
           class="pa-2"
           outlined
           tile
       >
-        .col-6<br>Subsequent columns continue along the new line.
       </v-card>
     </v-col>
   </v-row>
 
-  <div class="p-10">
-    <!--Card 1-->
-    <div class="max-w-sm mt-[40px] rounded overflow-hidden shadow-lg">
-      <div class="mr-[200px] text-gray-900 mb-2">Customers</div>
-      <div class="mr-[220px] text-xl text mb-2 text-black-900 font-bold">
-        45,230
-      </div>
-      &nbsp;
-      <div
-          class="
-          inline-block
-          text-sm
-          font-semibold
-          text-green-500
-          mb-2
-          mr-[250px]
-        "
-      >
-        <em class="font-bold bx bx-up-arrow-alt"></em>
-        <span>525%</span>
-      </div>
-      <div class="mr-[190px] text-sm font-light-500 text-gray-700 mb-2">
-        Since last week
-      </div>
-    </div>
-    <div>
-      <!-- Card 2 -->
-      <p>Orders</p>
-      <p>45,320</p>
-      <p>1.23%</p>
-      <p>since last month</p>
-    </div>
-    <div>
-      <!-- Card 3 -->
-      <p>Earnings</p>
-      <p>$7,524</p>
-      <p>7.85%</p>
-      <p>since last month</p>
-    </div>
-    <div>
-      <!-- Card 4 -->
-      <p>Growth</p>
-      <p>+35.52</p>
-      <p>3.72%</p>
-      <p>since last month</p>
-    </div>
-  </div>
 
-  <div>
-    <p>Revenue</p>
-    <p>Previous Week</p>
-    <p>Current Week</p>
-    <p>Graph Goes Here</p>
-
-  </div>
-  <div>
-    <p>Top Selling Products</p>
-    <em>Export Icon</em>
-    <table class="table">
-      <thead>
-      <tr>
-        <th>Product name</th>
-        <th>Date Time</th>
-        <th>Price</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td scope="row">Product 1</td>
-        <td>9 April, 3020</td>
-        <td>$230</td>
-      </tr>
-      <tr>
-        <td scope="row">Product 2</td>
-        <td>8 May, 2930</td>
-        <td>$989</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-  <div>
-    <p>Total Sales</p>
-    <p>Pie Chart</p>
-  </div>
 
 </template>
 
 <script>
-// import { defineComponent } from 'vue';
 import {DoughnutChart, LineChart, BarChart} from 'vue-chart-3';
 import {Chart, registerables} from "chart.js";
 
 Chart.register(...registerables);
 
 const testData = {
-  labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
+  labels: ['Bentley', 'Benz', 'Audi', 'Kantanka', 'Toyota'],
   datasets: [
     {
       data: [30, 40, 60, 70, 5, 90],
@@ -302,110 +290,232 @@ const testData = {
 export default {
   name: "AdminDashboard",
   components: {DoughnutChart, LineChart, BarChart},
-
-  data () {
+  //src/assets/profile/black1.jpg
+  //src/views/Dashboard.vue
+  data() {
     return {
-    loading: false,
-    selection: 1,
-    desserts: [
-      {
-        name: 'Frozen Yogurt',
-        calories: 159,
-        date: "23-4-12",
-        price: 45,
-        quantity: 3
-      },
-      {
-        name: 'Ice cream sandwich',
-        calories: 237,
-        date: "23-4-12",
-        price: 45,
-        quantity: 3
-      },
-      {
-        name: 'Eclair',
-        calories: 262,
-        date: "23-4-12",
-        price: 45,
-        quantity: 3
-      },
-      {
-        name: 'Cupcake',
-        calories: 305,
-        date: "23-4-12",
-        price: 45,
-        quantity: 3
-      },
-      {
-        name: 'Gingerbread',
-        calories: 356,
-        date: "23-4-12",
-        price: 45,
-        quantity: 3
-      },
-      {
-        name: 'Jelly bean',
-        calories: 375,
-        date: "23-4-12",
-        price: 45,
-        quantity: 3
-      },
-      {
-        name: 'Lollipop',
-        calories: 392,
-        date: "23-4-12",
-        price: 45,
-        quantity: 3
-      },
-      {
-        name: 'Honeycomb',
-        calories: 408,
-        date: "23-4-12",
-        price: 45,
-        quantity: 3
-      },
-      {
-        name: 'Donut',
-        calories: 452,
-        date: "23-4-12",
-        price: 45,
-        quantity: 3
-      },
-      {
-        name: 'KitKat',
-        calories: 518,
-        date: "23-4-12",
-        price: 45,
-        quantity: 3
-      },
-    ],
-    headers: [
-      {
-        text: 'Dessert (100g serving)',
-        align: 'start',
-        sortable: false,
-        value: 'name',
-      },
-      {text: 'Calories', value: 'calories'},
-      {text: 'Fat (g)', value: 'date'},
-      {text: 'Carbs (g)', value: 'price'},
-      {text: 'Protein (g)', value: 'price'},
-      {text: 'Iron (%)', value: 'quantity'},
-    ],
-    testData: testData,
-
-  }},
+      loading: false,
+      selection: 1,
+      items: [
+        {header: 'Messages: Today'},
+        {
+          avatar: 'https://media.istockphoto.com/photos/african-woman-with-her-eyes-closed-picture-id1297067656?s=612x612',
+          title: 'Brunch this weekend?',
+          subtitle: `<span class="text--primary">Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
+        },
+        {divider: true, inset: true},
+        {
+          avatar: require('../assets/profile/black1.jpg'),
+          title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>',
+          subtitle: `<span class="text--primary">to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.`,
+        },
+        {divider: true, inset: true},
+        {
+          avatar: require('../assets/profile/black1.jpg'),
+          title: 'Oui oui',
+          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        },
+        {divider: true, inset: true},
+        {
+          avatar: require('../assets/profile/black1.jpg'),
+          title: 'Oui oui',
+          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        },
+        {divider: true, inset: true},
+        {
+          avatar: require('../assets/profile/black1.jpg'),
+          title: 'Oui oui',
+          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        },
+        {divider: true, inset: true},
+        {
+          avatar: require('../assets/profile/black1.jpg'),
+          title: 'Oui oui',
+          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        },
+        {divider: true, inset: true},
+        {
+          avatar: require('../assets/profile/black1.jpg'),
+          title: 'Oui oui',
+          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        },
+        {divider: true, inset: true},
+        {
+          avatar: require('../assets/profile/black1.jpg'),
+          title: 'Oui oui',
+          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        },
+        {divider: true, inset: true},
+        {
+          avatar: require('../assets/profile/black1.jpg'),
+          title: 'Oui oui',
+          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        },
+        {divider: true, inset: true},
+        {
+          avatar: require('../assets/profile/black1.jpg'),
+          title: 'Oui oui',
+          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        },
+        {divider: true, inset: true},
+        {
+          avatar: require('../assets/profile/black1.jpg'),
+          title: 'Oui oui',
+          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        },
+        {divider: true, inset: true},
+        {
+          avatar: require('../assets/profile/black1.jpg'),
+          title: 'Birthday gift',
+          subtitle: '<span class="text--primary">Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?',
+        },
+        {divider: true, inset: true},
+        {
+          avatar: require('../assets/profile/black1.jpg'),
+          title: 'Recipe to try',
+          subtitle: '<span class="text--primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
+        },
+      ],
+      desserts: [
+        {
+          name: 'Frozen Yogurt',
+          calories: 159,
+          date: "23-4-12",
+          price: 45,
+          quantity: 3
+        },
+        {
+          name: 'Ice cream sandwich',
+          calories: 237,
+          date: "23-4-12",
+          price: 45,
+          quantity: 3
+        },
+        {
+          name: 'Eclair',
+          calories: 262,
+          date: "23-4-12",
+          price: 45,
+          quantity: 3
+        },
+        {
+          name: 'Cupcake',
+          calories: 305,
+          date: "23-4-12",
+          price: 45,
+          quantity: 3
+        },
+        {
+          name: 'Gingerbread',
+          calories: 356,
+          date: "23-4-12",
+          price: 45,
+          quantity: 3
+        },
+        {
+          name: 'Jelly bean',
+          calories: 375,
+          date: "23-4-12",
+          price: 45,
+          quantity: 3
+        },
+        {
+          name: 'Lollipop',
+          calories: 392,
+          date: "23-4-12",
+          price: 45,
+          quantity: 3
+        },
+        {
+          name: 'Honeycomb',
+          calories: 408,
+          date: "23-4-12",
+          price: 45,
+          quantity: 3
+        },
+        {
+          name: 'Donut',
+          calories: 452,
+          date: "23-4-12",
+          price: 45,
+          quantity: 3
+        },
+        {
+          name: 'KitKat',
+          calories: 518,
+          date: "23-4-12",
+          price: 45,
+          quantity: 3
+        },
+      ],
+      headers: [
+        {
+          text: 'Dessert (100g serving)',
+          align: 'start',
+          sortable: false,
+          value: 'name',
+        },
+        {text: 'Calories', value: 'calories'},
+        {text: 'Fat (g)', value: 'date'},
+        {text: 'Carbs (g)', value: 'price'},
+        {text: 'Protein (g)', value: 'price'},
+        {text: 'Iron (%)', value: 'quantity'},
+      ],
+      testData: testData,
+    }
+  },
   methods: {
     reserve() {
       this.loading = true
-
       setTimeout(() => (this.loading = false), 2000)
     },
   },
 };
-
 </script>
 
-<style scoped>
+<style scoped lang="css">
 @import url("https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css");
+
+.table-headers {
+  text-align: center;
+  background-color: #0079AF;
+  width: 20%;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+#table-head {
+  position: relative;
+  border-collapse: collapse;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+.products-column {
+  overflow-x: auto;
+  height: 450px;
+}
+
+.products-card tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.products-card tr:hover {
+  background-color: #ddd;
+}
+
+.chat-side-graph {
+  overflow-x: auto;
+  height: 450px;
+}
+
+.list-item:hover {
+  background-color: #ddd;
+}
+
+
 </style>

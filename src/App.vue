@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app style="display: relative">
     <v-app-bar absolute
                fixed
                elevation="10" app
