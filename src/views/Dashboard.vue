@@ -105,14 +105,6 @@
               align="center"
               class="mx-0"
           >
-            <v-rating
-                :value="4.5"
-                color="amber"
-                dense
-                half-increments
-                readonly
-                size="14"
-            ></v-rating>
 
             <div class="grey--text ms-4">
               4.5 (413)
