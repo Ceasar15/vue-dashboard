@@ -23,9 +23,7 @@
           <div class="my-4 text-subtitle-1" style="color: green; font-weight: bold">
             <v-icon>mdi-arrow-up</v-icon>
             <span>525 %</span>
-
           </div>
-
           <div>since last month</div>
         </v-card-text>
       </v-card>
@@ -156,7 +154,7 @@
         <v-card-text>
           <div class="my-4 grey--text" style="font-weight: bold">
             <v-icon>mdi-search-web</v-icon>
-            456
+            456,998
           </div>
           <div class="my-4 text-subtitle-1" style="color: green; font-weight: bold">
             <v-icon>mdi-arrow-up</v-icon>
@@ -229,6 +227,7 @@
                 v-if="item.header"
                 :key="item.header"
                 v-text="item.header"
+                style="color: black; font-weight: bold"
             ></v-subheader>
 
             <v-divider
@@ -236,40 +235,28 @@
                 :key="index"
                 :inset="item.inset"
             ></v-divider>
-
             <v-list-item
                 v-else
                 :key="item.title"
                 class="list-item"
+                style="display: flex; justify-content: space-between; align-items: center"
             >
               <v-list-item-avatar
               >
-                <v-img :src="item.avatar">
+                <v-img :src="item.avatar" width="50">
                 </v-img>
               </v-list-item-avatar>
-
               <v-list-item-content>
                 <v-list-item-title v-html="item.title"></v-list-item-title>
                 <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
               </v-list-item-content>
-              <!--              <div class="field created-at"> 9:89</div>-->
+
             </v-list-item>
           </template>
         </v-list>
       </v-card>
     </v-col>
-    <v-col cols="3">
-      <v-card
-          class="pa-2"
-          outlined
-          tile
-      >
-      </v-card>
-    </v-col>
   </v-row>
-
-
-
 </template>
 
 <script>
@@ -298,11 +285,7 @@ export default {
       selection: 1,
       items: [
         {header: 'Messages: Today'},
-        {
-          avatar: 'https://media.istockphoto.com/photos/african-woman-with-her-eyes-closed-picture-id1297067656?s=612x612',
-          title: 'Brunch this weekend?',
-          subtitle: `<span class="text--primary">Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
-        },
+
         {divider: true, inset: true},
         {
           avatar: require('../assets/profile/black1.jpg'),
@@ -364,17 +347,7 @@ export default {
           subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
         },
         {divider: true, inset: true},
-        {
-          avatar: require('../assets/profile/black1.jpg'),
-          title: 'Birthday gift',
-          subtitle: '<span class="text--primary">Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?',
-        },
-        {divider: true, inset: true},
-        {
-          avatar: require('../assets/profile/black1.jpg'),
-          title: 'Recipe to try',
-          subtitle: '<span class="text--primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
-        },
+
       ],
       desserts: [
         {
