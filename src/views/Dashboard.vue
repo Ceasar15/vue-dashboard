@@ -10,24 +10,16 @@
           outlined
           tile
       >
-        <v-card-title>Cafe Badilico</v-card-title>
+        <v-card-title>Customers</v-card-title>
 
         <v-card-text>
           <v-row
               align="center"
               class="mx-0"
           >
-            <v-rating
-                :value="4.5"
-                color="amber"
-                dense
-                half-increments
-                readonly
-                size="14"
-            ></v-rating>
 
             <div class="grey--text ms-4">
-              4.5 (413)
+              4,532
             </div>
           </v-row>
 
@@ -47,24 +39,16 @@
           outlined
           tile
       >
-        <v-card-title>Cafe Badilico</v-card-title>
+        <v-card-title>Customers</v-card-title>
 
         <v-card-text>
           <v-row
               align="center"
               class="mx-0"
           >
-            <v-rating
-                :value="4.5"
-                color="amber"
-                dense
-                half-increments
-                readonly
-                size="14"
-            ></v-rating>
 
             <div class="grey--text ms-4">
-              4.5 (413)
+              4,532
             </div>
           </v-row>
 
@@ -85,7 +69,19 @@
           tile
       >
         3
-
+        <v-sparkline
+            :value="value"
+            :gradient="gradient"
+            :smooth="radius || false"
+            :padding="padding"
+            :line-width="width"
+            :stroke-linecap="lineCap"
+            :gradient-direction="gradientDirection"
+            :fill="fill"
+            :type="type"
+            :auto-line-width="autoLineWidth"
+            auto-draw
+        ></v-sparkline>
         3
       </v-card>
     </v-col>
@@ -98,7 +94,7 @@
           outlined
           tile
       >
-        <v-card-title>Cafe Badilico</v-card-title>
+        <v-card-title>Customers</v-card-title>
 
         <v-card-text>
           <v-row
@@ -107,7 +103,7 @@
           >
 
             <div class="grey--text ms-4">
-              4.5 (413)
+              4,532
             </div>
           </v-row>
 
@@ -127,24 +123,15 @@
           outlined
           tile
       >
-        <v-card-title>Cafe Badilico</v-card-title>
+        <v-card-title>Customers</v-card-title>
 
         <v-card-text>
           <v-row
               align="center"
               class="mx-0"
           >
-            <v-rating
-                :value="4.5"
-                color="amber"
-                dense
-                half-increments
-                readonly
-                size="14"
-            ></v-rating>
-
             <div class="grey--text ms-4">
-              4.5 (413)
+              4,532
             </div>
           </v-row>
 
@@ -292,10 +279,29 @@
 </template>
 
 <script>
-export default {
+const gradients = [
+  ['#222'],
+  ['#42b3f4'],
+  ['red', 'orange', 'yellow'],
+  ['purple', 'violet'],
+  ['#00c6ff', '#F0F', '#FF0'],
+  ['#f72047', '#ffd200', '#1feaea'],
+]
 
+export default {
   name: "AdminDashboard",
   data: () => ({
+    width: 2,
+    radius: 10,
+    padding: 8,
+    lineCap: 'round',
+    gradient: gradients[5],
+    value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
+    gradientDirection: 'top',
+    gradients,
+    fill: false,
+    type: 'trend',
+    autoLineWidth: false,
     loading: false,
     selection: 1,
     desserts: [
