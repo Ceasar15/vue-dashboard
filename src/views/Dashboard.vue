@@ -351,15 +351,11 @@ th {
 .products-card tr:hover {
   background-color: #ddd;
 }
-
 .chat-side-graph {
   overflow-x: auto;
   height: 450px;
 }
-
 .list-item:hover {
   background-color: #ddd;
 }
-
-
 </style>
