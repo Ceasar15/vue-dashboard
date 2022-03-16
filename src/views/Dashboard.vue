@@ -255,7 +255,6 @@
                 v-else-if="item.divider"
                 :key="index"
                 :inset="item.inset"
-
             ></v-divider>
             <v-list-item
                 v-else
@@ -263,8 +262,10 @@
                 class="list-item"
                 style="display: flex;  align-items: center;"
             >
+              <span class="mr-5">
+                {{ index / 2 }}
+              </span>
               <v-list-item-avatar
-
                   width="200"
               >
                 <v-img :src="item.avatar" width="50">
