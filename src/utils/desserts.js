@@ -95,83 +95,84 @@ export const testData = {
     ]
 }
 
-export const items =   [
-        {header: 'Messages: Today'},
+export const items = [
+    {header: 'Messages: Today'},
 
-            {divider: true, inset: true},
-            {
-                avatar: require('../assets/profile/black1.jpg'),
-                title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>',
-                subtitle: `<span class="text--primary">to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.`,
-                time: '2:45pm'
-            },
-            {divider: true, inset: true},
-            {
-                avatar: require('../assets/profile/black1.jpg'),
-                title: 'Oui oui',
-                subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-                time: '2:45pm'
-            },
-            {divider: true, inset: true},
-            {
-                avatar: require('../assets/profile/black1.jpg'),
-                title: 'Oui oui',
-                subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-                time: '2:45pm'
-            },
-            {divider: true, inset: true},
-            {
-                avatar: require('../assets/profile/black1.jpg'),
-                title: 'Oui oui',
-                subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-                time: '2:45pm'
-            },
-            {divider: true, inset: true},
-            {
-                avatar: require('../assets/profile/black1.jpg'),
-                title: 'Oui oui',
-                subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-                time: '2:45pm'
+    {divider: true, inset: true},
+    {
+        avatar: require('../assets/profile/black1.jpg'),
+        title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>',
+        subtitle: `<span class="text--primary">to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.`,
+        time: '2:45pm'
+    },
+    {divider: true, inset: true},
+    {
+        avatar: require('../assets/profile/black1.jpg'),
+        title: 'Oui oui',
+        subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        time: '2:45pm'
+    },
+    {divider: true, inset: true},
+    {
+        avatar: require('../assets/profile/black1.jpg'),
+        title: 'Oui oui',
+        subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        time: '2:45pm'
+    },
+    {divider: true, inset: true},
+    {
+        avatar: require('../assets/profile/black1.jpg'),
+        title: 'Oui oui',
+        subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        time: '2:45pm'
+    },
+    {divider: true, inset: true},
+    {
+        avatar: require('../assets/profile/black1.jpg'),
+        title: 'Oui oui',
+        subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        time: '2:45pm'
 
-            },
-            {divider: true, inset: true},
-            {
-                avatar: require('../assets/profile/black1.jpg'),
-                title: 'Oui oui',
-                subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-                time: '2:45pm'
+    },
+    {divider: true, inset: true},
+    {
+        avatar: require('../assets/profile/black1.jpg'),
+        title: 'Oui oui',
+        subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        time: '2:45pm'
 
-            },
-            {divider: true, inset: true},
-            {
-                avatar: require('../assets/profile/black1.jpg'),
-                title: 'Oui oui',
-                subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-                time: '2:45pm'
-            },
-            {divider: true, inset: true},
-            {
-                avatar: require('../assets/profile/black1.jpg'),
-                title: 'Oui oui',
-                subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-                time: '2:45pm'
-            },
-            {divider: true, inset: true},
-            {
-                avatar: require('../assets/profile/black1.jpg'),
-                title: 'Oui oui',
-                subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-                time: '2:45pm'
-            },
-            {divider: true, inset: true},
-            {
-                avatar: require('../assets/profile/black1.jpg'),
-                title: 'Oui oui',
-                subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-                time: '2:45pm'
-            },
-            {divider: true, inset: true},
+    },
+    {divider: true, inset: true},
+    {
+        avatar: require('../assets/profile/black1.jpg'),
+        title: 'Oui oui',
+        subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        time: '2:45pm'
+    },
+    {divider: true, inset: true},
+    {
+        avatar: require('../assets/profile/black1.jpg'),
+        title: 'Oui oui',
+        subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        time: '2:45pm'
+    },
+    {divider: true, inset: true},
+    {
+        avatar: require('../assets/profile/black1.jpg'),
+        title: 'Oui oui',
+        subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        time: '2:45pm'
+    },
+    {divider: true, inset: true},
+    {
+        avatar: require('../assets/profile/black1.jpg'),
+        title: 'Oui oui',
+        subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        time: '2:45pm'
+    },
+    {divider: true, inset: true},
 
-        ]
-
-export default {desserts, headers, testData, items};
+]
+export const status = [
+    'Cancelled', 'Pending', 'Delivered', 'Sent', 'Received', 'In-Progress']
+export default {desserts, headers, testData, items, status};

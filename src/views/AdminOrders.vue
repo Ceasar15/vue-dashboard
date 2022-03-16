@@ -1,13 +1,107 @@
 <template>
   <v-row>
-    <v-col cols="6">
+    <v-col cols="12" class="text-grey-darken-1" style="display: flex; justify-content:space-between;">
+      <v-title style="padding: 28px; ">
+        <p class="ml-7" style="font-size:1.5rem">Orders</p>
+      </v-title>
+      <v-text>
+        <v-chip
+            class="ma-4"
+            color="black"
+        >
+          <v-btn>
+          <v-icon left="true">
+            mdi-printer
+          </v-icon>
+          <span class="text-black">
+            Print
+          </span>
+          </v-btn>
+        </v-chip>
+        <v-chip
+            class="ma-4"
+            color="black"
+        >
+          Export
+          <v-icon right="true">
+            mdi-arrow-down-drop-circle-outline
+          </v-icon>
+        </v-chip>
+        <v-chip
+            class="ma-2"
+            color="green darken-4"
+        >
+          <v-icon left="true">
+            mdi-plus
+          </v-icon>
+          <span style="color:#015201">
+            Create Order
+          </span>
+        </v-chip>
+      </v-text>
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col cols="4">
       <v-card>
-        one
+        <v-text-field
+            v-model="search"
+            prepend-icon="mdi-magnify"
+            label="Search by any parameter..."
+            filled
+            hide-details
+            outlined
+            class="ml-2"
+        ></v-text-field>
       </v-card>
     </v-col>
-    <v-col cols="6">
+    <v-col cols="2">
       <v-card>
-        two
+
+        <v-select
+            :items="status"
+            prepend-icon="mdi-tag"
+            menu-props="auto"
+            hide-details
+            label="Status"
+            class="ml-2"
+        ></v-select>
+      </v-card>
+    </v-col>
+    <v-col cols="2">
+      <v-card>
+        <v-select
+            :items="status"
+            prepend-icon="mdi-map-marker"
+            menu-props="auto"
+            hide-details
+            label="Department"
+            class="ml-2"
+        ></v-select>
+      </v-card>
+    </v-col>
+    <v-col cols="2">
+      <v-card>
+        <v-select
+            :items="status"
+            prepend-icon="mdi-filter "
+            menu-props="auto"
+            hide-details
+            label="Saved Filters"
+            class="ml-2"
+        ></v-select>
+      </v-card>
+    </v-col>
+    <v-col cols="2">
+      <v-card>
+        <v-select
+            :items="status"
+            prepend-icon="mdi-filter-variant"
+            menu-props="auto"
+            hide-details
+            label="More Filters"
+            class="ml-2"
+        ></v-select>
       </v-card>
     </v-col>
   </v-row>
@@ -17,14 +111,32 @@
         outlined
         tile
     >
+      <v-col cols="12" class="text-grey-darken-1" style="display: flex; justify-content:space-between;">
+        <v-text>
+          <v-chip
+          >
+            <v-icon>
+              mdi-format-list-bulleted
+            </v-icon>
+          </v-chip>
+          Showing 11-20 out of 98 results
+        </v-text>
+        <v-text>
+          <span style="margin-right: 8px">
+            Results per page:
+          </span>
+          <v-chip
+
+          >
+            50
+            <v-icon>
+              mdi-arrow-down-thick
+            </v-icon>
+          </v-chip>
+        </v-text>
+      </v-col>
       <v-card-title>
-        <v-text-field
-            v-model="search"
-            append-icon="mdi-magnify"
-            label="Search"
-            single-line
-            hide-details
-        ></v-text-field>
+
       </v-card-title>
       <v-data-table
           :footer-props="{
@@ -60,7 +172,7 @@
               Distribution
             </th>
             <th class="table-headers text-left">
-              Status
+              Order Status
             </th>
             <th class="table-headers text-left">
               Quantity
@@ -88,11 +200,12 @@
             <td style="padding: 1rem">{{ item.date }}</td>
             <td style="padding: 1rem">Maldives</td>
             <v-chip
-                color="blue"
+                color="red"
                 dark
                 large
+                class="ma-3"
             >
-              <td style="padding: 1rem">Pending</td>
+              <td style="padding: 1rem; font-weight: bold">Cancelled</td>
             </v-chip>
             <td style="padding: 1rem; text-align: center">{{ item.quantity }}</td>
             <td style="padding: 1rem">78.90</td>
@@ -107,7 +220,7 @@
 
 
 <script>
-import {desserts, headers, testData, items} from "@/utils/desserts"
+import {desserts, headers, testData, items, status} from "@/utils/desserts"
 
 export default {
   name: "AdminOrders",
@@ -117,7 +230,11 @@ export default {
       desserts: desserts,
       headers: headers,
       testData: testData,
-      items: items
+      items: items,
+      status: status,
+      chip1: true,
+      chip2: true,
+
     };
   },
 };
@@ -146,6 +263,7 @@ th {
 
 .orders-column {
   overflow-x: auto;
+  overflow-y: auto;
   /*height: 450px;*/
 }
 
