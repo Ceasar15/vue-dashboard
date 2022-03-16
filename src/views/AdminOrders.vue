@@ -33,11 +33,16 @@
 
 
 <script>
+import { desserts, headers, testData, items } from "@/utils/desserts"
+
 export default {
   name: "AdminOrders",
   data() {
     return {
-      dd: "ff",
+      desserts: desserts,
+      headers: headers,
+      testData: testData,
+      items: items
     };
   },
 };
