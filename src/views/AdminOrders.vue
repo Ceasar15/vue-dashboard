@@ -80,22 +80,18 @@ export default {
   position: relative;
   border-collapse: collapse;
 }
-
 th {
   position: sticky;
   top: 0;
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
 }
-
 .orders-column {
   overflow-x: auto;
   height: 450px;
 }
-
 .products-card tr:nth-child(even) {
   background-color: #f2f2f2;
 }
-
 .products-card tr:hover {
   background-color: #ddd;
 }
