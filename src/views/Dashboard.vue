@@ -5,30 +5,7 @@
         md="12"
     >
       <v-card style="padding: 8px; ">
-        <span style="margin-left: 15px">Welcome Home My Gee</span>
-        ggg
-        <v-autocomplete
-            v-model="model"
-            :hint="!isEditing ? 'Click the icon to edit' : 'Click the icon to save'"
-            :items="states"
-            :readonly="!isEditing"
-            :label="`State — ${isEditing ? 'Editable' : 'Readonly'}`"
-            persistent-hint
-            prepend-icon="mdi-city"
-        >
-          <template v-slot:append-outer>
-            <v-slide-x-reverse-transition
-                mode="out-in"
-            >
-              <v-icon
-                  :key="`icon-${isEditing}`"
-                  :color="isEditing ? 'success' : 'info'"
-                  @click="isEditing = !isEditing"
-                  v-text="isEditing ? 'mdi-check-outline' : 'mdi-circle-edit-outline'"
-              ></v-icon>
-            </v-slide-x-reverse-transition>
-          </template>
-        </v-autocomplete>
+        <span class="ml-3">Welcome Home My Gee</span>
       </v-card>
     </v-col>
     <v-col
@@ -106,7 +83,9 @@
             </div>
           </div>
 
-          <div>Revenue: increasing the number of customers, increasing average transaction size, increasing the frequency of transactions.</div>
+          <div>Revenue: increasing the number of customers, increasing average transaction size, increasing the
+            frequency of transactions.
+          </div>
         </v-card-text>
       </v-card>
     </v-col>
@@ -309,189 +288,24 @@
 <script>
 import {DoughnutChart, LineChart, BarChart} from 'vue-chart-3';
 import {Chart, registerables} from "chart.js";
+import { desserts, headers, testData, items } from "@/utils/desserts"
 
 Chart.register(...registerables);
 
-const testData = {
-  labels: ['Bentley', 'Benz', 'Audi', 'Kantanka', 'Toyota'],
-  datasets: [
-    {
-      data: [30, 40, 60, 70, 5, 90],
-      backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
-    },
-  ]
-}
+
 export default {
   name: "AdminDashboard",
   components: {DoughnutChart, LineChart, BarChart},
 
   data() {
     return {
+      isEditing: false,
+      model: null,
       loading: false,
       selection: 1,
-      items: [
-        {header: 'Messages: Today'},
-
-        {divider: true, inset: true},
-        {
-          avatar: require('../assets/profile/black1.jpg'),
-          title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>',
-          subtitle: `<span class="text--primary">to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.`,
-          time: '2:45pm'
-        },
-        {divider: true, inset: true},
-        {
-          avatar: require('../assets/profile/black1.jpg'),
-          title: 'Oui oui',
-          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-          time: '2:45pm'
-        },
-        {divider: true, inset: true},
-        {
-          avatar: require('../assets/profile/black1.jpg'),
-          title: 'Oui oui',
-          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-          time: '2:45pm'
-        },
-        {divider: true, inset: true},
-        {
-          avatar: require('../assets/profile/black1.jpg'),
-          title: 'Oui oui',
-          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-          time: '2:45pm'
-        },
-        {divider: true, inset: true},
-        {
-          avatar: require('../assets/profile/black1.jpg'),
-          title: 'Oui oui',
-          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-          time: '2:45pm'
-
-        },
-        {divider: true, inset: true},
-        {
-          avatar: require('../assets/profile/black1.jpg'),
-          title: 'Oui oui',
-          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-          time: '2:45pm'
-
-        },
-        {divider: true, inset: true},
-        {
-          avatar: require('../assets/profile/black1.jpg'),
-          title: 'Oui oui',
-          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-          time: '2:45pm'
-        },
-        {divider: true, inset: true},
-        {
-          avatar: require('../assets/profile/black1.jpg'),
-          title: 'Oui oui',
-          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-          time: '2:45pm'
-        },
-        {divider: true, inset: true},
-        {
-          avatar: require('../assets/profile/black1.jpg'),
-          title: 'Oui oui',
-          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-          time: '2:45pm'
-        },
-        {divider: true, inset: true},
-        {
-          avatar: require('../assets/profile/black1.jpg'),
-          title: 'Oui oui',
-          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-          time: '2:45pm'
-        },
-        {divider: true, inset: true},
-
-      ],
-      desserts: [
-        {
-          name: 'Frozen Yogurt',
-          calories: 159,
-          date: "23-4-12",
-          price: 45,
-          quantity: 3
-        },
-        {
-          name: 'Ice cream sandwich',
-          calories: 237,
-          date: "23-4-12",
-          price: 45,
-          quantity: 3
-        },
-        {
-          name: 'Eclair',
-          calories: 262,
-          date: "23-4-12",
-          price: 45,
-          quantity: 3
-        },
-        {
-          name: 'Cupcake',
-          calories: 305,
-          date: "23-4-12",
-          price: 45,
-          quantity: 3
-        },
-        {
-          name: 'Gingerbread',
-          calories: 356,
-          date: "23-4-12",
-          price: 45,
-          quantity: 3
-        },
-        {
-          name: 'Jelly bean',
-          calories: 375,
-          date: "23-4-12",
-          price: 45,
-          quantity: 3
-        },
-        {
-          name: 'Lollipop',
-          calories: 392,
-          date: "23-4-12",
-          price: 45,
-          quantity: 3
-        },
-        {
-          name: 'Honeycomb',
-          calories: 408,
-          date: "23-4-12",
-          price: 45,
-          quantity: 3
-        },
-        {
-          name: 'Donut',
-          calories: 452,
-          date: "23-4-12",
-          price: 45,
-          quantity: 3
-        },
-        {
-          name: 'KitKat',
-          calories: 518,
-          date: "23-4-12",
-          price: 45,
-          quantity: 3
-        },
-      ],
-      headers: [
-        {
-          text: 'Dessert (100g serving)',
-          align: 'start',
-          sortable: false,
-          value: 'name',
-        },
-        {text: 'Calories', value: 'calories'},
-        {text: 'Fat (g)', value: 'date'},
-        {text: 'Carbs (g)', value: 'price'},
-        {text: 'Protein (g)', value: 'price'},
-        {text: 'Iron (%)', value: 'quantity'},
-      ],
+      items: items,
+      desserts: desserts,
+      headers: headers,
       testData: testData,
     }
   },
