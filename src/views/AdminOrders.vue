@@ -184,7 +184,7 @@
           </thead>
           <tbody>
           <tr
-              v-for="item in desserts"
+              v-for="{item, index} in desserts"
               :key="item.name"
               class="text-left pa-4"
           >
@@ -195,7 +195,7 @@
                 label="12"
                 class="pa-4 text-right"
             ></v-checkbox>
-<!--            <td class="pa-4 text-center">11</td>-->
+            <td class="pa-4 text-center">{{ index }}</td>
             <td style="padding: 16px">{{ item.date }}</td>
             <td style="padding: 1rem">Dummy User</td>
             <td style="padding: 1rem">{{ item.name }}</td>
