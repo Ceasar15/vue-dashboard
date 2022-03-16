@@ -292,7 +292,6 @@ import { desserts, headers, testData, items } from "@/utils/desserts"
 
 Chart.register(...registerables);
 
-
 export default {
   name: "AdminDashboard",
   components: {DoughnutChart, LineChart, BarChart},
