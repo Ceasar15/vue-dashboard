@@ -1,26 +1,41 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <v-app style="display: relative">
+    <v-app-bar absolute
+               fixed
+               elevation="10" app
+               elevate-on-scroll
+               scroll-target="#scrolling-techniques-7"
+    >
+      <MainNavbar></MainNavbar>
+    </v-app-bar>
+
+    <v-main>
+      <SideNavBar></SideNavBar>
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
+    </v-main>
+    <v-footer app>
+      <h1>Footer</h1>
+    </v-footer>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SideNavBar from './components/layout/SideNavBar'
+import MainNavbar from './components/layout/MainNavbar'
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld
-  }
+    SideNavBar: SideNavBar,
+    MainNavbar: MainNavbar
+
+  },
+
+  data: () => ({
+    //
+  }),
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
