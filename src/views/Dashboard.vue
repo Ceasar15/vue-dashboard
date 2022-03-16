@@ -1,6 +1,36 @@
 <template>
   <v-row>
-
+    <v-col
+        cols="12"
+        md="12"
+    >
+      <v-card style="padding: 8px; ">
+        <span style="margin-left: 15px">Welcome Home My Gee</span>
+        ggg
+        <v-autocomplete
+            v-model="model"
+            :hint="!isEditing ? 'Click the icon to edit' : 'Click the icon to save'"
+            :items="states"
+            :readonly="!isEditing"
+            :label="`State — ${isEditing ? 'Editable' : 'Readonly'}`"
+            persistent-hint
+            prepend-icon="mdi-city"
+        >
+          <template v-slot:append-outer>
+            <v-slide-x-reverse-transition
+                mode="out-in"
+            >
+              <v-icon
+                  :key="`icon-${isEditing}`"
+                  :color="isEditing ? 'success' : 'info'"
+                  @click="isEditing = !isEditing"
+                  v-text="isEditing ? 'mdi-check-outline' : 'mdi-circle-edit-outline'"
+              ></v-icon>
+            </v-slide-x-reverse-transition>
+          </template>
+        </v-autocomplete>
+      </v-card>
+    </v-col>
     <v-col
         cols="3"
         md="3"
@@ -66,7 +96,18 @@
       >
         <v-card-title>Revenue</v-card-title>
         <LineChart :chartData="testData"/>
+        <v-card-text>
+          <div class="my-4 grey--text" style="font-weight: bold">
+            <v-icon>mdi-search-web</v-icon>
+            456,998
+            <div class="text-subtitle-1" style="color: orange; font-weight: bold">
+              <v-icon>mdi-cash-multiple</v-icon>
+              <span> 26 %</span>
+            </div>
+          </div>
 
+          <div>Revenue: increasing the number of customers, increasing average transaction size, increasing the frequency of transactions.</div>
+        </v-card-text>
       </v-card>
     </v-col>
     <v-col
@@ -220,6 +261,7 @@
           class="pa-2"
           outlined
           tile
+          style=""
       >
         <v-list three-line>
           <template v-for="(item, index) in items">
@@ -227,29 +269,34 @@
                 v-if="item.header"
                 :key="item.header"
                 v-text="item.header"
-                style="color: black; font-weight: bold"
+                style="color: black; font-weight: bold;"
             ></v-subheader>
-
             <v-divider
                 v-else-if="item.divider"
                 :key="index"
                 :inset="item.inset"
+
             ></v-divider>
             <v-list-item
                 v-else
                 :key="item.title"
                 class="list-item"
-                style="display: flex; justify-content: space-between; align-items: center"
+                style="display: flex;  align-items: center;"
             >
               <v-list-item-avatar
+
+                  width="200"
               >
                 <v-img :src="item.avatar" width="50">
                 </v-img>
               </v-list-item-avatar>
               <v-list-item-content>
-                <v-list-item-title v-html="item.title"></v-list-item-title>
-                <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
+                <v-list-item-title v-html="item.title" style="margin: 7px; margin-bottom: 0px"></v-list-item-title>
+                <v-list-item-subtitle v-html="item.subtitle"
+                                      style="margin: 8px; margin-top: 0px"></v-list-item-subtitle>
               </v-list-item-content>
+              <v-list-item class="text-grey-darken-1 mr-text" v-html="item.time">
+              </v-list-item>
 
             </v-list-item>
           </template>
@@ -277,8 +324,7 @@ const testData = {
 export default {
   name: "AdminDashboard",
   components: {DoughnutChart, LineChart, BarChart},
-  //src/assets/profile/black1.jpg
-  //src/views/Dashboard.vue
+
   data() {
     return {
       loading: false,
@@ -291,60 +337,72 @@ export default {
           avatar: require('../assets/profile/black1.jpg'),
           title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>',
           subtitle: `<span class="text--primary">to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.`,
+          time: '2:45pm'
         },
         {divider: true, inset: true},
         {
           avatar: require('../assets/profile/black1.jpg'),
           title: 'Oui oui',
           subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+          time: '2:45pm'
         },
         {divider: true, inset: true},
         {
           avatar: require('../assets/profile/black1.jpg'),
           title: 'Oui oui',
           subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+          time: '2:45pm'
         },
         {divider: true, inset: true},
         {
           avatar: require('../assets/profile/black1.jpg'),
           title: 'Oui oui',
           subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+          time: '2:45pm'
         },
         {divider: true, inset: true},
         {
           avatar: require('../assets/profile/black1.jpg'),
           title: 'Oui oui',
           subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+          time: '2:45pm'
+
         },
         {divider: true, inset: true},
         {
           avatar: require('../assets/profile/black1.jpg'),
           title: 'Oui oui',
           subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+          time: '2:45pm'
+
         },
         {divider: true, inset: true},
         {
           avatar: require('../assets/profile/black1.jpg'),
           title: 'Oui oui',
           subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+          time: '2:45pm'
         },
         {divider: true, inset: true},
         {
           avatar: require('../assets/profile/black1.jpg'),
           title: 'Oui oui',
           subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+          time: '2:45pm'
         },
         {divider: true, inset: true},
         {
           avatar: require('../assets/profile/black1.jpg'),
           title: 'Oui oui',
           subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+          time: '2:45pm'
         },
         {divider: true, inset: true},
         {
           avatar: require('../assets/profile/black1.jpg'),
           title: 'Oui oui',
           subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+          time: '2:45pm'
         },
         {divider: true, inset: true},
 

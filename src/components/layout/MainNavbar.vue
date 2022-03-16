@@ -1,6 +1,6 @@
 
 <template>
-  <v-app-bar-title class="mx-16 pl-16" >Dashboard</v-app-bar-title>
+  <v-app-bar-title class="mx-16 pl-16 font-weight-medium" style="font-size: 2rem">Dashboard</v-app-bar-title>
   <v-spacer></v-spacer>
   <v-btn icon class="grey lighten-4 mx-2" rounded="true">
     <v-icon right="120px" >mdi-magnify</v-icon>
