@@ -5,39 +5,36 @@
         <p class="ml-7" style="font-size:1.5rem">Orders</p>
       </v-title>
       <v-text>
-        <v-chip
-            class="ma-4"
-            color="black"
-        >
-          <v-btn>
+        <v-btn>
           <v-icon left="true">
             mdi-printer
           </v-icon>
           <span class="text-black">
             Print
           </span>
-          </v-btn>
-        </v-chip>
-        <v-chip
+        </v-btn>
+
+        <v-btn
             class="ma-4"
             color="black"
+
         >
           Export
           <v-icon right="true">
             mdi-arrow-down-drop-circle-outline
           </v-icon>
-        </v-chip>
-        <v-chip
+        </v-btn>
+        <v-btn
             class="ma-2"
-            color="green darken-4"
+            color="#69F0AE"
         >
           <v-icon left="true">
             mdi-plus
           </v-icon>
-          <span style="color:#015201">
+          <span style="color: white; font-weight: 900;">
             Create Order
           </span>
-        </v-chip>
+        </v-btn>
       </v-text>
     </v-col>
   </v-row>
@@ -125,14 +122,13 @@
           <span style="margin-right: 8px">
             Results per page:
           </span>
-          <v-chip
-
+          <v-btn
           >
-            50
+            <span class="mr-3">50</span>
             <v-icon>
               mdi-arrow-down-thick
             </v-icon>
-          </v-chip>
+          </v-btn>
         </v-text>
       </v-col>
       <v-card-title>
@@ -148,10 +144,10 @@
     }"
       >
         <template v-slot:default>
-          <thead id="table-head" class="text-center">
+          <thead id="table-head">
           <tr>
-            <th class="table-headers">
-              ID
+            <th class="table-headers text-left">
+              IDENTIFY
             </th>
             <th class=" table-headers text-left">
               Created
@@ -169,7 +165,7 @@
               End Time
             </th>
             <th class="table-headers text-left">
-              Distribution
+              Destination
             </th>
             <th class="table-headers text-left">
               Order Status
@@ -192,7 +188,14 @@
               :key="item.name"
               class="text-left pa-4"
           >
-            <td class="pa-4 text-center">11</td>
+            <v-checkbox
+                color="indigo"
+                value="indigo"
+                hide-details
+                label="12"
+                class="pa-4 text-right"
+            ></v-checkbox>
+<!--            <td class="pa-4 text-center">11</td>-->
             <td style="padding: 16px">{{ item.date }}</td>
             <td style="padding: 1rem">Dummy User</td>
             <td style="padding: 1rem">{{ item.name }}</td>

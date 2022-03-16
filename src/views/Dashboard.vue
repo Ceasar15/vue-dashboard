@@ -3,10 +3,11 @@
     <v-col
         cols="12"
         md="12"
+        class="text-grey-darken-1"
     >
-      <v-card style="padding: 8px; ">
-        <span class="ml-3">Welcome Home My Gee</span>
-      </v-card>
+      <v-title style="padding: 28px; ">
+        <p class="ml-5" style="font-size:1.5rem">Overview</p>
+      </v-title>
     </v-col>
     <v-col
         cols="3"
@@ -288,7 +289,7 @@
 <script>
 import {DoughnutChart, LineChart, BarChart} from 'vue-chart-3';
 import {Chart, registerables} from "chart.js";
-import { desserts, headers, testData, items } from "@/utils/desserts"
+import {desserts, headers, testData, items} from "@/utils/desserts"
 
 Chart.register(...registerables);
 
