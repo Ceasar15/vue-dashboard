@@ -6,7 +6,7 @@
       </v-title>
       <v-text>
         <v-btn>
-          <v-icon left="true">
+          <v-icon left=True>
             mdi-printer
           </v-icon>
           <span class="text-black">
@@ -28,7 +28,7 @@
             class="ma-2"
             color="#69F0AE"
         >
-          <v-icon left="true">
+          <v-icon left=True>
             mdi-plus
           </v-icon>
           <span style="color: white; font-weight: 900;">
@@ -147,10 +147,10 @@
           <thead id="table-head">
           <tr>
             <th class="table-headers text-left">
-              IDENTIFY
+              SELECT
             </th>
             <th class=" table-headers text-left">
-              Created
+              Created At
             </th>
             <th class="table-headers text-left">
               Customer
@@ -184,7 +184,7 @@
           </thead>
           <tbody>
           <tr
-              v-for="{item, index} in desserts"
+              v-for="item in desserts"
               :key="item.name"
               class="text-left pa-4"
           >
@@ -192,10 +192,12 @@
                 color="indigo"
                 value="indigo"
                 hide-details
-                label="12"
-                class="pa-4 text-right"
+                class="mt-7 text-right ml-8"
             ></v-checkbox>
-            <td class="pa-4 text-center">{{ index }}</td>
+<!--            <label class="col-sm-1 pa-5 text-right">-->
+<!--              {{ index+1 }}-->
+<!--            </label>-->
+<!--            <td style="padding: 16px">{{ item.date }}</td>-->
             <td style="padding: 16px">{{ item.date }}</td>
             <td style="padding: 1rem">Dummy User</td>
             <td style="padding: 1rem">{{ item.name }}</td>
@@ -206,7 +208,7 @@
                 color="red"
                 dark
                 large
-                class="ma-3"
+                class="mb-10"
             >
               <td style="padding: 1rem; font-weight: bold">Cancelled</td>
             </v-chip>
