@@ -259,22 +259,21 @@ export const products = [
         name: "Second",
         rating: '4.5 (678)',
         price: "777.00",
-        image: "https://www.ecommerce-admin.com/demo/images/items/2.jpg",
+        image: "https://www.ecommerce-admin.com/demo/images/items/6.jpg",
         discount: "840.65"
     },
     {
         name: "Second",
         rating: '4.5 (678)',
         price: "777.00",
-        image: "https://www.ecommerce-admin.com/demo/images/items/6.jpg",
+        image: "https://www.ecommerce-admin.com/demo/images/items/5.jpg",
         discount: "840.65"
-    }
-    ,
+    },
     {
         name: "Second",
         rating: '4.5 (678)',
         price: "777.00",
-        image: "https://www.ecommerce-admin.com/demo/images/items/2.jpg",
+        image: "https://www.ecommerce-admin.com/demo/images/items/3.jpg",
         discount: "840.65"
     },
     {
