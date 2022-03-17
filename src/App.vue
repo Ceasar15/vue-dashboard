@@ -17,8 +17,8 @@ export default {
   name: 'App',
 
   components: {
-    SideNavBar,
     MainNavbar,
+    SideNavBar,
     MainFooter,
   },
 
