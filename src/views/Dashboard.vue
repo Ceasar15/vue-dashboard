@@ -202,6 +202,9 @@
           <template v-slot:default>
             <thead id="table-head">
             <tr>
+              <th class="table-headers text-center">
+                ID
+              </th>
               <th class="table-headers text-left">
                 Name
               </th>
@@ -221,9 +224,12 @@
             </thead>
             <tbody>
             <tr
-                v-for="item in desserts"
+                v-for="(item, index) in desserts"
                 :key="item.name"
             >
+              <td class="text-center">
+                {{ index+1 }}
+              </td>
               <td style="padding: 1rem" class="text-pray-300">{{ item.name }}</td>
               <td style="padding: 1rem">{{ item.calories }}</td>
               <td style="padding: 1rem">{{ item.date }}</td>
@@ -244,7 +250,7 @@
           style=""
       >
         <v-list three-line>
-          <template v-for="(item, index) in items">
+          <template v-for="(item) in items">
             <v-subheader
                 v-if="item.header"
                 :key="item.header"
@@ -253,7 +259,7 @@
             ></v-subheader>
             <v-divider
                 v-else-if="item.divider"
-                :key="index"
+                :key="item"
                 :inset="item.inset"
             ></v-divider>
             <v-list-item
@@ -262,9 +268,6 @@
                 class="list-item"
                 style="display: flex;  align-items: center;"
             >
-              <span class="mr-5">
-                {{ index / 2 }}
-              </span>
               <v-list-item-avatar
                   width="200"
               >

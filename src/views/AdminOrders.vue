@@ -145,7 +145,7 @@
       >
         <template v-slot:default>
           <thead id="table-head">
-          <tr>
+          <tr class="pa-0">
             <th class="table-headers text-left">
               SELECT
             </th>
@@ -179,7 +179,6 @@
             <th class="table-headers text-left">
               Total
             </th>
-
           </tr>
           </thead>
           <tbody>
@@ -269,7 +268,7 @@ th {
 .orders-column {
   overflow-x: auto;
   overflow-y: auto;
-  /*height: 450px;*/
+  height: 950px;
 }
 
 .products-card tr:nth-child(even) {
