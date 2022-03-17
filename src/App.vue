@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <SideNavBar />
-    <v-app-bar style="height:100px" app>
+    <v-app-bar style="height:80px; border:2px solid">
       <MainNavbar />
     </v-app-bar>
+    <SideNavBar />
     <!-- Sizes your content based upon application components -->
     <v-main>
       <!-- Provides the application the proper gutter -->

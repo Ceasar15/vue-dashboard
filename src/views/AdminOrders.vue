@@ -13,7 +13,6 @@
             Print
           </span>
         </v-btn>
-
         <v-btn
             class="ma-4"
             color="black"
@@ -47,6 +46,7 @@
             filled
             hide-details
             outlined
+            single-line
             class="ml-2"
         ></v-text-field>
       </v-card>
@@ -59,6 +59,7 @@
             menu-props="auto"
             hide-details
             label="Status"
+            single-line
             class="ml-2"
         ></v-select>
       </v-card>
@@ -71,6 +72,7 @@
             menu-props="auto"
             hide-details
             label="Department"
+            single-line
             class="ml-2"
         ></v-select>
       </v-card>
@@ -84,6 +86,7 @@
             hide-details
             label="Saved Filters"
             class="ml-2"
+            single-line
         ></v-select>
       </v-card>
     </v-col>
@@ -96,6 +99,7 @@
             hide-details
             label="More Filters"
             class="ml-2"
+            single-line
         ></v-select>
       </v-card>
     </v-col>
@@ -239,7 +243,6 @@ export default {
 </script>
 <style scoped lang="css">
 @import url("https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css");
-
 .table-headers {
   text-align: center;
   background-color: #9da6d1;

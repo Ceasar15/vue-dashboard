@@ -1,4 +1,5 @@
 <template>
+
   <v-row>
     <v-col cols="12" class="text-grey-darken-1" style="display: flex; justify-content:space-between;">
       <v-title style="padding: 28px; ">
@@ -80,7 +81,6 @@
     </v-col>
   </v-row>
 
-
   <v-row class="ml-10">
     <v-col
         v-for="product in products"
@@ -88,10 +88,17 @@
         class="ml-9"
         cols="2"
     >
+      <v-hover
+          v-slot="{ isHovering, props }"
+          close-delay="100"
+      >
       <v-card
+          :elevation="isHovering ? 16 : 2"
+          :class="{ 'on-hover': isHovering }"
           :key="product.name"
           max-width="450"
           class="my-3"
+          v-bind="props"
       >
         <v-img
             height="300"
@@ -140,7 +147,7 @@
           </v-btn>
           <v-btn
               color="#FF8A80"
-              @click="open_dialog">
+              @click.stop="open_dialog">
             <v-icon>
               mdi-delete
             </v-icon>
@@ -148,14 +155,30 @@
           </v-btn>
         </v-card-actions>
       </v-card>
+      </v-hover>
     </v-col>
   </v-row>
-<!--   Delete Dialog -->
+  <div class="text-center">
+    <v-pagination
+        v-model="page"
+        :length="15"
+        :total-visible="7"
+    ></v-pagination>
+  </div>
+
+  <!--   Delete Dialog -->
+  <v-btn
+      color="primary"
+      dark
+      @click.stop="dialog = true"
+  >
+    Open Dialog
+  </v-btn>
   <v-dialog
       v-model="dialog"
       max-width="290"
-      persistent
-      style="border: 1px solid"
+      style="border: 3px solid"
+      attach="true"
   >
     <v-card>
       <v-card-text class="text-h5">
@@ -168,19 +191,25 @@
             text
             @click="delete_dialog_message"
         >
-          Disagree
+          Yes
         </v-btn>
         <v-btn
             color="green darken-1"
             text
             @click="delete_dialog_message"
         >
-          Agree
+          No
         </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
+  <!--End Delete Dialog -->
+<!--  Edit Dialog -->
 
+
+
+
+<!--End Edit Dialog-->
 
 </template>
 
@@ -215,31 +244,38 @@ export default {
       setTimeout(() => (this.loading = false), 2000)
     },
     async remove() {
-      console.log("1Hello")
       this.loading = true
-      console.log(this.loading)
-      console.log("2Hello")
       await new Promise(resolve => setTimeout(resolve, 3000))
       this.loading = false
-      console.log("4Hello")
-      console.log(this.loading)
     },
-    open_dialog () {
+    open_dialog() {
       this.dialog = true
     },
-    delete_dialog_message () {
+    delete_dialog_message() {
       this.dialog = false
     }
   },
+  mounted() {
+    // Make a request for all products
+    this.axios
+        .get('http://63.33.250.70:8000/marketplace/products/')
+        .then(function (response) {
+          // handle success
+          console.log(response.data);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
+        });
+  },
 };
 </script>
-
 <style>
 .v-select__selections {
   height: 20px;
   overflow: hidden;
 }
- .dialog {
-   border: red;
- }
 </style>
