@@ -1,4 +1,5 @@
 <template>
+  <v-card>
   <div class="sidebar" :class="isOpened ? 'open' : ''" :style="cssVars">
     <div class="logo-details" style="margin: 6px 14px 0 14px">
       <img
@@ -18,7 +19,6 @@
           @click="isOpened = !isOpened"
       />
     </div>
-
     <div
         style="
         display: flex;
@@ -39,7 +39,6 @@
             />
             <span class="tooltip">{{ searchTooltip }}</span>
           </li> -->
-
           <div style="
                 font-size:19px;
                 margin-left: 20px;
@@ -76,6 +75,7 @@
       </div>
     </div>
   </div>
+  </v-card>
 </template>
 
 <script>

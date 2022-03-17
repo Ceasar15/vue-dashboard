@@ -1,33 +1,26 @@
-<!--<template>-->
-<!--  <v-card class="overflow-hidden">-->
-<!--    <v-app-bar-->
-<!--        absolute-->
-<!--        color="white"-->
-<!--        elevate-on-scroll-->
-<!--        scroll-target="#scrolling-techniques-7"-->
-<!--    >-->
-<!--      <v-app-bar-nav-icon></v-app-bar-nav-icon>-->
-<!--      <v-toolbar-title>Dashboard</v-toolbar-title>-->
-<!--      <v-spacer></v-spacer>-->
-<!--      <v-btn icon class="grey lighten-4 mx-2" rounded="true">-->
-<!--        <v-icon>mdi-magnify</v-icon>-->
-<!--      </v-btn>-->
-<!--      <v-btn icon class="grey lighten-4 mx-2" rounded="true">-->
-<!--        <v-icon>mdi-bell</v-icon>-->
-<!--      </v-btn>-->
-<!--      <v-btn icon class="grey lighten-4 mx-2">-->
-<!--        <v-icon>mdi-cog-outline</v-icon>-->
-<!--      </v-btn>-->
-<!--      <v-btn class="grey lighten-4 mx-2">-->
-<!--        <v-img src="https://heasarc.gsfc.nasa.gov/xanadu/ximage/images.gif"></v-img>-->
-<!--      </v-btn>-->
-<!--      <v-btn fab src="https://heasarc.gsfc.nasa.gov/"-->
-<!--      >-->
-<!--        <v-icon>mdi-dots-vertical</v-icon>-->
-<!--      </v-btn>-->
-<!--    </v-app-bar>-->
-<!--  </v-card>-->
-<!--</template>-->
+<template>
+  <v-card class="overflow-hidden">
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-toolbar-title>Dashboard</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon class="grey lighten-4 mx-2" rounded="true">
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+      <v-btn icon class="grey lighten-4 mx-2" rounded="true">
+        <v-icon>mdi-bell</v-icon>
+      </v-btn>
+      <v-btn icon class="grey lighten-4 mx-2">
+        <v-icon>mdi-cog-outline</v-icon>
+      </v-btn>
+      <v-btn class="grey lighten-4 mx-2">
+        <v-img src="https://heasarc.gsfc.nasa.gov/xanadu/ximage/images.gif"></v-img>
+      </v-btn>
+      <v-btn fab src="https://heasarc.gsfc.nasa.gov/"
+      >
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
+  </v-card>
+</template>
 
 <script>
 export default {
