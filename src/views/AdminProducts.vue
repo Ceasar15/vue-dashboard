@@ -139,32 +139,57 @@
             Edit
           </v-btn>
           <v-btn
-              :loading="loading"
               color="#FF8A80"
-              plain
-              @click="remove"
-          >
+              @click.stop="dialog = true">
             <v-icon>
               mdi-delete
             </v-icon>
             Delete
           </v-btn>
+          <v-dialog
+              v-model="dialog"
+              max-width="290"
+          >
+            <v-card>
+              <v-card-text class="text-h5">
+                Are you sure you want to delete this product
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                    color="red darken-1"
+                    text
+                    @click="dialog = false"
+                >
+                  Disagree
+                </v-btn>
+                <v-btn
+                    color="green darken-1"
+                    text
+                    @click="dialog = false"
+                >
+                  Agree
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
         </v-card-actions>
       </v-card>
     </v-col>
-
   </v-row>
+
+
 
 </template>
 
 
 <script>
 import {sort, categories, products} from "@/utils/desserts"
-import { ref } from 'vue'
+import {ref} from 'vue'
 
 export default {
   name: "AdminProducts",
-  setup (){
+  setup() {
     const count = ref(0)
     const delete_here = ref()
     return {
@@ -180,6 +205,7 @@ export default {
       selection: 1,
       loading: false,
       page: 1,
+      dialog: false
     };
   },
   methods: {
@@ -190,10 +216,12 @@ export default {
     async remove() {
       console.log("1Hello")
       this.loading = true
+      console.log(this.loading)
       console.log("2Hello")
       await new Promise(resolve => setTimeout(resolve, 3000))
       this.loading = false
       console.log("4Hello")
+      console.log(this.loading)
     },
   },
 };
