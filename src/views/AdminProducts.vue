@@ -140,43 +140,46 @@
           </v-btn>
           <v-btn
               color="#FF8A80"
-              @click="delete_dialog">
+              @click="open_dialog">
             <v-icon>
               mdi-delete
             </v-icon>
             Delete
           </v-btn>
-          <v-dialog
-              v-model="dialog"
-              max-width="290"
-          >
-            <v-card>
-              <v-card-text class="text-h5">
-                Are you sure you want to delete this product
-              </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn
-                    color="red darken-1"
-                    text
-                    @click="delete_dialog_message"
-                >
-                  Disagree
-                </v-btn>
-                <v-btn
-                    color="green darken-1"
-                    text
-                    @click="delete_dialog_message"
-                >
-                  Agree
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
         </v-card-actions>
       </v-card>
     </v-col>
   </v-row>
+<!--   Delete Dialog -->
+  <v-dialog
+      v-model="dialog"
+      max-width="290"
+      persistent
+      style="border: 1px solid"
+  >
+    <v-card>
+      <v-card-text class="text-h5">
+        Are you sure you want to delete this product
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn
+            color="red darken-1"
+            text
+            @click="delete_dialog_message"
+        >
+          Disagree
+        </v-btn>
+        <v-btn
+            color="green darken-1"
+            text
+            @click="delete_dialog_message"
+        >
+          Agree
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 
 
 </template>
@@ -221,13 +224,11 @@ export default {
       console.log("4Hello")
       console.log(this.loading)
     },
-    delete_dialog () {
+    open_dialog () {
       this.dialog = true
     },
     delete_dialog_message () {
-      console.log("Message 1")
       this.dialog = false
-      console.log("Message 2")
     }
   },
 };
@@ -238,4 +239,7 @@ export default {
   height: 20px;
   overflow: hidden;
 }
+ .dialog {
+   border: red;
+ }
 </style>

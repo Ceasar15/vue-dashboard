@@ -1,44 +1,25 @@
 <template>
-  <v-app style="display: relative">
-    <v-app-bar absolute
-               fixed
-               elevation="10" app
-               elevate-on-scroll
-               scroll-target="#scrolling-techniques-7"
-    >
-      <MainNavbar></MainNavbar>
-    </v-app-bar>
-<!--    <v-card>-->
-<!--      <v-navigation-drawer-->
-<!--          permanent-->
-<!--          expand-on-hover-->
-<!--      >-->
-<!--        <SideNavBar></SideNavBar>-->
-<!--      </v-navigation-drawer>-->
-<!--    </v-card>-->
-    <v-main>
-      <SideNavBar></SideNavBar>
-      <v-container fluid>
-        <router-view></router-view>
-      </v-container>
-    </v-main>
-    <v-footer app>
-      <h1>Footer</h1>
-    </v-footer>
-  </v-app>
+
+  <MainNavbar />
+  <SideNavBar/>
+  <router-view />
+  <MainFooter />
+
 </template>
 
 <script>
 import SideNavBar from './components/layout/SideNavBar'
 import MainNavbar from './components/layout/MainNavbar'
+import MainFooter from "@/components/layout/MainFooter";
+
 
 export default {
   name: 'App',
 
   components: {
-    SideNavBar: SideNavBar,
-    MainNavbar: MainNavbar
-
+    SideNavBar,
+    MainNavbar,
+    MainFooter,
   },
 
   data: () => ({
