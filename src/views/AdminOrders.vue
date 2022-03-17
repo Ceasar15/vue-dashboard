@@ -193,10 +193,6 @@
                 hide-details
                 class="mt-7 text-right ml-8"
             ></v-checkbox>
-<!--            <label class="col-sm-1 pa-5 text-right">-->
-<!--              {{ index+1 }}-->
-<!--            </label>-->
-<!--            <td style="padding: 16px">{{ item.date }}</td>-->
             <td style="padding: 16px">{{ item.date }}</td>
             <td style="padding: 1rem">Dummy User</td>
             <td style="padding: 1rem">{{ item.name }}</td>
