@@ -97,7 +97,6 @@ export const testData = {
 
 export const items = [
     {header: 'Messages: Today'},
-
     {divider: true, inset: true},
     {
         avatar: require('../assets/profile/black1.jpg'),
@@ -171,8 +170,83 @@ export const items = [
         time: '2:45pm'
     },
     {divider: true, inset: true},
-
 ]
 export const status = [
     'Cancelled', 'Pending', 'Delivered', 'Sent', 'Received', 'In-Progress']
-export default {desserts, headers, testData, items, status};
+
+export const sort = [
+    'Price [Low-High]', 'Price [High-Low]', 'Name [A-Z]', 'Name [Z-A]',
+]
+
+export const categories = [
+    "Fashion, Textiles and Fabrics",
+    "Jewellery, Gifts and Parcels",
+    "Shoes, Sandals and Footwears",
+    "Automobile and Transport",
+    "Books and Office Supplies",
+    "Lights, Furniture and Decor",
+    "Beauty and Lifestyle",
+    "Bags and Luggage",
+    "Electronics, Gadgets and Garden Equipment",
+    "Toiletries / Baby Products",
+]
+
+export const products = [
+    {
+        name: "Names",
+        rating: '4.5 (419)',
+        price: "989.00"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00"
+    }
+]
+
+export default {desserts, headers, testData, items, status, categories, sort, products};

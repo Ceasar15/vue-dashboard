@@ -145,6 +145,12 @@ export default {
           icon: "bx-grid",
         },
         {
+          link: "/admin-products",
+          name: "Products",
+          tooltip: "AdminProducts",
+          icon: "bx-store",
+        },
+        {
           link: "/doesnotexist",
           name: "Analytics",
           tooltip: "AdminAnalytics",

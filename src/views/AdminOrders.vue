@@ -17,7 +17,6 @@
         <v-btn
             class="ma-4"
             color="black"
-
         >
           Export
           <v-icon right="true">
@@ -54,7 +53,6 @@
     </v-col>
     <v-col cols="2">
       <v-card>
-
         <v-select
             :items="status"
             prepend-icon="mdi-tag"
