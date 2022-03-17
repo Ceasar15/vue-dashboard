@@ -8,11 +8,11 @@
           alt="menu-logo"
           class="menu-logo icon"
       />
-      <i v-else class="bx icon" :class="menuIcon" />
+      <em v-else class="bx icon" :class="menuIcon" />
       <div class="logo_name">
         {{ menuTitle }}
       </div>
-      <i
+      <em
           class="bx"
           :class="isOpened ? 'bx-menu-alt-right' : 'bx-menu'"
           id="btn"
@@ -117,13 +117,13 @@ export default {
       default: () => [
         {
           link: "#",
-          name: "Online Store",
+          name: "Profile",
           tooltip: "Setting",
-          icon: "bx-cog",
+          icon: "bx-user",
         },
         {
           link: "#",
-          name: "Marketing",
+          name: "Setting",
           tooltip: "Setting",
           icon: "bx-cog",
         },
@@ -168,30 +168,7 @@ export default {
           tooltip: "Files",
           icon: "bx-folder",
         },
-        {
-          link: "#",
-          name: "Products",
-          tooltip: "Order",
-          icon: "bx-cart-alt",
-        },
-        {
-          link: "#",
-          name: "Discounts",
-          tooltip: "Saved",
-          icon: "bx-heart",
-        },
-        {
-          link: "#",
-          name: "Employees",
-          tooltip: "Setting",
-          icon: "bx-user",
-        },
-        {
-          link: "#",
-          name: "Customers",
-          tooltip: "Setting",
-          icon: "bx-user",
-        },
+
       ],
     },
     //! Search

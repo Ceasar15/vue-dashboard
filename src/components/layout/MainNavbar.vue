@@ -2,17 +2,16 @@
   <v-card class="overflow-hidden">
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
       <v-toolbar-title>Dashboard</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn icon class="grey lighten-4 mx-2" rounded="true">
+      <v-btn icon class="grey lighten-4" rounded="true">
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
-      <v-btn icon class="grey lighten-4 mx-2" rounded="true">
+      <v-btn icon class="grey lighten-4" rounded="true">
         <v-icon>mdi-bell</v-icon>
       </v-btn>
-      <v-btn icon class="grey lighten-4 mx-2">
+      <v-btn icon class="grey lighten-4">
         <v-icon>mdi-cog-outline</v-icon>
       </v-btn>
-      <v-btn class="grey lighten-4 mx-2">
+      <v-btn class="grey lighten-4">
         <v-img src="https://heasarc.gsfc.nasa.gov/xanadu/ximage/images.gif"></v-img>
       </v-btn>
       <v-btn fab src="https://heasarc.gsfc.nasa.gov/"
