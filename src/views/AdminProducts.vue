@@ -140,7 +140,7 @@
           </v-btn>
           <v-btn
               color="#FF8A80"
-              @click.stop="dialog = true">
+              @click="delete_dialog">
             <v-icon>
               mdi-delete
             </v-icon>
@@ -159,14 +159,14 @@
                 <v-btn
                     color="red darken-1"
                     text
-                    @click="dialog = false"
+                    @click="delete_dialog_message"
                 >
                   Disagree
                 </v-btn>
                 <v-btn
                     color="green darken-1"
                     text
-                    @click="dialog = false"
+                    @click="delete_dialog_message"
                 >
                   Agree
                 </v-btn>
@@ -179,9 +179,7 @@
   </v-row>
 
 
-
 </template>
-
 
 <script>
 import {sort, categories, products} from "@/utils/desserts"
@@ -223,6 +221,14 @@ export default {
       console.log("4Hello")
       console.log(this.loading)
     },
+    delete_dialog () {
+      this.dialog = true
+    },
+    delete_dialog_message () {
+      console.log("Message 1")
+      this.dialog = false
+      console.log("Message 2")
+    }
   },
 };
 </script>
