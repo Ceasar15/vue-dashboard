@@ -81,95 +81,145 @@
   </v-row>
 
 
-
-
-<v-row class="ml-10">
-  <v-col
-      v-for="product in products"
-      :key="product.name"
-      class="ml-9"
-      cols="2"
-  >
-    <v-card
+  <v-row class="ml-10">
+    <v-col
+        v-for="product in products"
         :key="product.name"
-        max-width="450"
-        class="ma-1"
+        class="ml-9"
+        cols="2"
     >
-      <v-img
-          height="300"
-          :src="product.image"
+      <v-card
+          :key="product.name"
+          max-width="450"
+          class="my-3"
       >
-        <v-chip class="ma-0" color="deep-orange accent-4">
-          15%
-        </v-chip>
-      </v-img>
-      <v-card-title>
-        {{ product.name }}
-      </v-card-title>
-      <v-card-text>
-        <v-row
-            align="center"
-            class="mx-0"
+        <v-img
+            height="300"
+            :src="product.image"
         >
-          <v-rating
-              :value="4.5"
-              color="amber"
-              dense
-              size="14"
-          ></v-rating>
-          <div class="grey--text ms-4">
-            4.5 (413)
-          </div>
-        </v-row>
-      </v-card-text>
-      <v-card-title>
-        $ {{ product.price }}
-        <strike class="ml-3 text-grey-darken-1">
-          $ {{ product.discount }}
-        </strike>
-      </v-card-title>
-      <v-card-actions>
+          <v-chip class="ma-0" color="deep-orange accent-4">
+            15%
+          </v-chip>
+        </v-img>
+        <v-card-title>
+          {{ product.name }}
+        </v-card-title>
+        <v-card-text>
+          <v-row
+              align="center"
+              class="mx-0"
+          >
+            <v-rating
+                :value="4.5"
+                color="amber"
+                dense
+                size="14"
+            ></v-rating>
+            <div class="grey--text ms-4">
+              4.5 (413)
+            </div>
+          </v-row>
+        </v-card-text>
+        <v-card-title>
+          $ {{ product.price }}
+          <strike class="ml-3 text-grey-darken-1">
+            $ {{ product.discount }}
+          </strike>
+        </v-card-title>
+        <v-card-actions>
+          <v-btn
+              color="#E3F2FD"
+              text
+              @click="reserve"
+              plain
+          >
+            <v-icon>
+              mdi-border-color
+            </v-icon>
+            Edit
+          </v-btn>
+          <v-btn
+              :loading="loading"
+              color="#FF8A80"
+              plain
+              @click="remove"
+          >
+            <v-icon>
+              mdi-delete
+            </v-icon>
+            Delete
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-col>
+
+  </v-row>
+
+  <div class="text-center mx-auto">
+    <v-pagination
+        v-model="page"
+        :length="15"
+        :total-visible="7"
+    ></v-pagination>
+  </div>
+  <div class="text-center">
+    <v-dialog
+        v-model="dialog"
+        width="500"
+    >
+      <template v-slot:activator="{ on, attrs }">
         <v-btn
-            color="#E3F2FD"
-            text
-            @click="reserve"
-            outlined
+            color="red lighten-2"
+            dark
+            v-bind="attrs"
+            v-on="on"
         >
-          <v-icon>
-            mdi-border-color
-          </v-icon>
-          Edit
+          Click Me
         </v-btn>
-        <v-btn
-            :loading="loading"
-            color="#FF8A80"
-            @click="reserve"
-            plain
-        >
-          <v-icon>
-            mdi-delete
-          </v-icon>
-          Delete
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-col>
+      </template>
 
-</v-row>
+      <v-card>
+        <v-card-title class="text-h5 grey lighten-2">
+          Privacy Policy
+        </v-card-title>
 
+        <v-card-text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </v-card-text>
 
+        <v-divider></v-divider>
 
-
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+              color="primary"
+              text
+              @click="dialog=false"
+          >
+            I accept
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </div>
 
 </template>
 
 
 <script>
 import {sort, categories, products} from "@/utils/desserts"
-
+import { ref } from 'vue'
 
 export default {
   name: "AdminProducts",
+  setup (){
+    const count = ref(0)
+    const delete_here = ref()
+    return {
+      count,
+      delete_here
+    }
+  },
   data() {
     return {
       sort: sort,
@@ -177,6 +227,8 @@ export default {
       products: products,
       selection: 1,
       loading: false,
+      page: 1,
+      dialog: true,
     };
   },
   methods: {
@@ -184,10 +236,13 @@ export default {
       this.loading = true
       setTimeout(() => (this.loading = false), 2000)
     },
-    async remove () {
+    async remove() {
+      console.log("1Hello")
       this.loading = true
+      console.log("2Hello")
       await new Promise(resolve => setTimeout(resolve, 3000))
       this.loading = false
+      console.log("4Hello")
     },
   },
 };

@@ -8,7 +8,14 @@
     >
       <MainNavbar></MainNavbar>
     </v-app-bar>
-
+<!--    <v-card>-->
+<!--      <v-navigation-drawer-->
+<!--          permanent-->
+<!--          expand-on-hover-->
+<!--      >-->
+<!--        <SideNavBar></SideNavBar>-->
+<!--      </v-navigation-drawer>-->
+<!--    </v-card>-->
     <v-main>
       <SideNavBar></SideNavBar>
       <v-container fluid>
