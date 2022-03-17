@@ -195,57 +195,94 @@ export const products = [
     {
         name: "Names",
         rating: '4.5 (419)',
-        price: "989.00"
+        price: "989.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/1.jpg",
+        discount: "840.65"
     },
     {
         name: "Second",
         rating: '4.5 (678)',
-        price: "777.00"
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/2.jpg",
+        discount: "840.65"
     },
     {
         name: "Second",
         rating: '4.5 (678)',
-        price: "777.00"
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/3.jpg",
+        discount: "840.65"
     },
     {
         name: "Second",
         rating: '4.5 (678)',
-        price: "777.00"
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/4.jpg",
+        discount: "840.65"
     },
     {
         name: "Second",
         rating: '4.5 (678)',
-        price: "777.00"
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/5.jpg",
+        discount: "840.65"
     },
     {
         name: "Second",
         rating: '4.5 (678)',
-        price: "777.00"
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/2.jpg",
+        discount: "840.65"
     },
     {
         name: "Second",
         rating: '4.5 (678)',
-        price: "777.00"
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/2.jpg",
+        discount: "840.65"
     },
     {
         name: "Second",
         rating: '4.5 (678)',
-        price: "777.00"
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/2.jpg",
+        discount: "840.65"
     },
     {
         name: "Second",
         rating: '4.5 (678)',
-        price: "777.00"
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/2.jpg",
+        discount: "840.65"
     },
     {
         name: "Second",
         rating: '4.5 (678)',
-        price: "777.00"
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/2.jpg",
+        discount: "840.65"
     },
     {
         name: "Second",
         rating: '4.5 (678)',
-        price: "777.00"
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/2.jpg",
+        discount: "840.65"
+    }
+    ,
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/2.jpg",
+        discount: "840.65"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/2.jpg",
+        discount: "840.65"
     }
 ]
 

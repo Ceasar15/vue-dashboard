@@ -83,28 +83,27 @@
 
 
 
-<v-row>
+<v-row class="ml-10">
   <v-col
       v-for="product in products"
       :key="product.name"
-      class="ma-1"
+      class="ml-9"
       cols="2"
   >
     <v-card
         :key="product.name"
-        max-width="374"
+        max-width="450"
         class="ma-1"
     >
       <v-img
-          height="200"
-          src="https://www.ecommerce-admin.com/demo/images/items/2.jpg"
+          height="300"
+          :src="product.image"
       >
         <v-chip class="ma-0" color="deep-orange accent-4">
           15%
         </v-chip>
       </v-img>
       <v-card-title>
-        <!--      Bag and Jeans And A lot of Products-->
         {{ product.name }}
       </v-card-title>
       <v-card-text>
@@ -126,7 +125,7 @@
       <v-card-title>
         $ {{ product.price }}
         <strike class="ml-3 text-grey-darken-1">
-          $ 840.65
+          $ {{ product.discount }}
         </strike>
       </v-card-title>
       <v-card-actions>
@@ -134,19 +133,28 @@
             color="#E3F2FD"
             text
             @click="reserve"
+            outlined
         >
+          <v-icon>
+            mdi-border-color
+          </v-icon>
           Edit
         </v-btn>
         <v-btn
+            :loading="loading"
             color="#FF8A80"
-            text
             @click="reserve"
+            plain
         >
+          <v-icon>
+            mdi-delete
+          </v-icon>
           Delete
         </v-btn>
       </v-card-actions>
     </v-card>
   </v-col>
+
 </v-row>
 
 
@@ -168,12 +176,18 @@ export default {
       categories: categories,
       products: products,
       selection: 1,
+      loading: false,
     };
   },
   methods: {
     reserve() {
       this.loading = true
       setTimeout(() => (this.loading = false), 2000)
+    },
+    async remove () {
+      this.loading = true
+      await new Promise(resolve => setTimeout(resolve, 3000))
+      this.loading = false
     },
   },
 };
