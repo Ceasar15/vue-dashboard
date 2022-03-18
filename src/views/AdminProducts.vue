@@ -1,6 +1,6 @@
 <template>
-
   <v-row>
+
     <v-col cols="12" class="text-grey-darken-1" style="display: flex; justify-content:space-between;">
       <v-title style="padding: 28px; ">
         <p class="ml-7" style="font-size:1.5rem">Products</p>
@@ -60,8 +60,8 @@
             hide-details
             label="Categories"
             class="ml-1"
-            single-line
             value="Choose a category"
+            single-line
         ></v-select>
       </v-card>
     </v-col>
@@ -109,7 +109,7 @@
           </v-chip>
         </v-img>
         <v-card-title>
-          {{ product.name }}
+          {{ product.title }}
         </v-card-title>
         <v-card-text>
           <v-row
@@ -153,6 +153,7 @@
             </v-icon>
             Delete
           </v-btn>
+
         </v-card-actions>
       </v-card>
       </v-hover>
@@ -165,8 +166,8 @@
         :total-visible="7"
     ></v-pagination>
   </div>
-
   <!--   Delete Dialog -->
+  <v-row justify="center">
   <v-btn
       color="primary"
       dark
@@ -174,6 +175,8 @@
   >
     Open Dialog
   </v-btn>
+
+  </v-row>
   <v-dialog
       v-model="dialog"
       max-width="290"
@@ -207,14 +210,12 @@
 <!--  Edit Dialog -->
 
 
-
-
 <!--End Edit Dialog-->
 
 </template>
 
 <script>
-import {sort, categories, products} from "@/utils/desserts"
+import {sort} from "@/utils/desserts"
 import {ref} from 'vue'
 
 export default {
@@ -230,8 +231,8 @@ export default {
   data() {
     return {
       sort: sort,
-      categories: categories,
-      products: products,
+      categories: [],
+      products: [],
       selection: 1,
       loading: false,
       page: 1,
@@ -257,19 +258,21 @@ export default {
   },
   mounted() {
     // Make a request for all products
-    this.axios
-        .get('http://63.33.250.70:8000/marketplace/products/')
-        .then(function (response) {
-          // handle success
-          console.log(response.data);
-        })
+    this.axios.get('https://fakestoreapi.com/products')
+        .then(response => (
+            this.products = response.data
+        ))
         .catch(function (error) {
-          // handle error
-          console.log(error);
-        })
-        .then(function () {
-          // always executed
-        });
+      console.error(error);
+    });
+    // Categories Endpoint
+    this.axios.get('https://fakestoreapi.com/products/categories')
+        .then(response => (
+          this.categories = response.data
+        ))
+        .catch( function (error){
+      console.log(error)
+    })
   },
 };
 </script>

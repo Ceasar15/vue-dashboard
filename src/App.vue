@@ -34,7 +34,15 @@ export default {
   },
 
   data: () => ({
-    //
+    dialog: true
   }),
+  methods: {
+  delete_dialog_message() {
+    this.dialog = false
+  }
+  }
+
+
+
 }
 </script>
