@@ -3,7 +3,7 @@
 
     <v-col cols="12" class="text-grey-darken-1" style="display: flex; justify-content:space-between;">
       <v-title style="padding: 28px; ">
-        <p class="ml-7" style="font-size:1.5rem">Products{{categories}}</p>
+        <p class="ml-7" style="font-size:1.5rem">Products{{categoriesX}}</p>
       </v-title>
       <v-text>
         <v-btn>
@@ -54,7 +54,7 @@
     <v-col cols="3.5">
       <v-card>
         <v-select
-            :items="categories"
+            :items="categoriesX"
             prepend-icon="mdi-filter-variant"
             menu-props="auto"
             hide-details
@@ -63,9 +63,6 @@
             value="Choose a category"
             single-line
         >
-          <option v-for="category in categories" :key="category">
-
-          </option>
         </v-select>
       </v-card>
     </v-col>
@@ -227,6 +224,21 @@ import axios from "axios";
 export default {
   name: 'AdminProducts',
   props: {
+  },
+  data () {
+    return {
+      categoriesX : []
+    }
+  },
+  mounted (){
+    // Make a request for all products
+    this.axios.get('https://fakestoreapi.com/products/categories')
+        .then( response => (
+            this.categoriesX = response.data
+        ))
+        .catch(function (error) {
+          console.error(error);
+        });
   },
   setup() {
     function fetchProducts() {
