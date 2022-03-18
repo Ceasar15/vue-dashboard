@@ -3,7 +3,7 @@
 
     <v-col cols="12" class="text-grey-darken-1" style="display: flex; justify-content:space-between;">
       <v-title style="padding: 28px; ">
-        <p class="ml-7" style="font-size:1.5rem">Products</p>
+        <p class="ml-7" style="font-size:1.5rem">Products{{categories}}</p>
       </v-title>
       <v-text>
         <v-btn>
@@ -62,7 +62,11 @@
             class="ml-1"
             value="Choose a category"
             single-line
-        ></v-select>
+        >
+          <option v-for="category in categories" :key="category">
+
+          </option>
+        </v-select>
       </v-card>
     </v-col>
     <v-col cols="2.5">
@@ -92,70 +96,70 @@
           v-slot="{ isHovering, props }"
           close-delay="100"
       >
-      <v-card
-          :elevation="isHovering ? 16 : 2"
-          :class="{ 'on-hover': isHovering }"
-          :key="product.name"
-          max-width="450"
-          class="my-3"
-          v-bind="props"
-      >
-        <v-img
-            height="300"
-            :src="product.image"
+        <v-card
+            :elevation="isHovering ? 16 : 2"
+            :class="{ 'on-hover': isHovering }"
+            :key="product.name"
+            max-width="450"
+            class="my-3"
+            v-bind="props"
         >
-          <v-chip class="ma-0" color="deep-orange accent-4">
-            15%
-          </v-chip>
-        </v-img>
-        <v-card-title>
-          {{ product.title }}
-        </v-card-title>
-        <v-card-text>
-          <v-row
-              align="center"
-              class="mx-0"
+          <v-img
+              height="300"
+              :src="product.image"
           >
-            <v-rating
-                :value="4.5"
-                color="amber"
-                dense
-                size="14"
-            ></v-rating>
-            <div class="grey--text ms-4">
-              4.5 (413)
-            </div>
-          </v-row>
-        </v-card-text>
-        <v-card-title>
-          $ {{ product.price }}
-          <strike class="ml-3 text-grey-darken-1">
-            $ {{ product.discount }}
-          </strike>
-        </v-card-title>
-        <v-card-actions>
-          <v-btn
-              color="#E3F2FD"
-              text
-              @click="reserve"
-              plain
-          >
-            <v-icon>
-              mdi-border-color
-            </v-icon>
-            Edit
-          </v-btn>
-          <v-btn
-              color="#FF8A80"
-              @click.stop="open_dialog">
-            <v-icon>
-              mdi-delete
-            </v-icon>
-            Delete
-          </v-btn>
+            <v-chip class="ma-0" color="deep-orange accent-4">
+              15%
+            </v-chip>
+          </v-img>
+          <v-card-title>
+            {{ product.title }}
+          </v-card-title>
+          <v-card-text>
+            <v-row
+                align="center"
+                class="mx-0"
+            >
+              <v-rating
+                  :value="4.5"
+                  color="amber"
+                  dense
+                  size="14"
+              ></v-rating>
+              <div class="grey--text ms-4">
+                4.5 (413)
+              </div>
+            </v-row>
+          </v-card-text>
+          <v-card-title>
+            $ {{ product.price }}
+            <strike class="ml-3 text-grey-darken-1">
+              $ {{ product.discount }}
+            </strike>
+          </v-card-title>
+          <v-card-actions>
+            <v-btn
+                color="#E3F2FD"
+                text
+                @click="reserve"
+                plain
+            >
+              <v-icon>
+                mdi-border-color
+              </v-icon>
+              Edit
+            </v-btn>
+            <v-btn
+                color="#FF8A80"
+                @click.stop="open_dialog">
+              <v-icon>
+                mdi-delete
+              </v-icon>
+              Delete
+            </v-btn>
 
-        </v-card-actions>
-      </v-card>
+          </v-card-actions>
+        </v-card>
       </v-hover>
     </v-col>
   </v-row>
@@ -168,13 +172,13 @@
   </div>
   <!--   Delete Dialog -->
   <v-row justify="center">
-  <v-btn
-      color="primary"
-      dark
-      @click.stop="dialog = true"
-  >
-    Open Dialog
-  </v-btn>
+    <v-btn
+        color="primary"
+        dark
+        @click.stop="dialog = true"
+    >
+      Open Dialog
+    </v-btn>
 
   </v-row>
   <v-dialog
@@ -207,27 +211,51 @@
     </v-card>
   </v-dialog>
   <!--End Delete Dialog -->
-<!--  Edit Dialog -->
+  <!--  Edit Dialog -->
 
 
-<!--End Edit Dialog-->
+  <!--End Edit Dialog-->
 
 </template>
 
 <script>
-import {  ref } from 'vue'
-import {sort, categories } from "@/utils/desserts"
+import {ref, onMounted} from 'vue'
+import {sort} from "@/utils/desserts"
 import axios from "axios";
 
 
 export default {
   name: 'AdminProducts',
-
+  props: {
+  },
   setup() {
+    function fetchProducts() {
+      axios.get('https://fakestoreapi.com/products')
+          .then(function (response) {
+            products.value = response.data
+          }).catch(function (error) {
+        console.log(error)
+      });
+    }
+    function fetchCategories() {
+      axios.get('https://fakestoreapi.com/products/categories')
+          .then(function (response) {
+            console.log(33, response.data)
+            categories.value = response.data
+            console.log(44, categories.value)
+          }).catch(function (error) {
+        console.log(error)
+      });
+    }
+    onMounted(() => {
+      fetchProducts()
+      fetchCategories()
+    });
     const page = ref(1)
     const search = ref()
     const dialog = ref(false)
-    const products= ref([])
+    const products = ref(null)
+    const categories = ref(null)
 
     return {
       page,
@@ -239,15 +267,6 @@ export default {
     }
 
   },
-  mounted () {
-      axios.get('https://fakestoreapi.com/products')
-          .then(function (response) {
-            console.log(66, response.data)
-            this.setup().categoriesproducts = response.data
-          }).catch(function (error) {
-        console.log(error)
-      });
-    }
 }
 </script>
 <style>
