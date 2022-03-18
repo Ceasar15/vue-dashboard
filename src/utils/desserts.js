@@ -285,4 +285,9 @@ export const products = [
     }
 ]
 
+
+
+export const categoryY = [
+ 'electronics', 'jewelery', 'men\'s clothing', 'women\'s clothing'
+]
 export default {desserts, headers, testData, items, status, categories, sort, products};

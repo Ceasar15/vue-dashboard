@@ -3,7 +3,7 @@
 
     <v-col cols="12" class="text-grey-darken-1" style="display: flex; justify-content:space-between;">
       <v-title style="padding: 28px; ">
-        <p class="ml-7" style="font-size:1.5rem">Products{{categoriesX}}</p>
+        <p class="ml-7" style="font-size:1.5rem">Products</p>
       </v-title>
       <v-text>
         <v-btn>
@@ -54,7 +54,7 @@
     <v-col cols="3.5">
       <v-card>
         <v-select
-            :items="categoriesX"
+            :items="categoryY"
             prepend-icon="mdi-filter-variant"
             menu-props="auto"
             hide-details
@@ -217,7 +217,7 @@
 
 <script>
 import {ref, onMounted} from 'vue'
-import {sort} from "@/utils/desserts"
+import {sort, categoryY} from "@/utils/desserts"
 import axios from "axios";
 
 
@@ -227,7 +227,24 @@ export default {
   },
   data () {
     return {
-      categoriesX : []
+      categoriesX : [],
+    }
+  },
+  methods: {
+    reserve() {
+      this.loading = true
+      setTimeout(() => (this.loading = false), 2000)
+    },
+    async remove() {
+      this.loading = true
+      await new Promise(resolve => setTimeout(resolve, 3000))
+      this.loading = false
+    },
+    open_dialog() {
+      this.dialog = true
+    },
+    delete_dialog_message() {
+      this.dialog = false
     }
   },
   mounted (){
@@ -252,16 +269,14 @@ export default {
     function fetchCategories() {
       axios.get('https://fakestoreapi.com/products/categories')
           .then(function (response) {
-            console.log(33, response.data)
             categories.value = response.data
-            console.log(44, categories.value)
           }).catch(function (error) {
         console.log(error)
       });
     }
+    fetchCategories()
     onMounted(() => {
       fetchProducts()
-      fetchCategories()
     });
     const page = ref(1)
     const search = ref()
@@ -275,6 +290,7 @@ export default {
       dialog,
       sort,
       categories,
+      categoryY,
       products
     }
 
