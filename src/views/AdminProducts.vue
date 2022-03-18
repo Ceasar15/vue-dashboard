@@ -215,69 +215,40 @@
 </template>
 
 <script>
-import {sort} from "@/utils/desserts"
-import {ref} from 'vue'
+import {  ref } from 'vue'
+import {sort, categories } from "@/utils/desserts"
+import axios from "axios";
+
 
 export default {
-  name: "AdminProducts",
+  name: 'AdminProducts',
+
   setup() {
-    const count = ref(0)
-    const delete_here = ref()
+    const page = ref(1)
+    const search = ref()
+    const dialog = ref(false)
+    const products= ref([])
+
     return {
-      count,
-      delete_here
+      page,
+      search,
+      dialog,
+      sort,
+      categories,
+      products
     }
-  },
-  data() {
-    return {
-      sort: sort,
-      categories: [],
-      products: [],
-      selection: 1,
-      loading: false,
-      page: 1,
-      dialog: false
-    };
-  },
-  methods: {
-    reserve() {
-      this.loading = true
-      setTimeout(() => (this.loading = false), 2000)
-    },
-    async remove() {
-      this.loading = true
-      await new Promise(resolve => setTimeout(resolve, 3000))
-      this.loading = false
-    },
-    open_dialog() {
-      this.dialog = true
-    },
-    delete_dialog_message() {
-      this.dialog = false
-    }
-  },
-  onBeforeMount () {
-    // Categories Endpoint
-    this.axios.get('https://fakestoreapi.com/products/categories')
-        .then(response => (
-            this.categories = response.data
-        ))
-        .catch( function (error){
-          console.log(error)
-        })
-  },
-  mounted() {
-    // Make a request for all products
-    this.axios.get('https://fakestoreapi.com/products')
-        .then( response => (
-            this.products = response.data
-        ))
-        .catch(function (error) {
-      console.error(error);
-    });
 
   },
-};
+  mounted () {
+      axios.get('https://fakestoreapi.com/products')
+          .then(function (response) {
+            console.log(66, response.data)
+            this.setup().categoriesproducts = response.data
+          }).catch(function (error) {
+        console.log(error)
+      });
+    }
+}
 </script>
 <style>
 .v-select__selections {
