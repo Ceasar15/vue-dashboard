@@ -256,23 +256,26 @@ export default {
       this.dialog = false
     }
   },
+  onBeforeMount () {
+    // Categories Endpoint
+    this.axios.get('https://fakestoreapi.com/products/categories')
+        .then(response => (
+            this.categories = response.data
+        ))
+        .catch( function (error){
+          console.log(error)
+        })
+  },
   mounted() {
     // Make a request for all products
     this.axios.get('https://fakestoreapi.com/products')
-        .then(response => (
+        .then( response => (
             this.products = response.data
         ))
         .catch(function (error) {
       console.error(error);
     });
-    // Categories Endpoint
-    this.axios.get('https://fakestoreapi.com/products/categories')
-        .then(response => (
-          this.categories = response.data
-        ))
-        .catch( function (error){
-      console.log(error)
-    })
+
   },
 };
 </script>
