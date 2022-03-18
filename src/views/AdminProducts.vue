@@ -109,7 +109,7 @@
               15%
             </v-chip>
           </v-img>
-          <v-card-title>
+          <v-card-title v-snip:js="3">
             {{ product.title }}
           </v-card-title>
           <v-card-text>
