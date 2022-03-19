@@ -3,15 +3,22 @@
     <v-container class="container"
                  :style="{
                        'width': '100%',
-                      'background-image':'url(https://vuejs.org/images/logo.pg)',
                   }"
     >
       <v-img
-          height="150"
-          width="250"
-          src="https://webpixels.io/illustrations#modalVector">
+          width="400px"
+          height="350px"
+          position="center"
+          style="margin-left: 540px;"
+      src="https://media.istockphoto.com/vectors/intestine-logo-concept-vector-id1279896016?k=20&m=1279896016&s=612x612&w=0&h=UFj0KpK0_75dm4OLHa6gOtpMztoocLpaMnIMqLI38mQ="
+      >
+
       </v-img>
-      <v-row style="margin-top: 190px; padding-left: 150px;">
+      <v-text class="text-black font-weight-bold text-decoration-underline text-high-emphasis text-size-bold" style="margin-left: 155px;"
+      >
+        Register
+      </v-text>
+      <v-row style="margin-top: 20px; padding-left: 150px;">
         <v-col
             cols="12"
             sm="5"
@@ -96,9 +103,6 @@
           </span>
         </v-col>
       </v-row>
-      <div>7
-        fsd
-      </div>
     </v-container>
   </v-form>
 
@@ -122,6 +126,8 @@ export default {
   },
   data() {
     return {
+      imageY: require("../../src/assets/development.png"),
+      imageX: {backgroundImage: "url(https://vuejs.org/images/logo.png)"},
       user: {
         name: '',
         email: '',
@@ -182,6 +188,5 @@ export default {
 
 <style>
 .container {
-  border: 4px solid;
 }
 </style>

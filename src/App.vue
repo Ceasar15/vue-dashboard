@@ -12,10 +12,11 @@
                          app
                          v-else
                          class="mx-auto nav-side"
+                         :style="{
+      'background-position': '0% 60%',
+                        'background-image':'url(https://media.istockphoto.com/vectors/black-friday-sale-shopping-girls-jumping-and-rejoicing-vector-id1279659353?k=20&m=1279659353&s=612x612&w=0&h=cTFIZ5-Cg0t3m55zk41Lz94hH3BcqiZTG31VBXqo840='
+                      }"
     >
-<v-img src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg">
-
-</v-img>
     </v-navigation-drawer>
     <v-app-bar v-if="!['SignupPage', 'SigninPage', 'help'].includes($route.name)" class="ml-0"
                style="height:80px;"
@@ -68,7 +69,6 @@ export default {
 <style>
 
 .nav-side {
-  background-color: red;
   width: 250px;
 }
 </style>
