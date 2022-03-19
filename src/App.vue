@@ -3,17 +3,19 @@
     <v-navigation-drawer height="200"
                          width="0"
                          app
-                         class="mx-auto nav-side" v-if="!['SignupPage', 'SigninPage', 'help'].includes($route.name)"
+                         class="mx-auto " v-if="!['SignupPage', 'SigninPage', 'help'].includes($route.name)"
     >
-      <SideNavBar />
+      <SideNavBar/>
     </v-navigation-drawer>
     <v-navigation-drawer height="200"
                          width="0px"
                          app
+                         v-else
+                         class="mx-auto nav-side"
     >
-      <v-text>
-        sdfsdsdfsdfsdfsdff
-      </v-text>
+<v-img src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg">
+
+</v-img>
     </v-navigation-drawer>
     <v-app-bar v-if="!['SignupPage', 'SigninPage', 'help'].includes($route.name)" class="ml-0"
                style="height:80px;"
