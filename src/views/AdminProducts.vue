@@ -61,8 +61,12 @@
             label="Categories"
             class="ml-1"
             value="Choose a category"
+            item-text="state"
+            item-value="abbr"
             single-line
-        >
+            @click="get_in_category"
+        ><option value="" disabled>province</option>
+          <option value="" disabled>state</option>
         </v-select>
       </v-card>
     </v-col>
@@ -210,7 +214,9 @@
   <!--End Delete Dialog -->
   <!--  Edit Dialog -->
 
-
+  <v-btn @click="get_in_category">
+    Click categories
+  </v-btn>
   <!--End Edit Dialog-->
 
 </template>
@@ -223,11 +229,11 @@ import axios from "axios";
 
 export default {
   name: 'AdminProducts',
-  props: {
-  },
-  data () {
+  props: {},
+  data() {
     return {
-      categoriesX : [],
+      categoriesX: [],
+      cate: []
     }
   },
   methods: {
@@ -245,27 +251,41 @@ export default {
     },
     delete_dialog_message() {
       this.dialog = false
+    },
+    async get_in_category() {
+      try{
+        const para = 'jewelery'
+        const baseUrl = "https://fakestoreapi.com/products/category/"
+        const url = baseUrl + para
+        let he = await this.axios.get(url)
+        console.log(676, he)
+        this.products = he.data
+      } catch (e) {
+          console.log("Error", e)
+      }
     }
   },
-  mounted (){
+  mounted() {
     // Make a request for all products
-    this.axios.get('https://fakestoreapi.com/products/categories')
-        .then( response => (
-            this.categoriesX = response.data
-        ))
-        .catch(function (error) {
-          console.error(error);
-        });
+    // axios.get('https://fakestoreapi.com/products/categories')
+    //     .then( function (response){ (
+    //         this.categoriesX = response.data
+    //     )})
+    //     .catch(function (error) {
+    //       console.error(error);
+    //     });
   },
   setup() {
     function fetchProducts() {
       axios.get('https://fakestoreapi.com/products')
           .then(function (response) {
             products.value = response.data
+            console.log(90, response.data)
           }).catch(function (error) {
         console.log(error)
       });
     }
+
     function fetchCategories() {
       axios.get('https://fakestoreapi.com/products/categories')
           .then(function (response) {
@@ -274,6 +294,7 @@ export default {
         console.log(error)
       });
     }
+
     fetchCategories()
     onMounted(() => {
       fetchProducts()

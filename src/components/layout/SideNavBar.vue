@@ -1,54 +1,55 @@
 <template>
-  <v-card>
-  <div class="sidebar" :class="isOpened ? 'open' : ''" :style="cssVars">
-    <div class="logo-details" style="margin: 6px 14px 0 14px">
-      <img
-          v-if="menuLogo"
-          :src="menuLogo"
-          alt="menu-logo"
-          class="menu-logo icon"
-      />
-      <em v-else class="bx icon" :class="menuIcon" />
-      <div class="logo_name">
-        {{ menuTitle }}
+  <v-card :class="isOpened ? 'open' : ''">
+    <div class="sidebar" :class="isOpened ? 'open' : ''" :style="cssVars">
+      <div class="logo-details" style="margin: 6px 14px 0 14px">
+        <img
+            v-if="menuLogo"
+            :src="menuLogo"
+            alt="menu-logo"
+            class="menu-logo icon"
+        />
+        <em v-else class="bx icon" :class="menuIcon"/>
+        <div class="logo_name">
+          {{ menuTitle }}
+        </div>
+        <em
+            class="bx"
+            :class="isOpened ? 'bx-menu-alt-right' : 'bx-menu'"
+            id="btn"
+            @click="isOpened = !isOpened"
+        />
       </div>
-      <em
-          class="bx"
-          :class="isOpened ? 'bx-menu-alt-right' : 'bx-menu'"
-          id="btn"
-          @click="isOpened = !isOpened"
-      />
-    </div>
-    <div
-        style="
+      <div
+          style="
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         flex-grow: 1;
         max-height: calc(100% - 60px);
       "
-    >
-      <div id="my-scroll" style="margin: 6px 14px 0 14px">
-        <ul class="nav-list" style="overflow: visible">
-          <!-- <li v-if="isSearch" @click="isOpened = true">
-            <i class="bx bx-search" />
-            <input
-              type="text"
-              :placeholder="searchPlaceholder"
-              @input="$emit('search-input-emit', $event.target.value)"
-            />
-            <span class="tooltip">{{ searchTooltip }}</span>
-          </li> -->
-          <div style="
+      >
+        <div id="my-scroll" style="margin: 6px 14px 0 14px">
+          <ul class="nav-list" style="overflow: visible">
+            <!-- <li v-if="isSearch" @click="isOpened = true">
+              <i class="bx bx-search" />
+              <input
+                type="text"
+                :placeholder="searchPlaceholder"
+                @input="$emit('search-input-emit', $event.target.value)"
+              />
+              <span class="tooltip">{{ searchTooltip }}</span>
+            </li> -->
+            <div style="
                 font-size:19px;
                 margin-left: 20px;
                 text-align: left
                 "
-          >Main</div>
-          <span v-for="(menuItem, index) in menuItems" :key="index">
+            >Main
+            </div>
+            <span v-for="(menuItem, index) in menuItems" :key="index">
             <li>
               <a :href="menuItem.link">
-                <i class="bx" :class="menuItem.icon || 'bx-square-rounded'" />
+                <i class="bx" :class="menuItem.icon || 'bx-square-rounded'"/>
                 <span class="links_name">{{ menuItem.name }}</span>
               </a>
               <span class="tooltip">{{
@@ -56,14 +57,15 @@
                 }}</span>
             </li>
           </span>
-          <div style="
+            <div style="
                 font-size:19px;
                 margin-left: 20px;
-                text-align: left" >Side Channels</div>
-          <span v-for="(channelItem, index) in channelItems" :key="index">
+                text-align: left">Side Channels
+            </div>
+            <span v-for="(channelItem, index) in channelItems" :key="index">
             <li>
               <a :href="channelItem.link">
-                <i class="bx" :class="channelItem.icon || 'bx-square-rounded'" />
+                <i class="bx" :class="channelItem.icon || 'bx-square-rounded'"/>
                 <span class="links_name">{{ channelItem.name }}</span>
               </a>
               <span class="tooltip">{{
@@ -71,10 +73,10 @@
                 }}</span>
             </li>
           </span>
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
   </v-card>
 </template>
 
@@ -116,9 +118,9 @@ export default {
       type: Array,
       default: () => [
         {
-          link: "#",
+          link: "/signUp",
           name: "Profile",
-          tooltip: "Setting",
+          tooltip: "Profile",
           icon: "bx-user",
         },
         {
@@ -283,19 +285,23 @@ export default {
 /* Google Font Link */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 @import url("https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body {
   transition: all 0.5s ease;
 }
+
 .menu-logo {
   width: 30px;
   margin: 0 10px 0 10px;
 }
+
 .sidebar {
   position: relative;
   display: flex;
@@ -312,19 +318,23 @@ body {
   z-index: 99;
   transition: all 0.5s ease;
 }
+
 .sidebar.open {
   width: 250px;
 }
+
 .sidebar .logo-details {
   height: 60px;
   display: flex;
   align-items: center;
   position: relative;
 }
+
 .sidebar .logo-details .icon {
   opacity: 0;
   transition: all 0.5s ease;
 }
+
 .sidebar .logo-details .logo_name {
   color: var(--logo-title-color);
   font-size: 20px;
@@ -332,10 +342,12 @@ body {
   opacity: 0;
   transition: all 0.5s ease;
 }
+
 .sidebar.open .logo-details .icon,
 .sidebar.open .logo-details .logo_name {
   opacity: 1;
 }
+
 .sidebar .logo-details #btn {
   position: absolute;
   top: 50%;
@@ -348,9 +360,11 @@ body {
   cursor: pointer;
   transition: all 0.5s ease;
 }
+
 .sidebar.open .logo-details #btn {
   text-align: right;
 }
+
 .sidebar i {
   color: var(--icons-color);
   height: 60px;
@@ -359,17 +373,20 @@ body {
   text-align: center;
   line-height: 60px;
 }
+
 .sidebar .nav-list {
   margin-top: 20px;
   /* margin-bottom: 60px; */
   /* height: 100%; */
   /* min-height: min-content; */
 }
+
 .sidebar li {
   position: relative;
   margin: 8px 0;
   list-style: none;
 }
+
 .sidebar li .tooltip {
   position: absolute;
   top: -20px;
@@ -386,6 +403,7 @@ body {
   pointer-events: none;
   transition: 0s;
 }
+
 .sidebar li:hover .tooltip {
   opacity: 1;
   pointer-events: auto;
@@ -393,9 +411,11 @@ body {
   top: 50%;
   transform: translateY(-50%);
 }
+
 .sidebar.open li .tooltip {
   display: none;
 }
+
 .sidebar input {
   font-size: 15px;
   color: var(--serach-input-text-color);
@@ -409,10 +429,12 @@ body {
   transition: all 0.5s ease;
   background: var(--secondary-color);
 }
+
 .sidebar.open input {
   padding: 0 20px 0 50px;
   width: 100%;
 }
+
 /* .sidebar .bx-search {
   position: absolute;
   top: 50%;
@@ -440,9 +462,11 @@ body {
   transition: all 0.4s ease;
   background: var(--bg-color);
 }
+
 .sidebar li a:hover {
   background: var(--menu-items-hover-color);
 }
+
 .sidebar li a .links_name {
   color: var(--menu-items-text-color);
   font-size: 15px;
@@ -452,21 +476,25 @@ body {
   pointer-events: none;
   transition: 0.4s;
 }
+
 .sidebar.open li a .links_name {
   opacity: 1;
   pointer-events: auto;
 }
+
 .sidebar li a:hover .links_name,
 .sidebar li a:hover i {
   transition: all 0.5s ease;
   color: var(--bg-color);
 }
+
 .sidebar li i {
   height: 50px;
   line-height: 50px;
   font-size: 18px;
   border-radius: 12px;
 }
+
 .sidebar div.profile {
   position: relative;
   height: 60px;
@@ -478,14 +506,17 @@ body {
   transition: all 0.5s ease;
   overflow: hidden;
 }
+
 .sidebar.open div.profile {
   width: 250px;
 }
+
 .sidebar div .profile-details {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
 }
+
 .sidebar div img {
   height: 45px;
   width: 45px;
@@ -493,6 +524,7 @@ body {
   border-radius: 6px;
   margin-right: 10px;
 }
+
 .sidebar div.profile .name,
 .sidebar div.profile .job {
   font-size: 15px;
@@ -500,9 +532,11 @@ body {
   color: var(--menu-footer-text-color);
   white-space: nowrap;
 }
+
 .sidebar div.profile .job {
   font-size: 12px;
 }
+
 .sidebar .profile #log_out {
   position: absolute;
   top: 50%;
@@ -515,21 +549,26 @@ body {
   border-radius: 0px;
   transition: all 0.5s ease;
 }
+
 .sidebar.open .profile #log_out {
   width: 50px;
   background: var(--secondary-color);
   opacity: 0;
 }
+
 .sidebar.open .profile:hover #log_out {
   opacity: 1;
 }
+
 .sidebar.open .profile #log_out:hover {
   opacity: 1;
   color: red;
 }
+
 .sidebar .profile #log_out:hover {
   color: red;
 }
+
 .home-section {
   position: relative;
   background: var(--home-section-color);
@@ -540,10 +579,12 @@ body {
   transition: all 0.5s ease;
   z-index: 2;
 }
+
 .sidebar.open ~ .home-section {
   left: 250px;
   width: calc(100% - 250px);
 }
+
 .home-section .text {
   display: inline-block;
   color: var(--bg-color);
@@ -551,19 +592,23 @@ body {
   font-weight: 500;
   margin: 18px;
 }
+
 .my-scroll-active {
   overflow-y: auto;
 }
+
 #my-scroll {
   overflow-y: auto;
   height: calc(100% - 60px);
 }
+
 #my-scroll::-webkit-scrollbar {
   display: none;
   /* background-color: rgba(255, 255, 255, 0.2);
     width: 10px;
     border-radius:5px  */
 }
+
 /* #my-scroll::-webkit-scrollbar-thumb{
     background-color: red;
     border-radius:5px
