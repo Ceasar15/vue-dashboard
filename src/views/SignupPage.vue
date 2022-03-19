@@ -1,6 +1,16 @@
 <template>
   <v-form>
-    <v-container>
+    <v-container class="container"
+                 :style="{
+                       'width': '100%',
+                      'background-image':'url(https://vuejs.org/images/logo.pg)',
+                  }"
+    >
+      <v-img
+          height="150"
+          width="250"
+          src="https://webpixels.io/illustrations#modalVector">
+      </v-img>
       <v-row style="margin-top: 190px; padding-left: 150px;">
         <v-col
             cols="12"
@@ -81,34 +91,37 @@
           >
             Create Account
           </v-btn>
-
+          <span style="margin-left: 29px; margin-top: 20px">
+               Already have an account?   <a href="signIn">Login</a>
+          </span>
         </v-col>
       </v-row>
-      <span style="margin-left: 150px; margin-top: 132px">
-        Already have an account? <a href="signIn">Login</a>
-      </span>
+      <div>7
+        fsd
+      </div>
     </v-container>
   </v-form>
+
 </template>
 
 <script>
 
 export default {
   name: "SignupPage",
-  components: { },
+  components: {},
   // mixins: [validationMixin],
   validations: {
     // name: { required, maxLength: maxLength(10) },
     // email: { required, email },
     // select: { required },
     checkbox: {
-      checked (val) {
+      checked(val) {
         return val
       },
     },
   },
-  data(){
-    return{
+  data() {
+    return {
       user: {
         name: '',
         email: '',
@@ -122,29 +135,29 @@ export default {
       }
     }
   },
-  inject : ['getUser'],
+  inject: ['getUser'],
 
   computed: {
-    checkboxErrors () {
+    checkboxErrors() {
       const errors = []
       if (!this.$v.checkbox.$dirty) return errors
       !this.$v.checkbox.checked && errors.push('You must agree to continue!')
       return errors
     },
-    selectErrors () {
+    selectErrors() {
       const errors = []
       if (!this.$v.select.$dirty) return errors
       !this.$v.select.required && errors.push('Item is required')
       return errors
     },
-    nameErrors () {
+    nameErrors() {
       const errors = []
       if (!this.$v.name.$dirty) return errors
       !this.$v.name.maxLength && errors.push('Name must be at most 10 characters long')
       !this.$v.name.required && errors.push('Name is required.')
       return errors
     },
-    emailErrors () {
+    emailErrors() {
       const errors = []
       if (!this.$v.email.$dirty) return errors
       !this.$v.email.email && errors.push('Must be valid e-mail')
@@ -153,10 +166,10 @@ export default {
     },
   },
   methods: {
-    submit () {
+    submit() {
       this.$v.$touch()
     },
-    clear () {
+    clear() {
       this.$v.$reset()
       this.name = ''
       this.email = ''
@@ -167,6 +180,8 @@ export default {
 }
 </script>
 
-<style >
-
+<style>
+.container {
+  border: 4px solid;
+}
 </style>
