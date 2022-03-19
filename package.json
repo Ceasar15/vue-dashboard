@@ -19,6 +19,7 @@
     "vue-router": "^4.0.13",
     "vue-sidebar-menu-akahon": "^0.1.4",
     "vue-snip": "^2.0.0",
+    "vuelidate": "^0.7.7",
     "vuetify": "^3.0.0-alpha.0",
     "vuex": "^4.0.2",
     "webfontloader": "^1.0.0"

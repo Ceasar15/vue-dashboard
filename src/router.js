@@ -24,7 +24,7 @@ const routes = [{
         component: SignupPage,
     },
     {
-        path: "/sigIn",
+        path: "/signIn",
         name: "SigninPage",
         component: SigninPage,
     },
@@ -39,7 +39,7 @@ const routes = [{
         component: AdminOrders,
     },
     {
-        path: "/products",
+        path: "/admin-products",
         name: "AdminProducts",
         component: AdminProducts,
     },
