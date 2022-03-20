@@ -19,30 +19,42 @@
       >
         Register
       </v-text>
+      <p v-for="error of v.$errors" :key="error.$uid">
+        {{ error.$message }}
+      </p>
       <v-row style="margin-top: 20px; padding-left: 150px;">
         <v-col
             cols="12"
             sm="5"
         >
-          <v-text-field
-              label="First Name"
+          <v-text-field :value="firstName" @input="setFirstName"
+                        label="First Name"
           ></v-text-field>
         </v-col>
         <v-col
             cols="12"
             sm="5"
         >
-          <v-text-field
-              label="Last Name"
+          <v-text-field :value="lastName" @input="setLastName"
+                        label="Last Name"
           ></v-text-field>
         </v-col>
         <v-col
             cols="12"
             sm="5"
         >
-          <v-text-field
-              label="Email"
-              filled
+          <v-text-field :value="email" @input="checkEmail"
+                        label="Email"
+          ></v-text-field>
+        </v-col>
+
+        <v-col
+            cols="12"
+            sm="5"
+        >
+          <v-text-field :value="phoneNumber" @input="checkPhoneNumber"
+                        label="Phone Number"
+                        filled
           ></v-text-field>
         </v-col>
 
@@ -51,16 +63,11 @@
             sm="5"
         >
           <v-text-field
-              label="Phone Number"
-              filled
-          ></v-text-field>
-        </v-col>
-
-        <v-col
-            cols="12"
-            sm="5"
-        >
-          <v-text-field
+              :value="password"
+              @input="checkPassword"
+              :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+              @click:append="show1 = !show1"
+              :type="show1 ? 'text' : 'password'"
               label="Password"
               outlined
           ></v-text-field>
@@ -71,6 +78,11 @@
             sm="5"
         >
           <v-text-field
+              :value="password2"
+              @input="confirmPassword"
+              :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
+              @click:append="show2 = !show2"
+              :type="show2 ? 'text' : 'password'"
               label="Confirm Password"
               outlined
           ></v-text-field>
@@ -83,12 +95,14 @@
         >
           <v-checkbox
               v-model="checkbox"
-              :error-messages="errors"
+              :error-messages="v.$errors"
+              @input="checkCheckBox"
               value="1"
               label="I agree with the terms and conditions of the company"
               type="checkbox"
               required
-          ></v-checkbox>
+          >
+          </v-checkbox>
         </v-col>
         <v-col class="mt-0">
           <v-btn
@@ -96,7 +110,7 @@
               type="submit"
               x-large
               color="light-blue lighten-2"
-              @click="dashboard"
+              @click="submit"
           >
             Create Account
           </v-btn>
@@ -110,53 +124,93 @@
       </v-row>
     </v-container>
   </v-form>
-  <div :class="{ error: v$.firstName.$errors.length }">
-    <input v-model="state.firstName">
-    <div class="input-errors" v-for="error of v$.firstName.$errors" :key="error.$uid">
-      <div class="error-msg">{{ error.$message }}</div>
-    </div>
-  </div>
-
 
 </template>
 
 <script>
 import useVuelidate from '@vuelidate/core'
-import {required, email} from '@vuelidate/validators'
+import {required, email, helpers, numeric, maxLength, minLength, sameAs} from '@vuelidate/validators'
 
 export default {
   name: "SignupPage",
-  components: { },
+  components: {},
+  setup: () => ({v: useVuelidate()}),
   data() {
     return {
       imageY: require("../../src/assets/development.png"),
       imageX: {backgroundImage: "url(https://vuejs.org/images/logo.png)"},
       name: '',
       email: '',
+      show1: false,
+      show2: false,
       select: null,
       firstName: '',
       lastName: '',
-      password: '',
+      password:'',
+      password2: '',
       phoneNumber: '',
-      checkbox: null,
-      v$: useVuelidate()
+      checkbox: false,
     }
   },
-  validations (){
+  validations() {
     return {
-      firstName: { required },
-      email: { required, email },
+      firstName: {required: helpers.withMessage('This field cannot be empty', required)},
+      lastName: {required: helpers.withMessage('This field cannot be empty', required)},
+      email: {
+        required: helpers.withMessage('This field cannot be empty', required),
+        email: helpers.withMessage('This is not a valid email', email)
+      },
+      phoneNumber: {
+        required: helpers.withMessage('This field cannot be empty', required),
+        numeric,
+        maxLengthValue: maxLength(10),
+        minLengthValue: minLength(10),
+      },
+      password: {required},
+      password2: {
+        sameAsPassword: helpers.withMessage("Passwords do not match", sameAs(this.password)),
+      },
+      checkbox: { required }
     }
   },
   methods: {
-    isRequired(value) {
-      return value ? true : "This field is required."
+    async submit() {
+      const result = await this.v.$validate()
+      console.log(11, result)
+      if (!result) {
+        // notify user form is invalid
+        console.log(22, result)
+        return result ? true : "This field is required."
+      }
+      console.log(55, result)
     },
-    submit() {
-      this.$refs.observer.validate()
+    setFirstName($event) {
+      // do some silly transformation
+      this.firstName = $event.target.value.toUpperCase()
+      this.v.firstName.$touch()
     },
-  }
-  ,
+    setLastName($event) {
+      this.lastName = $event.target.value.toUpperCase()
+      this.v.lastName.$touch()
+    },
+    checkEmail($event) {
+      this.email = $event.target.value.toLowerCase()
+      this.v.email.$touch()
+    },
+    checkPhoneNumber($event) {
+      this.phoneNumber = $event.target.value
+      this.v.phoneNumber.$touch()
+    },
+    checkPassword($event){
+      this.password = $event.target.value
+    },
+    confirmPassword($event){
+      this.password2 = $event.target.value
+    },
+    checkCheckBox($event){
+      this.checkCheckBox = $event.target.value
+    }
+  },
 }
 </script>
 
