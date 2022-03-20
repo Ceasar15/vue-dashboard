@@ -97,7 +97,6 @@ export const testData = {
 
 export const items = [
     {header: 'Messages: Today'},
-
     {divider: true, inset: true},
     {
         avatar: require('../assets/profile/black1.jpg'),
@@ -171,8 +170,124 @@ export const items = [
         time: '2:45pm'
     },
     {divider: true, inset: true},
-
 ]
 export const status = [
     'Cancelled', 'Pending', 'Delivered', 'Sent', 'Received', 'In-Progress']
-export default {desserts, headers, testData, items, status};
+
+export const sort = [
+    'Price [Low-High]', 'Price [High-Low]', 'Name [A-Z]', 'Name [Z-A]',
+]
+
+export const categories = [
+    "Fashion, Textiles and Fabrics",
+    "Jewellery, Gifts and Parcels",
+    "Shoes, Sandals and Footwears",
+    "Automobile and Transport",
+    "Books and Office Supplies",
+    "Lights, Furniture and Decor",
+    "Beauty and Lifestyle",
+    "Bags and Luggage",
+    "Electronics, Gadgets and Garden Equipment",
+    "Toiletries / Baby Products",
+]
+
+export const products = [
+    {
+        name: "Names",
+        rating: '4.5 (419)',
+        price: "989.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/1.jpg",
+        discount: "840.65"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/2.jpg",
+        discount: "840.65"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/3.jpg",
+        discount: "840.65"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/4.jpg",
+        discount: "840.65"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/5.jpg",
+        discount: "840.65"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/6.jpg",
+        discount: "840.65"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/7.jpg",
+        discount: "840.65"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/8.jpg",
+        discount: "840.65"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/1.jpg",
+        discount: "840.65"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/6.jpg",
+        discount: "840.65"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/5.jpg",
+        discount: "840.65"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/3.jpg",
+        discount: "840.65"
+    },
+    {
+        name: "Second",
+        rating: '4.5 (678)',
+        price: "777.00",
+        image: "https://www.ecommerce-admin.com/demo/images/items/2.jpg",
+        discount: "840.65"
+    }
+]
+
+
+
+export const categoryY = [
+ 'electronics', 'jewelery', 'men\'s clothing', 'women\'s clothing'
+]
+export default {desserts, headers, testData, items, status, categories, sort, products};

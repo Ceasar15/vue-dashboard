@@ -5,14 +5,28 @@ import {
 
 
 import AdminDashboard from './views/Dashboard.vue';
+
 const AdminOrders = () => import('./views/AdminOrders.vue')
 import AdminAnalytics from '@/views/AdminAnalytics.vue';
 import PageNotFound from '@/views/PageNotFound.vue'
+import AdminProducts from "@/views/AdminProducts";
+import SignupPage from "@/views/SignupPage";
+import SigninPage from "@/views/SigninPage";
 
 
 const routes = [{
-        path: '/',
-        redirect: '/dashboard',
+    path: '/',
+    redirect: '/admin/dashboard',
+},
+    {
+        path: "/signUp",
+        name: "SignupPage",
+        component: SignupPage,
+    },
+    {
+        path: "/signIn",
+        name: "SigninPage",
+        component: SigninPage,
     },
     {
         path: "/dashboard",
@@ -25,7 +39,12 @@ const routes = [{
         component: AdminOrders,
     },
     {
-        path: "/admin-analytics",
+        path: "/admin-products",
+        name: "AdminProducts",
+        component: AdminProducts,
+    },
+    {
+        path: "/analytics",
         name: "AdminAnalytics",
         component: AdminAnalytics,
     },

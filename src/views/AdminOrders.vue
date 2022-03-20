@@ -6,18 +6,16 @@
       </v-title>
       <v-text>
         <v-btn>
-          <v-icon left="true">
+          <v-icon left=True>
             mdi-printer
           </v-icon>
           <span class="text-black">
             Print
           </span>
         </v-btn>
-
         <v-btn
             class="ma-4"
             color="black"
-
         >
           Export
           <v-icon right="true">
@@ -28,7 +26,7 @@
             class="ma-2"
             color="#69F0AE"
         >
-          <v-icon left="true">
+          <v-icon left=True>
             mdi-plus
           </v-icon>
           <span style="color: white; font-weight: 900;">
@@ -48,19 +46,20 @@
             filled
             hide-details
             outlined
+            single-line
             class="ml-2"
         ></v-text-field>
       </v-card>
     </v-col>
     <v-col cols="2">
       <v-card>
-
         <v-select
             :items="status"
             prepend-icon="mdi-tag"
             menu-props="auto"
             hide-details
             label="Status"
+            single-line
             class="ml-2"
         ></v-select>
       </v-card>
@@ -73,6 +72,7 @@
             menu-props="auto"
             hide-details
             label="Department"
+            single-line
             class="ml-2"
         ></v-select>
       </v-card>
@@ -86,6 +86,7 @@
             hide-details
             label="Saved Filters"
             class="ml-2"
+            single-line
         ></v-select>
       </v-card>
     </v-col>
@@ -98,6 +99,7 @@
             hide-details
             label="More Filters"
             class="ml-2"
+            single-line
         ></v-select>
       </v-card>
     </v-col>
@@ -145,12 +147,12 @@
       >
         <template v-slot:default>
           <thead id="table-head">
-          <tr>
+          <tr class="pa-0">
             <th class="table-headers text-left">
-              IDENTIFY
+              SELECT
             </th>
             <th class=" table-headers text-left">
-              Created
+              Created At
             </th>
             <th class="table-headers text-left">
               Customer
@@ -179,7 +181,6 @@
             <th class="table-headers text-left">
               Total
             </th>
-
           </tr>
           </thead>
           <tbody>
@@ -192,10 +193,8 @@
                 color="indigo"
                 value="indigo"
                 hide-details
-                label="12"
-                class="pa-4 text-right"
+                class="mt-7 text-right ml-8"
             ></v-checkbox>
-<!--            <td class="pa-4 text-center">11</td>-->
             <td style="padding: 16px">{{ item.date }}</td>
             <td style="padding: 1rem">Dummy User</td>
             <td style="padding: 1rem">{{ item.name }}</td>
@@ -206,7 +205,7 @@
                 color="red"
                 dark
                 large
-                class="ma-3"
+                class="mb-10"
             >
               <td style="padding: 1rem; font-weight: bold">Cancelled</td>
             </v-chip>
@@ -244,7 +243,6 @@ export default {
 </script>
 <style scoped lang="css">
 @import url("https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css");
-
 .table-headers {
   text-align: center;
   background-color: #9da6d1;
@@ -267,7 +265,7 @@ th {
 .orders-column {
   overflow-x: auto;
   overflow-y: auto;
-  /*height: 450px;*/
+  height: 950px;
 }
 
 .products-card tr:nth-child(even) {
