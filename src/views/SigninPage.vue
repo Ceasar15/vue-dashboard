@@ -1,5 +1,7 @@
 <template>
-  <v-form>
+  <v-form
+  lazy-validation
+  >
     <v-container class="container"
                  :style="{
                        'width': '100%',
@@ -14,28 +16,29 @@
       >
 
       </v-img>
-      <v-text class="text-black font-weight-bold text-decoration-underline text-high-emphasis text-size-bold" style="margin-left: 155px;"
+      <v-text class="text-black font-weight-bold text-decoration-underline text-high-emphasis text-size-bold" style="padding-left: 170px; margin-left: 190px;"
       >
         Login
       </v-text>
-      <v-row style="margin-top: 20px; padding-left: 150px;">
+      <v-row style="margin-top: 20px; margin-left: 190px; padding-left: 150px;">
         <v-col
             cols="12"
-            sm="5"
+            sm="7"
+            align-self="center"
         >
           <v-text-field
-              label="First Name"
+              label="Username"
           ></v-text-field>
         </v-col>
         <v-col
             cols="12"
-            sm="12"
+            sm="7"
         >
           <v-text-field
-              label="Last Name"
+              label="Password"
           ></v-text-field>
         </v-col>
-        <v-col class="mt-0">
+        <v-col cols="12" class="mt-0">
           <v-btn
               class="ml-0 text-center"
               type="submit"
@@ -43,10 +46,10 @@
               color="light-blue lighten-2"
               @click="dashboard"
           >
-            Create Account
+            Login
           </v-btn>
           <span style="margin-left: 29px; margin-top: 20px">
-               Already have an account?   <a href="signIn">Login</a>
+               Don't have an account yet?   <a href="signUp">SignUp</a>
           </span>
           <span style="margin-left: 29px; margin-top: 20px">
               Back to <a href="dashboard">Home</a>
