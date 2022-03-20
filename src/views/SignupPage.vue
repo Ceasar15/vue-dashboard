@@ -24,11 +24,9 @@
             cols="12"
             sm="5"
         >
-          <ValidationProvider>
             <v-text-field
                 label="First Name"
             ></v-text-field>
-          </ValidationProvider>
         </v-col>
         <v-col
             cols="12"
@@ -113,11 +111,14 @@
     </v-container>
   </v-form>
 
+    <Field name="field" :rules="isRequired" />
+
+
+
 </template>
 
 <script>
-import { Field } from 'vee-validate'
-import { digits, email, } from '@vee-validate/rules'
+import {Field} from 'vee-validate'
 
 export default {
   name: "SignupPage",
@@ -136,68 +137,28 @@ export default {
       password: '',
       phoneNumber: '',
       checkbox: null,
-      na
     }
   }
   ,
   inject: ['getUser'],
-
-  computed
-:
-{
-  checkboxErrors()
-  {
-    const errors = []
-    if (!this.$v.checkbox.$dirty) return errors
-    !this.$v.checkbox.checked && errors.push('You must agree to continue!')
-    return errors
+  methods: {
+    isRequired(value) {
+          return value ? true: "This field is required."
+    },
+    submit() {
+      this.$refs.observer.validate()
+    }
+    ,
+    clear() {
+      this.name = ''
+      this.phoneNumber = ''
+      this.email = ''
+      this.select = null
+      this.checkbox = null
+      this.$refs.observer.reset()
+    }
   }
-,
-  selectErrors()
-  {
-    const errors = []
-    if (!this.$v.select.$dirty) return errors
-    !this.$v.select.required && errors.push('Item is required')
-    return errors
-  }
-,
-  nameErrors()
-  {
-    const errors = []
-    if (!this.$v.name.$dirty) return errors
-    !this.$v.name.maxLength && errors.push('Name must be at most 10 characters long')
-    !this.$v.name.required && errors.push('Name is required.')
-    return errors
-  }
-,
-  emailErrors()
-  {
-    const errors = []
-    if (!this.$v.email.$dirty) return errors
-    !this.$v.email.email && errors.push('Must be valid e-mail')
-    !this.$v.email.required && errors.push('E-mail is required')
-    return errors
-  }
-,
-}
-,
-methods: {
-  submit()
-  {
-    this.$refs.observer.validate()
-  }
-,
-  clear()
-  {
-    this.name = ''
-    this.phoneNumber = ''
-    this.email = ''
-    this.select = null
-    this.checkbox = null
-    this.$refs.observer.reset()
-  }
-}
-,
+  ,
 }
 </script>
 
