@@ -24,9 +24,9 @@
             cols="12"
             sm="5"
         >
-            <v-text-field
-                label="First Name"
-            ></v-text-field>
+          <v-text-field
+              label="First Name"
+          ></v-text-field>
         </v-col>
         <v-col
             cols="12"
@@ -110,20 +110,23 @@
       </v-row>
     </v-container>
   </v-form>
-
-    <Field name="field" :rules="isRequired" />
-
+  <div :class="{ error: v$.firstName.$errors.length }">
+    <input v-model="state.firstName">
+    <div class="input-errors" v-for="error of v$.firstName.$errors" :key="error.$uid">
+      <div class="error-msg">{{ error.$message }}</div>
+    </div>
+  </div>
 
 
 </template>
 
 <script>
-import {Field} from 'vee-validate'
+import useVuelidate from '@vuelidate/core'
+import {required, email} from '@vuelidate/validators'
 
 export default {
   name: "SignupPage",
-  components: {Field},
-  // mixins: [validationMixin],
+  components: { },
   data() {
     return {
       imageY: require("../../src/assets/development.png"),
@@ -133,30 +136,25 @@ export default {
       select: null,
       firstName: '',
       lastName: '',
-      userName: '',
       password: '',
       phoneNumber: '',
       checkbox: null,
+      v$: useVuelidate()
     }
-  }
-  ,
-  inject: ['getUser'],
+  },
+  validations (){
+    return {
+      firstName: { required },
+      email: { required, email },
+    }
+  },
   methods: {
     isRequired(value) {
-          return value ? true: "This field is required."
+      return value ? true : "This field is required."
     },
     submit() {
       this.$refs.observer.validate()
-    }
-    ,
-    clear() {
-      this.name = ''
-      this.phoneNumber = ''
-      this.email = ''
-      this.select = null
-      this.checkbox = null
-      this.$refs.observer.reset()
-    }
+    },
   }
   ,
 }
