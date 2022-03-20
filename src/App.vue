@@ -13,7 +13,7 @@
                          v-else
                          class="mx-auto nav-side"
                          :style="{
-      'background-position': '0% 60%',
+                        'background-position': '0% 60%',
                         'background-image':'url(https://media.istockphoto.com/vectors/black-friday-sale-shopping-girls-jumping-and-rejoicing-vector-id1279659353?k=20&m=1279659353&s=612x612&w=0&h=cTFIZ5-Cg0t3m55zk41Lz94hH3BcqiZTG31VBXqo840='
                       }"
     >
@@ -23,7 +23,6 @@
                app>
       <MainNavbar/>
     </v-app-bar>
-    <!--    <SideNavBar v-if="!['SignupPage', 'SigninPage', 'help'].includes($route.name)"/>-->
     <!-- Sizes your content based upon application components -->
     <v-main>
       <!-- Provides the application the proper gutter -->
@@ -32,7 +31,7 @@
         <router-view></router-view>
       </v-container>
     </v-main>
-    <v-footer v-if="!['SignupPage', 'register', 'help'].includes($route.name)" app>
+    <v-footer v-if="!['SignupPage', 'SigninPage', 'help'].includes($route.name)" app>
       <MainFooter/>
     </v-footer>
   </v-app>

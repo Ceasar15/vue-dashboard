@@ -78,6 +78,7 @@
             cols="12"
             sm="12"
             class="mt-0 mb-0"
+            style="height: 80px;"
         >
           <v-checkbox
               v-model="checkbox"
@@ -94,12 +95,15 @@
               type="submit"
               x-large
               color="light-blue lighten-2"
-              :disabled="invalid"
+              @click="dashboard"
           >
             Create Account
           </v-btn>
           <span style="margin-left: 29px; margin-top: 20px">
                Already have an account?   <a href="signIn">Login</a>
+          </span>
+          <span style="margin-left: 29px; margin-top: 20px">
+              Back to <a href="dashboard">Home</a>
           </span>
         </v-col>
       </v-row>
