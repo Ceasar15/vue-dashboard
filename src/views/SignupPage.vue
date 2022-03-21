@@ -52,8 +52,8 @@
             cols="12"
             sm="5"
         >
-          <v-text-field :value="phoneNumber" @input="checkPhoneNumber"
-                        label="Phone Number"
+          <v-text-field :value="username" @input="setUsername"
+                        label="Username"
                         filled
           ></v-text-field>
         </v-col>
@@ -146,6 +146,7 @@ export default {
       select: null,
       firstName: '',
       lastName: '',
+      username: '',
       password:'',
       password2: '',
       phoneNumber: '',
@@ -199,6 +200,10 @@ export default {
     checkPhoneNumber($event) {
       this.phoneNumber = $event.target.value.toNumber()
       this.v.phoneNumber.$touch()
+    },
+    setUsername($event) {
+      this.username = $event.target.value.toLowerCase()
+      this.v.username.$touch()
     },
     checkPassword($event){
       this.password = $event.target.value
