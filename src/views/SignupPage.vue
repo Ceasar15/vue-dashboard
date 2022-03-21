@@ -35,7 +35,7 @@
             cols="12"
             sm="5"
         >
-          <v-text-field :value="lastName" @input="setLastName"
+          <v-text-field v-model="form.lastName" :value="lastName" @input="setLastName"
                         label="Last Name"
           ></v-text-field>
         </v-col>
@@ -43,7 +43,7 @@
             cols="12"
             sm="5"
         >
-          <v-text-field :value="email" @input="checkEmail"
+          <v-text-field v-model="form.lastName" :value="email" @input="checkEmail"
                         label="Email"
           ></v-text-field>
         </v-col>
@@ -52,7 +52,7 @@
             cols="12"
             sm="5"
         >
-          <v-text-field :value="username" @input="setUsername"
+          <v-text-field v-model="form.username" :value="form.username" @input="setUsername"
                         label="Username"
           ></v-text-field>
         </v-col>
@@ -62,7 +62,8 @@
             sm="5"
         >
           <v-text-field
-              :value="password"
+              v-model="form.password"
+              :value="form.password"
               @input="checkPassword"
               :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="show1 = !show1"
@@ -77,7 +78,8 @@
             sm="5"
         >
           <v-text-field
-              :value="password2"
+              v-model="form.password2"
+              :value="form.password2"
               @input="confirmPassword"
               :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="show2 = !show2"
@@ -93,7 +95,7 @@
             style="height: 80px;"
         >
           <v-checkbox
-              v-model="checkbox"
+              v-model="form.checkbox"
               :error-messages="v.$errors"
               @input="checkCheckBox"
               value="1"
@@ -136,9 +138,6 @@ export default {
   setup: () => ({v: useVuelidate()}),
   data() {
     return {
-      imageY: require("../../src/assets/development.png"),
-      imageX: {backgroundImage: "url(https://vuejs.org/images/logo.png)"},
-      email: '',
       show1: false,
       show2: false,
       select: null,
@@ -147,17 +146,12 @@ export default {
             firstName: '',
             lastName: '',
             username: '',
+            email: '',
             password:'',
             password2: '',
             phoneNumber: '',
             checkbox: false,
           },
-      lastName: '',
-      username: '',
-      password:'',
-      password2: '',
-      phoneNumber: '',
-      checkbox: false,
     }
   },
   validations() {
@@ -175,7 +169,6 @@ export default {
   },
   methods: {
     async submit() {
-      console.log(this.form)
       const result = await this.v.$validate()
       console.log(11, result)
       if (!result) {
@@ -183,11 +176,9 @@ export default {
         console.log(22, result)
       }
       console.log(55, result)
+      console.log(this.form)
+
       // await this.$router.push('/signIn')
-    },
-    setFirstName($event) {
-      this.form.firstName = $event.target.value.toUpperCase()
-      this.v.form.firstName.$touch()
     },
     setLastName($event) {
       this.lastName = $event.target.value.toUpperCase()
