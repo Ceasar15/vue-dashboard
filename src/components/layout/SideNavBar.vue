@@ -42,8 +42,9 @@
             <div style="
                 font-size:19px;
                 margin-left: 20px;
-                text-align: left
+                text-align: left;
                 "
+                 class="text-grey-darken-1"
             >Main
             </div>
             <span v-for="(menuItem, index) in menuItems" :key="index">
@@ -60,7 +61,9 @@
             <div style="
                 font-size:19px;
                 margin-left: 20px;
-                text-align: left">Side Channels
+                text-align: left"
+                class="text-grey-darken-1"
+            >Side Channels
             </div>
             <span v-for="(channelItem, index) in channelItems" :key="index">
             <li>

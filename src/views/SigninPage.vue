@@ -1,6 +1,6 @@
 <template>
   <v-form
-  lazy-validation
+      lazy-validation
   >
     <v-container class="container"
                  :style="{
@@ -16,27 +16,29 @@
       >
 
       </v-img>
-      <v-text class="text-black font-weight-bold text-decoration-underline text-high-emphasis text-size-bold" style="padding-left: 170px; margin-left: 190px;"
+      <v-text class="text-black font-weight-bold text-high-emphasis text-size-bold"
+              style="padding-left: 170px; margin-left: 190px;"
       >
         Login
       </v-text>
-        <v-alert
-            v-model="alert"
-            type="error"
-            light
-            class="ml-90"
-            style="width: 350px; margin-left: 350px;"
-        >
-          Wrong Username/Password
-        </v-alert>
+      <v-alert
+          v-model="alert"
+          type="error"
+          light
+          class="ml-90"
+          style="width: 350px; margin-left: 350px;"
+      >
+        Wrong Username/Password
+      </v-alert>
       <v-row style="margin-top: 20px; margin-left: 190px; padding-left: 150px;">
         <v-col
             cols="12"
             sm="7"
             align-self="center"
         >
-          <v-text-field v-model="form.username"
-              label="Username"
+          <v-text-field style="width: 350px;"
+                        v-model="form.username"
+                        label="Username"
           ></v-text-field>
         </v-col>
         <v-col
@@ -44,12 +46,14 @@
             sm="7"
         >
           <v-text-field
+              style="width: 380px;"
               v-model="form.password"
               :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="show1 = !show1"
               :type="show1 ? 'text' : 'password'"
               label="Password"
-          ></v-text-field>
+          >
+          </v-text-field>
         </v-col>
         <v-col cols="12" class="mt-0">
           <v-btn
@@ -64,9 +68,6 @@
           <span style="margin-left: 29px; margin-top: 20px">
                Don't have an account yet?   <a href="signUp">SignUp</a>
           </span>
-          <span style="margin-left: 29px; margin-top: 20px">
-              Back to <a href="dashboard">Home</a>
-          </span>
         </v-col>
       </v-row>
     </v-container>
@@ -74,9 +75,11 @@
 
 </template>
 
-<script>
 
+
+<script>
 import axios from 'axios';
+import VueCookies from 'vue-cookies'
 
 export default {
   name: "SigninPage",
@@ -86,17 +89,19 @@ export default {
       show1: false,
       alert: false,
       form: {
-          username: '',
-          password: ''
-        }
+        username: '',
+        password: ''
       }
+    }
   },
   methods: {
     async submit() {
       // const result = await this.v.$validate()
       axios.post('http://complaints-dev.herokuapp.com/auth/login/', this.form)
-          .then(() => {
+          .then((res) => {
             //Perform Success Action
+            console.log(res.data)
+            VueCookies.set('token' , res.data.access, "1h")
             this.$router.push('/dashboard')
           })
           .catch((error) => {

@@ -189,7 +189,7 @@ export default {
       this.loading = !this.loading
       // const result = await this.v.$validate()
       this.loader = 'loading'
-      axios.post('http://complaints-dev.herokuapp.com/auth/register/', this.form)
+      axios.post('https://ecommerce-platform-j.herokuapp.com/register/', this.form)
           .then(() => {
             //Perform Success Action
             this.$router.push('/signIn')

@@ -212,11 +212,6 @@
     </v-card>
   </v-dialog>
   <!--End Delete Dialog -->
-  <!--  Edit Dialog -->
-
-  <v-btn @click="get_in_category">
-    Click categories
-  </v-btn>
   <!--End Edit Dialog-->
 
 </template>

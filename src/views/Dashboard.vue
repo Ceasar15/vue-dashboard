@@ -304,6 +304,7 @@
 import {DoughnutChart, LineChart, BarChart} from 'vue-chart-3';
 import {Chart, registerables} from "chart.js";
 import {desserts, headers, testData, items} from "@/utils/desserts"
+import VueCookies from 'vue-cookies'
 
 Chart.register(...registerables);
 
@@ -329,6 +330,9 @@ export default {
       this.loading = true
       setTimeout(() => (this.loading = false), 2000)
     },
+  },
+  mounted() {
+    console.log(6767, VueCookies.get('token'))
   },
 };
 </script>
