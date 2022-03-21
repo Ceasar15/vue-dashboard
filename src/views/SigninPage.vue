@@ -97,7 +97,7 @@ export default {
   methods: {
     async submit() {
       // const result = await this.v.$validate()
-      axios.post('http://complaints-dev.herokuapp.com/auth/login/', this.form)
+      axios.post('https://ecommerce-platform-j.herokuapp.com/api/token/', this.form)
           .then((res) => {
             //Perform Success Action
             console.log(res.data)

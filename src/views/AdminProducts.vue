@@ -26,6 +26,7 @@
         <v-btn
             class="ma-2"
             color="#0D47A1"
+            @click="createProducts"
         >
           <v-icon left=True>
             mdi-plus
@@ -232,6 +233,9 @@ export default {
     }
   },
   methods: {
+    createProducts (){
+      this.$router.push('/admin-create-products')
+    },
     reserve() {
       this.loading = true
       setTimeout(() => (this.loading = false), 2000)

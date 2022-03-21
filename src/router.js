@@ -5,13 +5,14 @@ import {
 
 
 import AdminDashboard from './views/Dashboard.vue';
-
 const AdminOrders = () => import('./views/AdminOrders.vue')
 import AdminAnalytics from '@/views/AdminAnalytics.vue';
 import PageNotFound from '@/views/PageNotFound.vue'
 import AdminProducts from "@/views/AdminProducts";
 import SignupPage from "@/views/SignupPage";
 import SigninPage from "@/views/SigninPage";
+import AdminCreateProducts from "@/views/AdminCreateProducts";
+
 
 
 const routes = [{
@@ -42,6 +43,11 @@ const routes = [{
         path: "/admin-products",
         name: "AdminProducts",
         component: AdminProducts,
+    },
+    {
+        path: "/admin-create-products",
+        name: "AdminCreateProducts",
+        component: AdminCreateProducts,
     },
     {
         path: "/analytics",
