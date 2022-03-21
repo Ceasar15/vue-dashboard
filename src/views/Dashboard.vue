@@ -1,4 +1,14 @@
 <template>
+<!--  <v-alert-->
+<!--      v-model="dialog"-->
+<!--      color="green lighten-2"-->
+<!--      type="success"-->
+<!--      light-->
+<!--      class="ml-90"-->
+<!--      style="width: 450px; margin-left: 450px;"-->
+<!--  >-->
+<!--    Succesfully registered!-->
+<!--  </v-alert>-->
   <v-row>
     <v-col
         cols="12"

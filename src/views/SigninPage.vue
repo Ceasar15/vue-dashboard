@@ -20,13 +20,22 @@
       >
         Login
       </v-text>
+        <v-alert
+            v-model="alert"
+            type="error"
+            light
+            class="ml-90"
+            style="width: 350px; margin-left: 350px;"
+        >
+          Wrong Username/Password
+        </v-alert>
       <v-row style="margin-top: 20px; margin-left: 190px; padding-left: 150px;">
         <v-col
             cols="12"
             sm="7"
             align-self="center"
         >
-          <v-text-field
+          <v-text-field v-model="form.username"
               label="Username"
           ></v-text-field>
         </v-col>
@@ -35,6 +44,10 @@
             sm="7"
         >
           <v-text-field
+              v-model="form.password"
+              :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+              @click:append="show1 = !show1"
+              :type="show1 ? 'text' : 'password'"
               label="Password"
           ></v-text-field>
         </v-col>
@@ -44,7 +57,7 @@
               type="submit"
               x-large
               color="light-blue lighten-2"
-              @click="dashboard"
+              @click="submit"
           >
             Login
           </v-btn>
@@ -62,14 +75,40 @@
 </template>
 
 <script>
+
+import axios from 'axios';
+
 export default {
   name: "SigninPage",
   props: {},
   data() {
     return {
-      'ff': 'sd'
-    }
+      show1: false,
+      alert: false,
+      form: {
+          username: '',
+          password: ''
+        }
+      }
   },
+  methods: {
+    async submit() {
+      // const result = await this.v.$validate()
+      axios.post('http://complaints-dev.herokuapp.com/auth/login/', this.form)
+          .then(() => {
+            //Perform Success Action
+            this.$router.push('/dashboard')
+          })
+          .catch((error) => {
+            // error.response.status Check status code
+            console.log(error)
+            this.alert = !this.alert
+          }).finally(() => {
+        //Perform action in always
+        console.log('finally')
+      });
+    },
+  }
 }
 </script>
 

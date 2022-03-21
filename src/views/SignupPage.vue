@@ -14,11 +14,20 @@
       >
 
       </v-img>
-      <v-text class="text-black font-weight-bold text-decoration-underline text-high-emphasis text-size-bold"
+      <v-text class="text-black font-weight-bold text-high-emphasis text-size-bold"
               style="margin-left: 155px;"
       >
         Register
       </v-text>
+      <v-alert
+          v-model="alert"
+          type="error"
+          light
+          class="ml-90"
+          style="width: 350px; margin-left: 150px;"
+      >
+        Kindly check your inputs!
+      </v-alert>
       <p v-for="error of v.$errors" :key="error.$uid">
         {{ error.$message }}
       </p>
@@ -27,7 +36,7 @@
             cols="12"
             sm="5"
         >
-          <v-text-field v-model="form.firstName"
+          <v-text-field v-model="form.first_name"
                         label="First Name"
           ></v-text-field>
         </v-col>
@@ -35,7 +44,7 @@
             cols="12"
             sm="5"
         >
-          <v-text-field v-model="form.lastName"
+          <v-text-field v-model="form.last_name"
                         label="Last Name"
           ></v-text-field>
         </v-col>
@@ -102,6 +111,8 @@
         </v-col>
         <v-col class="mt-0">
           <v-btn
+              :loading="loading"
+              :disabled="loading"
               class="ml-0 text-center"
               type="submit"
               x-large
@@ -120,10 +131,10 @@
       </v-row>
     </v-container>
   </v-form>
-
 </template>
 
 <script>
+import axios from 'axios';
 import useVuelidate from '@vuelidate/core'
 import {required, helpers, sameAs} from '@vuelidate/validators'
 
@@ -133,13 +144,17 @@ export default {
   setup: () => ({v: useVuelidate()}),
   data() {
     return {
+      loader: null,
+      dialog: false,
+      alert: false,
+      loading: false,
       show1: false,
       show2: false,
       select: null,
       form:
           {
-            firstName: '',
-            lastName: '',
+            first_name: '',
+            last_name: '',
             username: '',
             email: '',
             password:'',
@@ -148,10 +163,18 @@ export default {
           },
     }
   },
+  watch: {
+    loader () {
+      const l = this.loader
+      this[l] = !this[l]
+      setTimeout(() => (this[l] = false), 3000)
+      this.loader = null
+    },
+  },
   validations() {
     return {
-      firstName: {required: helpers.withMessage('This field cannot be empty1', required)},
-      lastName: {required: helpers.withMessage('This field cannot be empty2', required)},
+      first_name: {required: helpers.withMessage('This field cannot be empty1', required)},
+      last_name: {required: helpers.withMessage('This field cannot be empty2', required)},
       username: {required: helpers.withMessage('This field cannot be empty3', required)},
       email: { required: helpers.withMessage('This field cannot be empty4', required)},
       password: {required},
@@ -163,24 +186,30 @@ export default {
   },
   methods: {
     async submit() {
-      const result = await this.v.$validate()
-      console.log(11, result)
-      if (!result) {
-        // notify user form is invalid
-        console.log(22, result)
-      }
-      console.log(55, result)
-      console.log(this.form)
-
-      // await this.$router.push('/signIn')
+      this.loading = !this.loading
+      // const result = await this.v.$validate()
+      this.loader = 'loading'
+      axios.post('http://complaints-dev.herokuapp.com/auth/register/', this.form)
+          .then(() => {
+            //Perform Success Action
+            this.$router.push('/signIn')
+          })
+          .catch((error) => {
+            // error.response.status Check status code
+            console.log(error)
+            this.alert = !this.alert
+          }).finally(() => {
+        //Perform action in always
+        console.log('finally')
+      });
     },
     setFirstName($event) {
-      this.form.firstName = $event.target.value.toUpperCase()
-      this.v.firstName.$touch()
+      this.form.first_name = $event.target.value.toUpperCase()
+      this.v.first_name.$touch()
     },
     setLastName($event) {
-      this.form.lastName = $event.target.value.toUpperCase()
-      this.v.lastName.$touch()
+      this.form.last_name = $event.target.value.toUpperCase()
+      this.v.last_name.$touch()
     },
     checkEmail($event) {
       this.email = $event.target.value.toLowerCase()
