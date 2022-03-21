@@ -174,18 +174,17 @@ export default {
     }
   },
   methods: {
-    async submit() {
-      const result = await this.v.$validate()
+    submit() {
+      const result = this.v.$validate()
       console.log(11, result)
       if (!result) {
         // notify user form is invalid
         console.log(22, result)
-        return result ? true : "This field is required."
       }
       console.log(55, result)
+      this.$router.push('/signIn')
     },
     setFirstName($event) {
-      // do some silly transformation
       this.firstName = $event.target.value.toUpperCase()
       this.v.firstName.$touch()
     },
@@ -198,7 +197,7 @@ export default {
       this.v.email.$touch()
     },
     checkPhoneNumber($event) {
-      this.phoneNumber = $event.target.value
+      this.phoneNumber = $event.target.value.toNumber()
       this.v.phoneNumber.$touch()
     },
     checkPassword($event){
