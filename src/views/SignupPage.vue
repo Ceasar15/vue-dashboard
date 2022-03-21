@@ -27,7 +27,7 @@
             cols="12"
             sm="5"
         >
-          <v-text-field v-model="form.firstName" :value="form.firstName"
+          <v-text-field v-model="form.firstName"
                         label="First Name"
           ></v-text-field>
         </v-col>
@@ -35,7 +35,7 @@
             cols="12"
             sm="5"
         >
-          <v-text-field v-model="form.lastName" :value="lastName" @input="setLastName"
+          <v-text-field v-model="form.lastName"
                         label="Last Name"
           ></v-text-field>
         </v-col>
@@ -43,7 +43,7 @@
             cols="12"
             sm="5"
         >
-          <v-text-field v-model="form.lastName" :value="email" @input="checkEmail"
+          <v-text-field v-model="form.email"
                         label="Email"
           ></v-text-field>
         </v-col>
@@ -52,7 +52,7 @@
             cols="12"
             sm="5"
         >
-          <v-text-field v-model="form.username" :value="form.username" @input="setUsername"
+          <v-text-field v-model="form.username"
                         label="Username"
           ></v-text-field>
         </v-col>
@@ -63,8 +63,6 @@
         >
           <v-text-field
               v-model="form.password"
-              :value="form.password"
-              @input="checkPassword"
               :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="show1 = !show1"
               :type="show1 ? 'text' : 'password'"
@@ -79,8 +77,6 @@
         >
           <v-text-field
               v-model="form.password2"
-              :value="form.password2"
-              @input="confirmPassword"
               :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="show2 = !show2"
               :type="show2 ? 'text' : 'password'"
@@ -97,7 +93,6 @@
           <v-checkbox
               v-model="form.checkbox"
               :error-messages="v.$errors"
-              @input="checkCheckBox"
               value="1"
               label="I agree with the terms and conditions of the company"
               type="checkbox"
@@ -149,7 +144,6 @@ export default {
             email: '',
             password:'',
             password2: '',
-            phoneNumber: '',
             checkbox: false,
           },
     }
@@ -180,8 +174,12 @@ export default {
 
       // await this.$router.push('/signIn')
     },
+    setFirstName($event) {
+      this.form.firstName = $event.target.value.toUpperCase()
+      this.v.firstName.$touch()
+    },
     setLastName($event) {
-      this.lastName = $event.target.value.toUpperCase()
+      this.form.lastName = $event.target.value.toUpperCase()
       this.v.lastName.$touch()
     },
     checkEmail($event) {
