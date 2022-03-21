@@ -27,7 +27,7 @@
             cols="12"
             sm="5"
         >
-          <v-text-field :value="firstName" @input="setFirstName"
+          <v-text-field v-model="form.firstName" :value="form.firstName"
                         label="First Name"
           ></v-text-field>
         </v-col>
@@ -128,7 +128,7 @@
 
 <script>
 import useVuelidate from '@vuelidate/core'
-import {required, email, helpers, sameAs} from '@vuelidate/validators'
+import {required, helpers, sameAs} from '@vuelidate/validators'
 
 export default {
   name: "SignupPage",
@@ -138,12 +138,20 @@ export default {
     return {
       imageY: require("../../src/assets/development.png"),
       imageX: {backgroundImage: "url(https://vuejs.org/images/logo.png)"},
-      name: '',
       email: '',
       show1: false,
       show2: false,
       select: null,
-      firstName: '',
+      form:
+          {
+            firstName: '',
+            lastName: '',
+            username: '',
+            password:'',
+            password2: '',
+            phoneNumber: '',
+            checkbox: false,
+          },
       lastName: '',
       username: '',
       password:'',
@@ -157,10 +165,7 @@ export default {
       firstName: {required: helpers.withMessage('This field cannot be empty1', required)},
       lastName: {required: helpers.withMessage('This field cannot be empty2', required)},
       username: {required: helpers.withMessage('This field cannot be empty3', required)},
-      email: {
-        required: helpers.withMessage('This field cannot be empty4', required),
-        email: helpers.withMessage('This is not a valid email5', email)
-      },
+      email: { required: helpers.withMessage('This field cannot be empty4', required)},
       password: {required},
       password2: {
         sameAsPassword: helpers.withMessage("Passwords do not match", sameAs(this.password)),
@@ -170,6 +175,7 @@ export default {
   },
   methods: {
     async submit() {
+      console.log(this.form)
       const result = await this.v.$validate()
       console.log(11, result)
       if (!result) {
@@ -180,8 +186,8 @@ export default {
       // await this.$router.push('/signIn')
     },
     setFirstName($event) {
-      this.firstName = $event.target.value.toUpperCase()
-      this.v.firstName.$touch()
+      this.form.firstName = $event.target.value.toUpperCase()
+      this.v.form.firstName.$touch()
     },
     setLastName($event) {
       this.lastName = $event.target.value.toUpperCase()
