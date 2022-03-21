@@ -54,7 +54,6 @@
         >
           <v-text-field :value="username" @input="setUsername"
                         label="Username"
-                        filled
           ></v-text-field>
         </v-col>
 
@@ -129,7 +128,7 @@
 
 <script>
 import useVuelidate from '@vuelidate/core'
-import {required, email, helpers, numeric, maxLength, minLength, sameAs} from '@vuelidate/validators'
+import {required, email, helpers, sameAs} from '@vuelidate/validators'
 
 export default {
   name: "SignupPage",
@@ -155,17 +154,12 @@ export default {
   },
   validations() {
     return {
-      firstName: {required: helpers.withMessage('This field cannot be empty', required)},
-      lastName: {required: helpers.withMessage('This field cannot be empty', required)},
+      firstName: {required: helpers.withMessage('This field cannot be empty1', required)},
+      lastName: {required: helpers.withMessage('This field cannot be empty2', required)},
+      username: {required: helpers.withMessage('This field cannot be empty3', required)},
       email: {
-        required: helpers.withMessage('This field cannot be empty', required),
-        email: helpers.withMessage('This is not a valid email', email)
-      },
-      phoneNumber: {
-        required: helpers.withMessage('This field cannot be empty', required),
-        numeric,
-        maxLengthValue: maxLength(10),
-        minLengthValue: minLength(10),
+        required: helpers.withMessage('This field cannot be empty4', required),
+        email: helpers.withMessage('This is not a valid email5', email)
       },
       password: {required},
       password2: {
@@ -175,15 +169,15 @@ export default {
     }
   },
   methods: {
-    submit() {
-      const result = this.v.$validate()
+    async submit() {
+      const result = await this.v.$validate()
       console.log(11, result)
       if (!result) {
         // notify user form is invalid
         console.log(22, result)
       }
       console.log(55, result)
-      this.$router.push('/signIn')
+      // await this.$router.push('/signIn')
     },
     setFirstName($event) {
       this.firstName = $event.target.value.toUpperCase()
