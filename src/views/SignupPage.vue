@@ -71,7 +71,7 @@
             sm="5"
         >
           <v-text-field
-              v-model="form.password"
+              v-model="form.password1"
               :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="show1 = !show1"
               :type="show1 ? 'text' : 'password'"
@@ -157,7 +157,7 @@ export default {
             last_name: '',
             username: '',
             email: '',
-            password:'',
+            password1:'',
             password2: '',
             checkbox: false,
           },
@@ -177,7 +177,7 @@ export default {
       last_name: {required: helpers.withMessage('This field cannot be empty2', required)},
       username: {required: helpers.withMessage('This field cannot be empty3', required)},
       email: { required: helpers.withMessage('This field cannot be empty4', required)},
-      password: {required},
+      password1: {required},
       password2: {
         sameAsPassword: helpers.withMessage("Passwords do not match", sameAs(this.password)),
       },
@@ -224,7 +224,7 @@ export default {
       this.v.username.$touch()
     },
     checkPassword($event){
-      this.password = $event.target.value
+      this.password1= $event.target.value
     },
     confirmPassword($event){
       this.password2 = $event.target.value
