@@ -26,6 +26,7 @@
         <v-btn
             class="ma-2"
             color="#0D47A1"
+            @click="createProducts"
         >
           <v-icon left=True>
             mdi-plus
@@ -212,11 +213,6 @@
     </v-card>
   </v-dialog>
   <!--End Delete Dialog -->
-  <!--  Edit Dialog -->
-
-  <v-btn @click="get_in_category">
-    Click categories
-  </v-btn>
   <!--End Edit Dialog-->
 
 </template>
@@ -237,6 +233,9 @@ export default {
     }
   },
   methods: {
+    createProducts (){
+      this.$router.push('/admin-create-products')
+    },
     reserve() {
       this.loading = true
       setTimeout(() => (this.loading = false), 2000)

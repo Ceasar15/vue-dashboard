@@ -14,11 +14,20 @@
       >
 
       </v-img>
-      <v-text class="text-black font-weight-bold text-decoration-underline text-high-emphasis text-size-bold"
+      <v-text class="text-black font-weight-bold text-high-emphasis text-size-bold"
               style="margin-left: 155px;"
       >
         Register
       </v-text>
+      <v-alert
+          v-model="alert"
+          type="error"
+          light
+          class="ml-90"
+          style="width: 350px; margin-left: 150px;"
+      >
+        Kindly check your inputs!
+      </v-alert>
       <p v-for="error of v.$errors" :key="error.$uid">
         {{ error.$message }}
       </p>
@@ -27,7 +36,7 @@
             cols="12"
             sm="5"
         >
-          <v-text-field :value="firstName" @input="setFirstName"
+          <v-text-field v-model="form.first_name"
                         label="First Name"
           ></v-text-field>
         </v-col>
@@ -35,7 +44,7 @@
             cols="12"
             sm="5"
         >
-          <v-text-field :value="lastName" @input="setLastName"
+          <v-text-field v-model="form.last_name"
                         label="Last Name"
           ></v-text-field>
         </v-col>
@@ -43,7 +52,7 @@
             cols="12"
             sm="5"
         >
-          <v-text-field :value="email" @input="checkEmail"
+          <v-text-field v-model="form.email"
                         label="Email"
           ></v-text-field>
         </v-col>
@@ -52,9 +61,8 @@
             cols="12"
             sm="5"
         >
-          <v-text-field :value="phoneNumber" @input="checkPhoneNumber"
-                        label="Phone Number"
-                        filled
+          <v-text-field v-model="form.username"
+                        label="Username"
           ></v-text-field>
         </v-col>
 
@@ -63,8 +71,7 @@
             sm="5"
         >
           <v-text-field
-              :value="password"
-              @input="checkPassword"
+              v-model="form.password1"
               :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="show1 = !show1"
               :type="show1 ? 'text' : 'password'"
@@ -78,8 +85,7 @@
             sm="5"
         >
           <v-text-field
-              :value="password2"
-              @input="confirmPassword"
+              v-model="form.password2"
               :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="show2 = !show2"
               :type="show2 ? 'text' : 'password'"
@@ -94,9 +100,8 @@
             style="height: 80px;"
         >
           <v-checkbox
-              v-model="checkbox"
+              v-model="form.checkbox"
               :error-messages="v.$errors"
-              @input="checkCheckBox"
               value="1"
               label="I agree with the terms and conditions of the company"
               type="checkbox"
@@ -106,6 +111,8 @@
         </v-col>
         <v-col class="mt-0">
           <v-btn
+              :loading="loading"
+              :disabled="loading"
               class="ml-0 text-center"
               type="submit"
               x-large
@@ -124,12 +131,12 @@
       </v-row>
     </v-container>
   </v-form>
-
 </template>
 
 <script>
+import axios from 'axios';
 import useVuelidate from '@vuelidate/core'
-import {required, email, helpers, numeric, maxLength, minLength, sameAs} from '@vuelidate/validators'
+import {required, helpers, sameAs} from '@vuelidate/validators'
 
 export default {
   name: "SignupPage",
@@ -137,36 +144,40 @@ export default {
   setup: () => ({v: useVuelidate()}),
   data() {
     return {
-      imageY: require("../../src/assets/development.png"),
-      imageX: {backgroundImage: "url(https://vuejs.org/images/logo.png)"},
-      name: '',
-      email: '',
+      loader: null,
+      dialog: false,
+      alert: false,
+      loading: false,
       show1: false,
       show2: false,
       select: null,
-      firstName: '',
-      lastName: '',
-      password:'',
-      password2: '',
-      phoneNumber: '',
-      checkbox: false,
+      form:
+          {
+            first_name: '',
+            last_name: '',
+            username: '',
+            email: '',
+            password1:'',
+            password2: '',
+            checkbox: false,
+          },
     }
+  },
+  watch: {
+    loader () {
+      const l = this.loader
+      this[l] = !this[l]
+      setTimeout(() => (this[l] = false), 3000)
+      this.loader = null
+    },
   },
   validations() {
     return {
-      firstName: {required: helpers.withMessage('This field cannot be empty', required)},
-      lastName: {required: helpers.withMessage('This field cannot be empty', required)},
-      email: {
-        required: helpers.withMessage('This field cannot be empty', required),
-        email: helpers.withMessage('This is not a valid email', email)
-      },
-      phoneNumber: {
-        required: helpers.withMessage('This field cannot be empty', required),
-        numeric,
-        maxLengthValue: maxLength(10),
-        minLengthValue: minLength(10),
-      },
-      password: {required},
+      first_name: {required: helpers.withMessage('This field cannot be empty1', required)},
+      last_name: {required: helpers.withMessage('This field cannot be empty2', required)},
+      username: {required: helpers.withMessage('This field cannot be empty3', required)},
+      email: { required: helpers.withMessage('This field cannot be empty4', required)},
+      password1: {required},
       password2: {
         sameAsPassword: helpers.withMessage("Passwords do not match", sameAs(this.password)),
       },
@@ -175,34 +186,45 @@ export default {
   },
   methods: {
     async submit() {
-      const result = await this.v.$validate()
-      console.log(11, result)
-      if (!result) {
-        // notify user form is invalid
-        console.log(22, result)
-        return result ? true : "This field is required."
-      }
-      console.log(55, result)
+      this.loading = !this.loading
+      // const result = await this.v.$validate()
+      this.loader = 'loading'
+      axios.post('https://ecommerce-platform-j.herokuapp.com/register/', this.form)
+          .then(() => {
+            //Perform Success Action
+            this.$router.push('/signIn')
+          })
+          .catch((error) => {
+            // error.response.status Check status code
+            console.log(error)
+            this.alert = !this.alert
+          }).finally(() => {
+        //Perform action in always
+        console.log('finally')
+      });
     },
     setFirstName($event) {
-      // do some silly transformation
-      this.firstName = $event.target.value.toUpperCase()
-      this.v.firstName.$touch()
+      this.form.first_name = $event.target.value.toUpperCase()
+      this.v.first_name.$touch()
     },
     setLastName($event) {
-      this.lastName = $event.target.value.toUpperCase()
-      this.v.lastName.$touch()
+      this.form.last_name = $event.target.value.toUpperCase()
+      this.v.last_name.$touch()
     },
     checkEmail($event) {
       this.email = $event.target.value.toLowerCase()
       this.v.email.$touch()
     },
     checkPhoneNumber($event) {
-      this.phoneNumber = $event.target.value
+      this.phoneNumber = $event.target.value.toNumber()
       this.v.phoneNumber.$touch()
     },
+    setUsername($event) {
+      this.username = $event.target.value.toLowerCase()
+      this.v.username.$touch()
+    },
     checkPassword($event){
-      this.password = $event.target.value
+      this.password1= $event.target.value
     },
     confirmPassword($event){
       this.password2 = $event.target.value

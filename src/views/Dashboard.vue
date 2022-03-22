@@ -1,4 +1,14 @@
 <template>
+<!--  <v-alert-->
+<!--      v-model="dialog"-->
+<!--      color="green lighten-2"-->
+<!--      type="success"-->
+<!--      light-->
+<!--      class="ml-90"-->
+<!--      style="width: 450px; margin-left: 450px;"-->
+<!--  >-->
+<!--    Succesfully registered!-->
+<!--  </v-alert>-->
   <v-row>
     <v-col
         cols="12"
@@ -294,6 +304,7 @@
 import {DoughnutChart, LineChart, BarChart} from 'vue-chart-3';
 import {Chart, registerables} from "chart.js";
 import {desserts, headers, testData, items} from "@/utils/desserts"
+import VueCookies from 'vue-cookies'
 
 Chart.register(...registerables);
 
@@ -319,6 +330,9 @@ export default {
       this.loading = true
       setTimeout(() => (this.loading = false), 2000)
     },
+  },
+  mounted() {
+    console.log(6767, VueCookies.get('token'))
   },
 };
 </script>

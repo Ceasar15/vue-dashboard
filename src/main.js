@@ -7,9 +7,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueSnip from 'vue-snip'
 
-
-
 loadFonts()
+
 
 createApp(App)
     .use(router)
