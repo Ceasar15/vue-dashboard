@@ -149,12 +149,28 @@
             outlined
             tile
         >
+          <v-row>
+            <v-col cols="6">
+              <v-card-title>Price</v-card-title>
+              <v-text-field style="width: 160px;" type="number" label="$ USD"
+                            single-line
+              ></v-text-field>
+            </v-col>
+            <v-col cols="6">
+              <v-card-title>Discount</v-card-title>
+              <v-text-field style="width: 160px;" type="number"
+                            label="In Percentage %"
+                            single-line
+              ></v-text-field>
+            </v-col>
+          </v-row>
           <v-card-title>Price</v-card-title>
-          <v-text-field style="width: 160px;" label="$ USD"
+          <v-text-field style="width: 160px;" type="number" label="$ USD"
                         single-line
           ></v-text-field>
           <v-card-title>Discount</v-card-title>
-          <v-text-field label="In Percentage %"
+          <v-text-field style="width: 160px;" type="number"
+                        label="In Percentage %"
                         single-line
           ></v-text-field>
           <v-btn
@@ -194,6 +210,7 @@
             class="pa-2"
             outlined
             tile
+
         >
           <v-card-title>Description</v-card-title>
           <v-container fluid>
@@ -204,52 +221,6 @@
                 single-line
             ></v-textarea>
           </v-container>
-        </v-card>
-      </v-col>
-      <v-col
-          cols="6"
-          md="4"
-      >
-        <v-card
-            class="pa-2"
-            outlined
-            tile
-        >
-          <v-btn
-              class="ma-4"
-              color="green"
-          >
-            Save
-            <v-icon right="true">
-              mdi-arrow-down-drop-circle-outline
-            </v-icon>
-          </v-btn>
-          <v-btn
-              class="ma-4"
-              color="#E3F2FD"
-          >
-            Draft
-            <v-icon right="true">
-              mdi-content-copy
-            </v-icon>
-          </v-btn>
-        </v-card>
-      </v-col>
-    </v-row>
-
-    <!-- Columns are always 50% wide, on mobile and desktop -->
-    <v-row>
-      <v-col
-          v-for="n in 2"
-          :key="n"
-          cols="6"
-      >
-        <v-card
-            class="pa-2"
-            outlined
-            tile
-        >
-          .col-6
         </v-card>
       </v-col>
     </v-row>
