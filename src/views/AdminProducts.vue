@@ -78,7 +78,7 @@
             menu-props="auto"
             hide-details
             label="Sort"
-            class="ml-1"
+            class="ml-1 text-center"
             single-line
             value="Sort by Name or Price"
         ></v-select>

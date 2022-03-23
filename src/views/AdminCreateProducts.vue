@@ -100,15 +100,23 @@
           <v-card-title>Products</v-card-title>
           <v-text-field label="Product Name"
                         single-line
-                        hint="NB: Not More Than 20 Characters"
-                        persistent-hint="true"
           ></v-text-field>
           <v-card-title>Categories</v-card-title>
-          <v-select>
-
+          <v-select
+              label="Choose A Category"
+              :items="categoryA"
+              v-model="productCategory"
+              single-line
+          >
           </v-select>
-          <v-card-title>Products</v-card-title>
-
+          <v-card-title>Gender</v-card-title>
+          <v-select
+              label="Choose A Gender"
+              :items="categoryA"
+              v-model="productGender"
+              single-line
+          >
+          </v-select>
 
         </v-card>
       </v-col>
@@ -133,8 +141,6 @@
     <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
     <v-row>
       <v-col
-          v-for="n in 3"
-          :key="n"
           cols="6"
           md="4"
       >
@@ -143,7 +149,90 @@
             outlined
             tile
         >
-          .col-6 .col-md-4
+          <v-card-title>Price</v-card-title>
+          <v-text-field style="width: 160px;" label="$ USD"
+                        single-line
+          ></v-text-field>
+          <v-card-title>Discount</v-card-title>
+          <v-text-field label="In Percentage %"
+                        single-line
+          ></v-text-field>
+          <v-btn
+              class="ma-4"
+              color="green"
+          >
+            Save
+            <v-icon right="true">
+              mdi-arrow-down-drop-circle-outline
+            </v-icon>
+          </v-btn>
+          <v-btn
+              class="ma-4"
+              color="#E3F2FD"
+          >
+            Draft
+            <v-icon right="true">
+              mdi-content-copy
+            </v-icon>
+          </v-btn>
+          <v-btn
+              class="ma-4"
+              color="red lighten-1"
+          >
+            Cancel
+            <v-icon right="true">
+              mdi-close
+            </v-icon>
+          </v-btn>
+        </v-card>
+      </v-col>
+      <v-col
+          cols="12"
+          md="8"
+      >
+        <v-card
+            class="pa-2"
+            outlined
+            tile
+        >
+          <v-card-title>Description</v-card-title>
+          <v-container fluid>
+            <v-textarea
+                clearable
+                clear-icon="mdi-close-circle"
+                label="Describe your product..."
+                single-line
+            ></v-textarea>
+          </v-container>
+        </v-card>
+      </v-col>
+      <v-col
+          cols="6"
+          md="4"
+      >
+        <v-card
+            class="pa-2"
+            outlined
+            tile
+        >
+          <v-btn
+              class="ma-4"
+              color="green"
+          >
+            Save
+            <v-icon right="true">
+              mdi-arrow-down-drop-circle-outline
+            </v-icon>
+          </v-btn>
+          <v-btn
+              class="ma-4"
+              color="#E3F2FD"
+          >
+            Draft
+            <v-icon right="true">
+              mdi-content-copy
+            </v-icon>
+          </v-btn>
         </v-card>
       </v-col>
     </v-row>
@@ -169,17 +258,22 @@
 </template>
 
 <script>
-import { categoryA} from "@/utils/desserts"
-import {ref, onMounted} from 'vue'
+import {categoryA} from "@/utils/desserts"
+import {ref, reactive} from 'vue'
 
 export default {
   name: 'AdminCreateProducts',
-  components: {
-  },
-  setup(){
+  components: {},
+  setup() {
+    const productCategory = ref('')
+    const productGender = ref('')
+    const selectedCategory = reactive([])
 
     return {
-      categoryA
+      categoryA,
+      selectedCategory,
+      productCategory,
+      productGender
     }
   },
 
