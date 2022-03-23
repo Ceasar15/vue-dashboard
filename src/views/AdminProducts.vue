@@ -54,23 +54,19 @@
     </v-col>
     <v-col cols="3.5">
       <v-card>
+
         <v-select
             v-model="selectedCategory"
-            :items="categoryY"
-            item-text="categoryY"
-            item-value="category"
+            :items="categoryA"
             prepend-icon="mdi-filter-variant"
             menu-props="auto"
-            return-object
             hide-details
             label="Categories"
             class="ml-1"
-            @input="directCategory"
             value="Choose a category"
             single-line
-
+            v-on:input="directCategory"
         >
-
         </v-select>
       </v-card>
     </v-col>
@@ -216,11 +212,22 @@
     </v-card>
   </v-dialog>
   <!--End Delete Dialog -->
+  <select v-model="selectedCategory">
+    <!-- inline object literal -->
+    <option :value="{ number: 123 }">123</option>
+  </select>
+
+
+
+
+  <v-btn @click="get_in_category">
+Change category
+  </v-btn>
 </template>
 
 <script>
 import {ref, onMounted} from 'vue'
-import {sort, categoryY} from "@/utils/desserts"
+import {sort, categoryA} from "@/utils/desserts"
 import axios from "axios";
 
 
@@ -229,9 +236,9 @@ export default {
   props: {},
   data() {
     return {
-      categoriesX: [],
       cate: [],
-      selectedCategory: null
+      selectedCategory: [],
+      filter: '',
     }
   },
   methods: {
@@ -253,7 +260,8 @@ export default {
     delete_dialog_message() {
       this.dialog = false
     },
-    directCategory() {
+    directCategory(a) {
+      console.log(a)
       console.log("category", this.selectedCategory)
     },
     async get_in_category() {
@@ -278,6 +286,13 @@ export default {
     //     .catch(function (error) {
     //       console.error(error);
     //     });
+  },
+  computed: {
+    filterItems() {
+      return this.products.filter(function (val) {
+        return val.category = this.filter;
+      })
+    }
   },
   setup() {
     function fetchProducts() {
@@ -317,9 +332,9 @@ export default {
       search,
       dialog,
       sort,
+      categoryA,
       categories,
-      categoryY,
-      products
+      products,
     }
 
   },

@@ -286,15 +286,17 @@ export const products = [
 ]
 
 
-
 export const categoryA = [
-    {'name': 'electronics'},
-    {'name': 'jewelery'},
-    {'name': 'men\'s clothing'},
-    {'name': 'women\'s clothing'},
+    'electronics',
+    'jewelery',
+    'men\'s clothing',
+    'women\'s clothing',
 ]
 
 export const categoryY = [
-    'electronics', 'jewelery', 'men\'s clothing', 'women\'s clothing'
+    {'cate': 'electronics'},
+    {'cate': 'jewelery'},
+    {'cate': 'men\'s clothing'},
+    {'cate': 'women\'s clothing'}
 ]
-export default {desserts, headers, testData, items, status, categories, sort, products};
+export default {desserts, headers, testData, items, status, categories, sort, categoryA, products};
