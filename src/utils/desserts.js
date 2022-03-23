@@ -287,10 +287,10 @@ export const products = [
 
 
 export const categoryA = [
-    'electronics',
-    'jewelery',
-    'men\'s clothing',
-    'women\'s clothing',
+    'Electronics',
+    'Jewellery',
+    'Men\'s clothing',
+    'Women\'s clothing',
 ]
 
 export const categoryY = [

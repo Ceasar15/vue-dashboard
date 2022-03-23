@@ -84,10 +84,10 @@
     </v-col>
   </v-row>
 
+  <v-form>
   <v-container class="grey lighten-5">
     <!-- Stack the columns on mobile by making one full-width and the other half-width -->
     <v-row>
-
       <v-col
           cols="6"
           md="4"
@@ -98,14 +98,14 @@
             tile
         >
           <v-card-title>Products</v-card-title>
-          <v-text-field label="Product Name"
+          <v-text-field v-model="form.name" label="Product Name"
                         single-line
           ></v-text-field>
           <v-card-title>Categories</v-card-title>
           <v-select
               label="Choose A Category"
               :items="categoryA"
-              v-model="productCategory"
+              v-model="form.category"
               single-line
           >
           </v-select>
@@ -113,7 +113,7 @@
           <v-select
               label="Choose A Gender"
               :items="categoryA"
-              v-model="productGender"
+              v-model="form.gender"
               single-line
           >
           </v-select>
@@ -134,6 +134,17 @@
                  id="avatar" name="avatar"
                  accept="image/png, image/jpeg" multiple>
 
+          <v-file-input
+              v-model="files"
+              multiple="true"
+              clearable
+              :loading="loadingStatus"
+              show-size
+              label="File input"
+              @change="loadbar(files)"
+          ></v-file-input>
+
+
         </v-card>
       </v-col>
     </v-row>
@@ -152,7 +163,9 @@
           <v-row>
             <v-col cols="6">
               <v-card-title>Price</v-card-title>
-              <v-text-field style="width: 160px;" type="number" label="$ USD"
+              <v-text-field style="width: 160px;"
+                            v-model="form.price"
+                            type="number" label="$ USD"
                             single-line
               ></v-text-field>
             </v-col>
@@ -160,22 +173,16 @@
               <v-card-title>Discount</v-card-title>
               <v-text-field style="width: 160px;" type="number"
                             label="In Percentage %"
+                            v-model="form.discount"
                             single-line
               ></v-text-field>
             </v-col>
           </v-row>
-          <v-card-title>Price</v-card-title>
-          <v-text-field style="width: 160px;" type="number" label="$ USD"
-                        single-line
-          ></v-text-field>
-          <v-card-title>Discount</v-card-title>
-          <v-text-field style="width: 160px;" type="number"
-                        label="In Percentage %"
-                        single-line
-          ></v-text-field>
           <v-btn
               class="ma-4"
               color="green"
+              type="submit"
+              @click="saveProducts"
           >
             Save
             <v-icon right="true">
@@ -210,7 +217,6 @@
             class="pa-2"
             outlined
             tile
-
         >
           <v-card-title>Description</v-card-title>
           <v-container fluid>
@@ -225,25 +231,79 @@
       </v-col>
     </v-row>
   </v-container>
+  </v-form>
 
 </template>
 
 <script>
 import {categoryA} from "@/utils/desserts"
 import {ref, reactive} from 'vue'
+// import axios from 'axios'
+// import VueCookies from 'vue-cookies'
 
 export default {
   name: 'AdminCreateProducts',
   components: {},
+  data() {
+    return {
+      files: [],
+      loadingStatus: false,
+      form: {
+        name: '',
+        description: '',
+        price: '',
+        discount: '',
+        category: '',
+        image1: null,
+        image2: null,
+        image3: null,
+      }
+    }
+  },
+  methods: {
+    loadbar (de){
+      console.log('7878', de)
+      setTimeout(function () {
+        this.loadingStatus = true
+      }, 3000);
+      this.loadingStatus = false
+
+    },
+    saveProducts() {
+      console.log("before", this.form)
+      this.form.image1 = this.files[0]
+      this.form.image2 = this.files[1]
+      this.form.image3 = this.files[2]
+      console.log("after", this.form)
+      // axios.post(
+      //     'https://ecommerce-platform-j.herokuapp.com/product/',
+      //     this.form, {
+      //   headers: {
+      //     'Authorization': `Bearer ${token}`
+      //   },
+      // })
+      //     .then((res) => {
+      //       //Perform Success Action
+      //       console.log(22, res)
+      //     })
+      //     .catch((error) => {
+      //       // error.response.status Check status code
+      //       console.log(44, error)
+      //       this.alert = !this.alert
+      //     }).finally(() => {
+      //   //Perform action in always
+      //   console.log('finally')
+      // });
+    }
+  },
   setup() {
-    const productCategory = ref('')
     const productGender = ref('')
     const selectedCategory = reactive([])
+
 
     return {
       categoryA,
       selectedCategory,
-      productCategory,
       productGender
     }
   },
