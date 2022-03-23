@@ -55,19 +55,22 @@
     <v-col cols="3.5">
       <v-card>
         <v-select
+            v-model="selectedCategory"
             :items="categoryY"
+            item-text="categoryY"
+            item-value="category"
             prepend-icon="mdi-filter-variant"
             menu-props="auto"
+            return-object
             hide-details
             label="Categories"
             class="ml-1"
+            @input="directCategory"
             value="Choose a category"
-            item-text="state"
-            item-value="abbr"
             single-line
-            @click="get_in_category"
-        ><option value="" disabled>province</option>
-          <option value="" disabled>state</option>
+
+        >
+
         </v-select>
       </v-card>
     </v-col>
@@ -213,8 +216,6 @@
     </v-card>
   </v-dialog>
   <!--End Delete Dialog -->
-  <!--End Edit Dialog-->
-
 </template>
 
 <script>
@@ -229,7 +230,8 @@ export default {
   data() {
     return {
       categoriesX: [],
-      cate: []
+      cate: [],
+      selectedCategory: null
     }
   },
   methods: {
@@ -250,6 +252,9 @@ export default {
     },
     delete_dialog_message() {
       this.dialog = false
+    },
+    directCategory() {
+      console.log("category", this.selectedCategory)
     },
     async get_in_category() {
       try{
@@ -286,17 +291,20 @@ export default {
     }
 
     function fetchCategories() {
+      console.log(45)
       axios.get('https://fakestoreapi.com/products/categories')
           .then(function (response) {
             categories.value = response.data
+            console.log(77, response.data)
           }).catch(function (error) {
         console.log(error)
       });
     }
 
-    fetchCategories()
     onMounted(() => {
       fetchProducts()
+      fetchCategories()
+
     });
     const page = ref(1)
     const search = ref()
