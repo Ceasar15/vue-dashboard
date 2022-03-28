@@ -110,18 +110,9 @@
               :loading="loadingStatus"
               show-size
               label="File input"
+              multiple
               @change="onFileChange"
             ></v-file-input>
-            <img
-              id="blah"
-              src="https://images.unsplash.com/photo-1618377384716-462f06a61706?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-              alt="your image"
-            />
-            <img
-              id="blah"
-              src="https://images.unsplash.com/photo-1618377384716-462f06a61706?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-              alt="your image"
-            />
             <v-img v-if="url" :src="url" />
           </v-card>
         </v-col>
@@ -219,8 +210,17 @@ export default {
   },
   methods: {
     onFileChange(e) {
-      const file = e.target.files[0];
-      this.url = URL.createObjectURL(file);
+      const file = e.target.files;
+      console.dir(21, file);
+      // for (let i of file) {
+      //   console.log(1, i);
+      //   this.url = URL.createObjectURL(file[0]);
+      // }
+      for (let i = 0; i < 3; i++) {
+        console.log(i, file[i]);
+        this.url = URL.createObjectURL(file[i]);
+
+      }
     },
     saveProducts() {
       console.log("before", this.form);
