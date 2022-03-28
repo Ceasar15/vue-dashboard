@@ -24,12 +24,12 @@
         </v-btn>
         <v-btn
             class="ma-2"
-            color="#69F0AE"
+            color="#A5D6A7"
         >
           <v-icon left=True>
             mdi-plus
           </v-icon>
-          <span style="color: white; font-weight: 900;">
+          <span style="color: black; font-weight: 900;">
             Create Order
           </span>
         </v-btn>
@@ -41,7 +41,7 @@
       <v-card>
         <v-text-field
             v-model="search"
-            prepend-icon="mdi-magnify"
+            prepend-inner-icon="mdi-magnify"
             label="Search by any parameter..."
             filled
             hide-details
@@ -55,7 +55,7 @@
       <v-card>
         <v-select
             :items="status"
-            prepend-icon="mdi-tag"
+            prepend-inner-icon="mdi-tag"
             menu-props="auto"
             hide-details
             label="Status"
@@ -68,7 +68,7 @@
       <v-card>
         <v-select
             :items="status"
-            prepend-icon="mdi-map-marker"
+            prepend-inner-icon="mdi-map-marker"
             menu-props="auto"
             hide-details
             label="Department"
@@ -81,7 +81,7 @@
       <v-card>
         <v-select
             :items="status"
-            prepend-icon="mdi-filter "
+            prepend-inner-icon="mdi-filter "
             menu-props="auto"
             hide-details
             label="Saved Filters"
@@ -94,7 +94,7 @@
       <v-card>
         <v-select
             :items="status"
-            prepend-icon="mdi-filter-variant"
+            prepend-inner-icon="mdi-filter-variant"
             menu-props="auto"
             hide-details
             label="More Filters"

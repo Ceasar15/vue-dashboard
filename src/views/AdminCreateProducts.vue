@@ -4,8 +4,8 @@
     class="text-grey-darken-1"
     style="display: flex; justify-content: space-between"
   >
-    <v-title style="padding: 28px">
-      <p class="ml-7" style="font-size: 1.5rem">Add Products</p>
+    <v-title style="padding: 20px">
+      <p class="" style="font-size: 1.5rem">Add Products</p>
     </v-title>
     <v-text>
       <v-btn>
@@ -28,7 +28,7 @@
       <v-card>
         <v-text-field
           v-model="search"
-          prepend-icon="mdi-magnify"
+          prepend-inner-icon="mdi-magnify"
           label="Search by any parameter..."
           filled
           hide-details
@@ -42,7 +42,7 @@
         <v-select
           v-model="selectedCategory"
           :items="categoryA"
-          prepend-icon="mdi-filter-variant"
+          prepend-inner-icon="mdi-filter-variant"
           menu-props="auto"
           hide-details
           label="Categories"
@@ -58,7 +58,7 @@
       <v-card>
         <v-select
           :items="sort"
-          prepend-icon="mdi-arrow-expand"
+          prepend-inner-icon="mdi-arrow-expand"
           menu-props="auto"
           hide-details
           label="Sort"
@@ -103,7 +103,6 @@
         <v-col cols="12" md="8">
           <v-card class="pa-2" outlined tile>
             <v-card-title>Images</v-card-title>
-            Select at most 3 images
             <v-file-input
               v-model="image"
               clearable
@@ -113,7 +112,68 @@
               multiple
               @change="onFileChange"
             ></v-file-input>
-            <v-img v-if="url" :src="url" />
+            <v-container class="grey lighten-5" style="height: 265px">
+              <v-row no-gutters>
+                <v-col>
+                  <v-card
+                    style="width: 290px; height: 205px"
+                    class="pa-2"
+                    outlined
+                    tile
+                  >
+                    <v-img
+                      style="width: 100%; height: 100%; object-fit: fill"
+                      v-if="form.image1"
+                      :src="form.image1"
+                    />
+                    <v-img
+                      style="width: 100%; height: 100%; object-fit: fill"
+                      class="center"
+                      v-else
+                      src="https://cdn.dribbble.com/users/264011/screenshots/4841271/gif-james_still_2x.gif?compress=1&resize=400x300"
+                    />
+                  </v-card>
+                </v-col>
+                <v-col order="12">
+                  <v-card
+                    class="pa-2"
+                    outlined
+                    tile
+                    style="width: 290px; height: 205px"
+                  >
+                    <v-img
+                      style="width: 100%; height: 100%; object-fit: fill"
+                      v-if="form.image2"
+                      :src="form.image2"
+                    />
+                    <v-img
+                      style="width: 100%; height: 100%; object-fit: fill"
+                      v-else
+                      src="https://cdn.dribbble.com/users/264011/screenshots/4841271/gif-james_still_2x.gif?compress=1&resize=400x300"
+                    />
+                  </v-card>
+                </v-col>
+                <v-col order="1">
+                  <v-card
+                    class="pa-2"
+                    outlined
+                    tile
+                    style="width: 290px; height: 205px"
+                  >
+                    <v-img
+                      style="width: 100%; height: 100%; object-fit: fill"
+                      v-if="form.image3"
+                      :src="form.image3"
+                    />
+                    <v-img
+                      style="width: 100%; height: 100%; object-fit: fill"
+                      v-else
+                      src="https://cdn.dribbble.com/users/264011/screenshots/4841271/gif-james_still_2x.gif?compress=1&resize=400x300"
+                    />
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-container>
           </v-card>
         </v-col>
       </v-row>
@@ -145,18 +205,18 @@
             </v-row>
             <v-btn
               class="ma-4"
-              color="green"
+              color="#A5D6A7"
               type="submit"
               @click="saveProducts"
             >
               Save
               <v-icon right="true"> mdi-arrow-down-drop-circle-outline </v-icon>
             </v-btn>
-            <v-btn class="ma-4" color="#E3F2FD">
+            <v-btn class="ma-4" color="#81D4FA">
               Draft
               <v-icon right="true"> mdi-content-copy </v-icon>
             </v-btn>
-            <v-btn class="ma-4" color="red lighten-1">
+            <v-btn class="ma-4" color="#EF9A9A">
               Cancel
               <v-icon right="true"> mdi-close </v-icon>
             </v-btn>
@@ -216,11 +276,10 @@ export default {
       //   console.log(1, i);
       //   this.url = URL.createObjectURL(file[0]);
       // }
-      for (let i = 0; i < 3; i++) {
-        console.log(i, file[i]);
-        this.url = URL.createObjectURL(file[i]);
-
-      }
+      console.log(file[0]);
+      this.form.image1 = URL.createObjectURL(file[0]);
+      this.form.image2 = URL.createObjectURL(file[1]);
+      this.form.image3 = URL.createObjectURL(file[2]);
     },
     saveProducts() {
       console.log("before", this.form);

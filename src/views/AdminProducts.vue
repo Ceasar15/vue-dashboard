@@ -43,7 +43,7 @@
       <v-card>
         <v-text-field
             v-model="search"
-            prepend-icon="mdi-magnify"
+            prepend-inner-icon="mdi-magnify"
             label="Search by any parameter..."
             filled
             hide-details
@@ -58,7 +58,7 @@
         <v-select
             v-model="selectedCategory"
             :items="categoryA"
-            prepend-icon="mdi-filter-variant"
+            prepend-inner-icon="mdi-filter-variant"
             menu-props="auto"
             hide-details
             label="Categories"
@@ -74,7 +74,7 @@
       <v-card>
         <v-select
             :items="sort"
-            prepend-icon="mdi-arrow-expand"
+            prepend-inner-icon="mdi-arrow-expand"
             menu-props="auto"
             hide-details
             label="Sort"
@@ -140,7 +140,7 @@
           </v-card-title>
           <v-card-actions>
             <v-btn
-                color="#E3F2FD"
+                color="#81D4FA"
                 text
                 @click="reserve"
                 plain
@@ -151,7 +151,7 @@
               Edit
             </v-btn>
             <v-btn
-                color="#FF8A80"
+                color="#EF9A9A"
                 @click.stop="open_dialog">
               <v-icon>
                 mdi-delete
@@ -171,17 +171,6 @@
         :total-visible="7"
     ></v-pagination>
   </div>
-  <!--   Delete Dialog -->
-  <v-row justify="center">
-    <v-btn
-        color="primary"
-        dark
-        @click.stop="dialog = true"
-    >
-      Open Dialog
-    </v-btn>
-
-  </v-row>
   <v-dialog
       v-model="dialog"
       max-width="290"

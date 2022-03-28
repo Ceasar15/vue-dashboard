@@ -1,8 +1,9 @@
 <template>
-      <v-toolbar-title>Dashboard</v-toolbar-title>
-      <v-btn icon class="grey lighten-4" rounded="true">
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
+  <v-row>
+    <v-col class="font-weight-bold" style="margin-left: 40px; display: flex; align-items: center;">
+      Dashboard
+    </v-col>
+    <v-col style="margin-left: 930px">
       <v-btn icon class="grey lighten-4" rounded="true">
         <v-icon>mdi-bell</v-icon>
       </v-btn>
@@ -10,12 +11,15 @@
         <v-icon>mdi-cog-outline</v-icon>
       </v-btn>
       <v-btn class="grey lighten-4">
-        <v-img src="https://heasarc.gsfc.nasa.gov/xanadu/ximage/images.gif"></v-img>
+        <v-img
+          src="https://heasarc.gsfc.nasa.gov/xanadu/ximage/images.gif"
+        ></v-img>
       </v-btn>
-      <v-btn fab src="https://heasarc.gsfc.nasa.gov/"
-      >
+      <v-btn icon>
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
