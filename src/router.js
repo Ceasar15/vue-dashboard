@@ -17,7 +17,7 @@ import AdminCreateProducts from "@/views/AdminCreateProducts";
 
 const routes = [{
     path: '/',
-    redirect: '/admin/dashboard',
+    redirect: '/dashboard',
 },
     {
         path: "/signUp",
