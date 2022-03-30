@@ -266,9 +266,11 @@ export default {
     logout() {
       console.log("logout here");
       const token = VueCookies.get("token");
+      const refresh_token = VueCookies.get("refresh_token");
       console.log(33, token);
+      console.log(66, refresh_token);
       axios
-        .post("https://ecommerce-platform-j.herokuapp.com/logout/", {
+        .post("https://ecommerce-platform-j.herokuapp.com/logout/", {refresh_token: refresh_token},{
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -102,6 +102,7 @@ export default {
             //Perform Success Action
             console.log(res.data)
             VueCookies.set('token' , res.data.access, "1h")
+            VueCookies.set('refresh_token' , res.data.refresh, "1h")
             this.$router.push('/dashboard')
           })
           .catch((error) => {
