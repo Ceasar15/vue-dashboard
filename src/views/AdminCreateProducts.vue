@@ -12,10 +12,7 @@
         <v-icon left="True"> mdi-import </v-icon>
         <span class="text-black"> Import </span>
       </v-btn>
-      <v-btn class="ma-4" color="black">
-        Export
-        <v-icon right="true"> mdi-arrow-down-drop-circle-outline </v-icon>
-      </v-btn>
+      <ExportButton></ExportButton>
       <v-btn class="ma-2" color="#0D47A1" @click="addProduct">
         <v-icon left="True"> mdi-attachment </v-icon>
         <span style="color: white; font-weight: 900"> Attachment </span>
@@ -25,17 +22,7 @@
 
   <v-row>
     <v-col cols="6">
-      <v-card>
-        <v-text-field
-          v-model="search"
-          prepend-inner-icon="mdi-magnify"
-          label="Search by any parameter..."
-          filled
-          hide-details
-          outlined
-          class="ml-2"
-        ></v-text-field>
-      </v-card>
+      <SearchBar></SearchBar>
     </v-col>
     <v-col cols="3.5">
       <v-card>
@@ -246,10 +233,13 @@ import { categoryA } from "@/utils/desserts";
 import { ref, reactive } from "vue";
 import axios from "axios";
 import VueCookies from "vue-cookies";
+import SearchBar from "@/components/common/SearchBar.vue"
+import ExportButton from "@/components/common/ExportButton.vue";
+
 
 export default {
   name: "AdminCreateProducts",
-  components: {},
+  components: { SearchBar, ExportButton },
   data() {
     return {
       url: null,

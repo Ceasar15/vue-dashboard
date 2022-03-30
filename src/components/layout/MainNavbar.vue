@@ -1,25 +1,27 @@
 <template>
-  <v-row>
-    <v-col class="font-weight-bold" style="margin-left: 40px; display: flex; align-items: center;">
-      Dashboard
-    </v-col>
-    <v-col style="margin-left: 930px">
-      <v-btn icon class="grey lighten-4" rounded="true">
+  <div style="width: 100%; display: flex; background-color: white">
+    <div style="display: flex; align-items: center">
+      <strong style="margin-left: 32px;" class="subheading">Dashboard</strong>
+    </div>
+    <v-col style="margin-left: 65.25rem">
+      <div style="display: flex; justify-content:center; align-items:center">
+      <v-btn icon class="grey mx-4 lighten-4" rounded="true">
         <v-icon>mdi-bell</v-icon>
       </v-btn>
-      <v-btn icon class="grey lighten-4">
+      <v-btn icon class="grey mx-4 lighten-4">
         <v-icon>mdi-cog-outline</v-icon>
       </v-btn>
-      <v-btn class="grey lighten-4">
+      <v-btn class="grey mx-4 lighten-4">
         <v-img
           src="https://heasarc.gsfc.nasa.gov/xanadu/ximage/images.gif"
         ></v-img>
       </v-btn>
-      <v-btn icon>
+      <v-btn class="grey mx-4 lighten-4" icon>
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
+      </div>
     </v-col>
-  </v-row>
+  </div>
 </template>
 
 <script>
@@ -33,7 +35,14 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      items: [
+        { title: "Click Me" },
+        { title: "Click Me" },
+        { title: "Click Me" },
+        { title: "Click Me 2" },
+      ],
+    };
   },
 };
 </script>
@@ -64,7 +73,7 @@ body {
 .main-nav-icons {
   position: fixed;
   right: 50px;
-  float: right;
+  /* float: right; */
   top: 40px;
   margin-left: 90px;
   color: #aaa3a3fa;

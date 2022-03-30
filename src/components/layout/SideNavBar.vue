@@ -3,30 +3,30 @@
     <div class="sidebar" :class="isOpened ? 'open' : ''" :style="cssVars">
       <div class="logo-details" style="margin: 6px 14px 0 14px">
         <img
-            v-if="menuLogo"
-            :src="menuLogo"
-            alt="menu-logo"
-            class="menu-logo icon"
+          v-if="menuLogo"
+          :src="menuLogo"
+          alt="menu-logo"
+          class="menu-logo icon"
         />
-        <em v-else class="bx icon" :class="menuIcon"/>
+        <em v-else class="bx icon" :class="menuIcon" />
         <div class="logo_name">
           {{ menuTitle }}
         </div>
         <em
-            class="bx"
-            :class="isOpened ? 'bx-menu-alt-right' : 'bx-menu'"
-            id="btn"
-            @click="isOpened = !isOpened"
+          class="bx"
+          :class="isOpened ? 'bx-menu-alt-right' : 'bx-menu'"
+          id="btn"
+          @click="isOpened = !isOpened"
         />
       </div>
       <div
-          style="
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        flex-grow: 1;
-        max-height: calc(100% - 60px);
-      "
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          flex-grow: 1;
+          max-height: calc(100% - 60px);
+        "
       >
         <div id="my-scroll" style="margin: 6px 14px 0 14px">
           <ul class="nav-list" style="overflow: visible">
@@ -39,43 +39,50 @@
               />
               <span class="tooltip">{{ searchTooltip }}</span>
             </li> -->
-            <div style="
-                font-size:19px;
-                margin-left: 20px;
-                text-align: left;
-                "
-                 class="text-grey-darken-1"
-            >Main
+            <div
+              style="font-size: 19px; margin-left: 20px; text-align: left"
+              class="text-grey-darken-1"
+            >
+              Main
             </div>
             <span v-for="(menuItem, index) in menuItems" :key="index">
-            <li>
-              <a :href="menuItem.link">
-                <i class="bx" :class="menuItem.icon || 'bx-square-rounded'"/>
-                <span class="links_name">{{ menuItem.name }}</span>
-              </a>
-              <span class="tooltip">{{
+              <li>
+                <a :href="menuItem.link">
+                  <i class="bx" :class="menuItem.icon || 'bx-square-rounded'" />
+                  <span class="links_name">{{ menuItem.name }}</span>
+                </a>
+                <span class="tooltip">{{
                   menuItem.tooltip || menuItem.name
                 }}</span>
-            </li>
-          </span>
-            <div style="
-                font-size:19px;
-                margin-left: 20px;
-                text-align: left"
-                class="text-grey-darken-1"
-            >Side Channels
+              </li>
+            </span>
+            <div
+              style="font-size: 19px; margin-left: 20px; text-align: left"
+              class="text-grey-darken-1"
+            >
+              Side Channels
             </div>
             <span v-for="(channelItem, index) in channelItems" :key="index">
-            <li>
-              <a :href="channelItem.link">
-                <i class="bx" :class="channelItem.icon || 'bx-square-rounded'"/>
-                <span class="links_name">{{ channelItem.name }}</span>
-              </a>
-              <span class="tooltip">{{
+              <li>
+                <a :href="channelItem.link">
+                  <i
+                    class="bx"
+                    :class="channelItem.icon || 'bx-square-rounded'"
+                  />
+                  <span class="links_name">{{ channelItem.name }}</span>
+                </a>
+                <span class="tooltip">{{
                   channelItem.tooltip || channelItem.name
                 }}</span>
+              </li>
+            </span>
+            <li>
+              <a @click="logout">
+                <i class="bx bx-log-out" />
+                <span class="links_name">LogOut</span>
+              </a>
+              <span class="tooltip">dadsd</span>
             </li>
-          </span>
           </ul>
         </div>
       </div>
@@ -84,6 +91,9 @@
 </template>
 
 <script>
+import axios from "axios";
+import VueCookies from "vue-cookies";
+
 export default {
   name: "SideNavbar",
   props: {
@@ -121,7 +131,7 @@ export default {
       type: Array,
       default: () => [
         {
-          link: "/signUp",
+          link: "/signIn",
           name: "Profile",
           tooltip: "Profile",
           icon: "bx-user",
@@ -173,7 +183,6 @@ export default {
           tooltip: "Files",
           icon: "bx-folder",
         },
-
       ],
     },
     //! Search
@@ -253,6 +262,33 @@ export default {
       isOpened: false,
     };
   },
+  methods: {
+    logout() {
+      console.log("logout here");
+      const token = VueCookies.get("token");
+      console.log(33, token);
+      axios
+        .post("https://ecommerce-platform-j.herokuapp.com/logout/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          //Perform Success Action
+          console.log(22, res);
+          this.$router.push("/signIn");
+        })
+        .catch((error) => {
+          // error.response.status Check status code
+          console.log(44, error);
+          this.alert = !this.alert;
+        })
+        .finally(() => {
+          //Perform action in always
+          console.log("finally");
+        });
+    },
+  },
   mounted() {
     this.isOpened = this.isMenuOpen;
   },
@@ -276,9 +312,9 @@ export default {
   watch: {
     isOpened() {
       window.document.body.style.paddingLeft =
-          this.isOpened && this.isPaddingLeft
-              ? this.menuOpenedPaddingLeftBody
-              : this.menuClosedPaddingLeftBody;
+        this.isOpened && this.isPaddingLeft
+          ? this.menuOpenedPaddingLeftBody
+          : this.menuClosedPaddingLeftBody;
     },
   },
 };

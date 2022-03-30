@@ -161,7 +161,7 @@
         <v-card-text>
           <div class="my-4 grey--text" style="font-weight: bold">
             <v-icon>mdi-chart-areaspline</v-icon>
-            Increase
+            Decrease
           </div>
           <div class="my-4 text-subtitle-1" style="color: red; font-weight: bold">
             <v-icon>mdi-arrow-down</v-icon>
