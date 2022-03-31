@@ -47,10 +47,10 @@
             </div>
             <span v-for="(menuItem, index) in menuItems" :key="index">
               <li>
-                <a :href="menuItem.link">
+                <router-link :to="menuItem.link">
                   <i class="bx" :class="menuItem.icon || 'bx-square-rounded'" />
                   <span class="links_name">{{ menuItem.name }}</span>
-                </a>
+                </router-link>
                 <span class="tooltip">{{
                   menuItem.tooltip || menuItem.name
                 }}</span>
@@ -64,24 +64,27 @@
             </div>
             <span v-for="(channelItem, index) in channelItems" :key="index">
               <li>
-                <a :href="channelItem.link">
+                <router-link :to="channelItem.link">
                   <i
                     class="bx"
                     :class="channelItem.icon || 'bx-square-rounded'"
                   />
                   <span class="links_name">{{ channelItem.name }}</span>
-                </a>
+                </router-link>
                 <span class="tooltip">{{
                   channelItem.tooltip || channelItem.name
                 }}</span>
               </li>
             </span>
             <li>
+              <!-- <router-link>
+                <i class="bx bx-log-out" />
+              </router-link> -->
               <a @click="logout">
                 <i class="bx bx-log-out" />
                 <span class="links_name">LogOut</span>
               </a>
-              <span class="tooltip">dadsd</span>
+              <span class="tooltip">Logout</span>
             </li>
           </ul>
         </div>
@@ -270,11 +273,15 @@ export default {
       console.log(33, token);
       console.log(66, refresh_token);
       axios
-        .post("https://ecommerce-platform-j.herokuapp.com/logout/", {refresh_token: refresh_token},{
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        .post(
+          "https://ecommerce-platform-j.herokuapp.com/logout/",
+          { refresh_token: refresh_token },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
         .then((res) => {
           //Perform Success Action
           console.log(22, res);
