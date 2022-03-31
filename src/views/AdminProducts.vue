@@ -57,7 +57,6 @@
       </v-card>
     </v-col>
   </v-row>
-
   <v-row class="ml-10">
     <div
       v-show="loadingI"
@@ -73,7 +72,7 @@
       <clip-loader
         :loading="loadingI"
         color="#0D47A1"
-        size="56px"
+        size="86px"
       ></clip-loader>
     </div>
     <v-col
@@ -94,8 +93,24 @@
           <v-img height="300" :src="product.image">
             <v-chip class="ma-0" color="deep-orange accent-4"> 15% </v-chip>
           </v-img>
-          <v-card-title v-snip:js="3">
-            {{ product.title }}
+          <v-card-title
+            style="
+              white-space: nowrap;
+              width: 235px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: block;
+            "
+          >
+            <router-link
+              to="/admin-detail-product"
+              custom
+              v-slot="{ href, navigate }"
+            >
+              <NavLink :href="href" @click="navigate(product.title)">
+                {{ product.title }}
+              </NavLink>
+            </router-link>
           </v-card-title>
           <v-card-text>
             <v-row align="center" class="mx-0">
@@ -132,8 +147,12 @@
         Are you sure you want to delete this product
       </v-card-text>
       <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn color="red darken-1" text @click="delete_dialog_message">
+        <v-btn
+          class="text-center"
+          color="red darken-1"
+          text
+          @click="delete_dialog_message"
+        >
           Yes
         </v-btn>
         <v-btn color="green darken-1" text @click="delete_dialog_message">
@@ -173,6 +192,9 @@ export default {
   methods: {
     createProducts() {
       this.$router.push("/admin-create-products");
+    },
+    viewDetailProduct() {
+      this.$router.push("/admin-detail-product");
     },
     reserve() {
       this.loading = true;
@@ -267,8 +289,7 @@ export default {
   overflow: hidden;
 }
 .v-overlay__content {
-  background-color: red;
-  left: 380%;
+  left: 372%;
   top: 50%;
   transform: translate(-50%, -50%);
 }

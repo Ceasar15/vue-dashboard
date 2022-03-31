@@ -12,6 +12,7 @@ import AdminProducts from "@/views/AdminProducts";
 import SignupPage from "@/views/SignupPage";
 import SigninPage from "@/views/SigninPage";
 import AdminCreateProducts from "@/views/AdminCreateProducts";
+import AdminDetailProduct from "@/views/AdminDetailProduct";
 
 
 
@@ -48,6 +49,11 @@ const routes = [{
         path: "/admin-create-products",
         name: "AdminCreateProducts",
         component: AdminCreateProducts,
+    },
+    {
+        path: "/admin-detail-product",
+        name: "AdminDetailProduct",
+        component: AdminDetailProduct,
     },
     {
         path: "/analytics",
