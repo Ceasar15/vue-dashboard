@@ -70,7 +70,7 @@
       "
       class="ml-9"
     >
-    <clip-loader :loading="loadingI" color="#272f44" size="56px"></clip-loader>
+    <clip-loader :loading="loadingI" color="#0D47A1" size="56px"></clip-loader>
     </div>
     <v-col
       v-for="product in products"
@@ -125,8 +125,8 @@
   <v-dialog
     v-model="dialog"
     max-width="290"
-    style="border: 3px solid"
     attach="true"
+    style="border: 3px solid;"
   >
     <v-card>
       <v-card-text class="text-h5">
@@ -144,10 +144,6 @@
     </v-card>
   </v-dialog>
   <!--End Delete Dialog -->
-  <select v-model="selectedCategory">
-    <!-- inline object literal -->
-    <option :value="{ number: 123 }">123</option>
-  </select>
 
   <v-btn @click="get_in_category"> Change category </v-btn>
 </template>
@@ -159,7 +155,6 @@ import axios from "axios";
 import SearchBar from "@/components/common/SearchBar.vue";
 import ExportButton from "@/components/common/ExportButton.vue";
 import ClipLoader from "vue-spinner/src/ClipLoader.vue";
-
 
 export default {
   name: "AdminProducts",
