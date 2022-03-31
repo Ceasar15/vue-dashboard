@@ -70,7 +70,11 @@
       "
       class="ml-9"
     >
-    <clip-loader :loading="loadingI" color="#0D47A1" size="56px"></clip-loader>
+      <clip-loader
+        :loading="loadingI"
+        color="#0D47A1"
+        size="56px"
+      ></clip-loader>
     </div>
     <v-col
       v-for="product in products"
@@ -122,12 +126,7 @@
   <div class="text-center">
     <v-pagination v-model="page" :length="15" :total-visible="7"></v-pagination>
   </div>
-  <v-dialog
-    v-model="dialog"
-    max-width="290"
-    attach="true"
-    style="border: 3px solid;"
-  >
+  <v-dialog v-model="dialog" max-width="290" attach="true" style="">
     <v-card>
       <v-card-text class="text-h5">
         Are you sure you want to delete this product
@@ -158,7 +157,7 @@ import ClipLoader from "vue-spinner/src/ClipLoader.vue";
 
 export default {
   name: "AdminProducts",
-  components: { SearchBar, ExportButton, ClipLoader, },
+  components: { SearchBar, ExportButton, ClipLoader },
   props: {},
   data() {
     return {
@@ -266,5 +265,11 @@ export default {
 .v-select__selections {
   height: 20px;
   overflow: hidden;
+}
+.v-overlay__content {
+  background-color: red;
+  left: 380%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 </style>
