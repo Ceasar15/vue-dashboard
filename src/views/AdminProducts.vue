@@ -59,6 +59,19 @@
   </v-row>
 
   <v-row class="ml-10">
+    <div
+      v-show="loadingI"
+      style="
+        height: 500px;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+      class="ml-9"
+    >
+    <clip-loader :loading="loadingI" color="#272f44" size="56px"></clip-loader>
+    </div>
     <v-col
       v-for="product in products"
       :key="product.name"
@@ -145,17 +158,22 @@ import { sort, categoryA } from "@/utils/desserts";
 import axios from "axios";
 import SearchBar from "@/components/common/SearchBar.vue";
 import ExportButton from "@/components/common/ExportButton.vue";
+import ClipLoader from "vue-spinner/src/ClipLoader.vue";
 
 
 export default {
   name: "AdminProducts",
-  components: { SearchBar, ExportButton },
+  components: { SearchBar, ExportButton, ClipLoader, },
   props: {},
   data() {
     return {
+      color: "green",
+      color1: "orange",
+      loadingI: true,
       cate: [],
       selectedCategory: [],
       filter: "",
+      products: [],
     };
   },
   methods: {
@@ -177,9 +195,8 @@ export default {
     delete_dialog_message() {
       this.dialog = false;
     },
-    directCategory(a) {
-      console.log(a);
-      console.log("category", this.selectedCategory);
+    directCategory() {
+      console.log("Direct category");
     },
     async get_in_category() {
       try {
@@ -187,7 +204,6 @@ export default {
         const baseUrl = "https://fakestoreapi.com/products/category/";
         const url = baseUrl + para;
         let he = await this.axios.get(url);
-        console.log(676, he);
         this.products = he.data;
       } catch (e) {
         console.log("Error", e);
@@ -195,14 +211,18 @@ export default {
     },
   },
   mounted() {
-    // Make a request for all products
-    // axios.get('https://fakestoreapi.com/products/categories')
-    //     .then( function (response){ (
-    //         this.categoriesX = response.data
-    //     )})
-    //     .catch(function (error) {
-    //       console.error(error);
-    //     });
+    setTimeout(() => {
+      console.log(676);
+    }, 7000);
+    axios
+      .get("https://fakestoreapi.com/products")
+      .then((response) => {
+        this.products = response.data;
+        this.loadingI = false;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   },
   computed: {
     filterItems() {
@@ -215,22 +235,9 @@ export default {
     function fetchProducts() {
       axios
         .get("https://fakestoreapi.com/products")
-        .then(function (response) {
-          products.value = response.data;
-          console.log(90, response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
-
-    function fetchCategories() {
-      console.log(45);
-      axios
-        .get("https://fakestoreapi.com/products/categories")
-        .then(function (response) {
-          categories.value = response.data;
-          console.log(77, response.data);
+        .then((response) => {
+          productsLoading = false;
+          productss.value = response.data;
         })
         .catch(function (error) {
           console.log(error);
@@ -239,13 +246,13 @@ export default {
 
     onMounted(() => {
       fetchProducts();
-      fetchCategories();
     });
     const page = ref(1);
     const search = ref();
     const dialog = ref(false);
-    const products = ref(null);
+    const productss = ref(null);
     const categories = ref(null);
+    var productsLoading = ref(true);
 
     return {
       page,
@@ -254,7 +261,8 @@ export default {
       sort,
       categoryA,
       categories,
-      products,
+      productss,
+      productsLoading,
     };
   },
 };
