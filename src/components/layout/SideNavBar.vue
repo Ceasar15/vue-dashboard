@@ -89,9 +89,6 @@
 </template>
 
 <script>
-// import axios from "axios";
-// import VueCookies from "vue-cookies";
-
 export default {
   name: "SideNavbar",
   props: {
@@ -183,19 +180,6 @@ export default {
         },
       ],
     },
-    //! Search
-    // isSearch: {
-    //   type: Boolean,
-    //   default: true,
-    // },
-    // searchPlaceholder: {
-    //   type: String,
-    //   default: "Search...",
-    // },
-    // searchTooltip: {
-    //   type: String,
-    //   default: "Search",
-    // },
     //! Profile detailes
     profileImg: {
       type: String,
@@ -203,11 +187,11 @@ export default {
     },
     profileName: {
       type: String,
-      default: "Fayzullo Saidakbarov",
+      default: "Hey Buddy",
     },
     profileRole: {
       type: String,
-      default: "Frontend vue developer",
+      default: "Full Stack vue developer",
     },
     isExitButton: {
       type: Boolean,
@@ -238,10 +222,6 @@ export default {
       type: String,
       default: "#e4e9f7",
     },
-    // searchInputTextColor: {
-    //   type: String,
-    //   default: "#fff",
-    // },
     menuItemsHoverColor: {
       type: String,
       default: "#fff",
@@ -314,8 +294,7 @@ export default {
         "--logo-title-color": this.logoTitleColor,
         "--icons-color": this.iconsColor,
         "--items-tooltip-color": this.itemsTooltipColor,
-        // "--serach-input-text-color": this.searchInputTextColor,
-        "--menu-items-hover-color": this.menuItemsHoverColor,
+          "--menu-items-hover-color": this.menuItemsHoverColor,
         "--menu-items-text-color": this.menuItemsTextColor,
         "--menu-footer-text-color": this.menuFooterTextColor,
       };
@@ -427,9 +406,6 @@ body {
 
 .sidebar .nav-list {
   margin-top: 20px;
-  /* margin-bottom: 60px; */
-  /* height: 100%; */
-  /* min-height: min-content; */
 }
 
 .sidebar li {
@@ -485,24 +461,6 @@ body {
   padding: 0 20px 0 50px;
   width: 100%;
 }
-
-/* .sidebar .bx-search {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  font-size: 22px;
-  background: var(--secondary-color);
-  color: var(--icons-color);
-} */
-/* .sidebar.open .bx-search:hover {
-  background: var(--secondary-color);
-  color: var(--icons-color);
-}
-.sidebar .bx-search:hover {
-  background: var(--menu-items-hover-color);
-  color: var(--bg-color);
-} */
 .sidebar li a {
   display: flex;
   height: 100%;
@@ -655,21 +613,8 @@ body {
 
 #my-scroll::-webkit-scrollbar {
   display: none;
-  /* background-color: rgba(255, 255, 255, 0.2);
-    width: 10px;
-    border-radius:5px  */
-}
 
-/* #my-scroll::-webkit-scrollbar-thumb{
-    background-color: red;
-    border-radius:5px
-  }
-  #my-scroll::-webkit-scrollbar-button:vertical:start:decrement{
-    display:none;
-  }
-  #my-scroll::-webkit-scrollbar-button:vertical:end:increment{
-    display:none;
-  } */
+}
 @media (max-width: 420px) {
   .sidebar li .tooltip {
     display: none;
