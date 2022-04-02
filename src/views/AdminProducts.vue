@@ -37,7 +37,7 @@
           class="ml-1"
           value="Choose a category"
           single-line
-          v-on:input="directCategory"
+          v-on:input="get_in_category"
         >
         </v-select>
       </v-card>
@@ -202,10 +202,6 @@ export default {
     };
   },
   methods: {
-    increment() {
-      this.$store.commit("increment");
-      console.log(5656, this.$store.state.count);
-    },
     createProducts() {
       this.$router.push("/admin-create-products");
     },
@@ -221,9 +217,6 @@ export default {
     },
     delete_dialog_message() {
       this.dialog = false;
-    },
-    directCategory() {
-      console.log("Direct category");
     },
     async get_in_category() {
       try {
