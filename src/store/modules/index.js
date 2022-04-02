@@ -15,12 +15,3 @@ const store = createStore({
 
 
 export default store;
-// Load Vuex
-// Vue.use(Vuex);
-// Create store
-// export default new Vuex.Store({
-//   modules: {
-//     auth
-//   },
-//   plugins: [createPersistedState()]
-// });
