@@ -280,20 +280,11 @@ export default {
   height: 20px;
   overflow: hidden;
 }
-/* .v-overlay__content {
-  left: 372%;
-  top: 50%; 
-  transform: translate(-50%, -50%);
-} */
-
 .productDialog {
   left: 53%;
-  /* top: 50%; */
-  /* transform: translate(-5%, -5%); */
 }
 
 .v-card-actions {
-  /* border: 3px solid tomato; */
   text-align: center;
   color: rgb(0, 0, 0);
   display: flex;

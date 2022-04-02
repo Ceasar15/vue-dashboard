@@ -178,7 +178,6 @@ export default {
         this.$router.push("/signIn");
       } catch (error) {
         console.error(error);
-        // this.showError = true
       }
     },
     // async submit() {
@@ -235,6 +234,5 @@ export default {
 </script>
 
 <style>
-.container {
-}
+
 </style>
