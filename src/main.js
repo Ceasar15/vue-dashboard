@@ -14,7 +14,7 @@ import Vuex from 'vuex';
 
 
 // axios.defaults.withCredentials = true
-// axios.defaults.baseURL = 'https://gabbyblog.herokuapp.com/';
+axios.defaults.baseURL = 'https://ecommerce-platform-j.herokuapp.com/';
 
 
 loadFonts()

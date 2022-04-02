@@ -110,9 +110,10 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 import useVuelidate from "@vuelidate/core";
 import { required, helpers, sameAs } from "@vuelidate/validators";
+import { mapActions } from "vuex";
 
 export default {
   name: "SignupPage",
@@ -134,7 +135,6 @@ export default {
         email: "",
         password1: "",
         password2: "",
-        checkbox: false,
       },
     };
   },
@@ -171,26 +171,37 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["Register"]),
     async submit() {
-      this.loading = !this.loading;
-      // const result = await this.v.$validate()
-      this.loader = "loading";
-      axios
-        .post("https://ecommerce-platform-j.herokuapp.com/register/", this.form)
-        .then(() => {
-          //Perform Success Action
-          this.$router.push("/signIn");
-        })
-        .catch((error) => {
-          // error.response.status Check status code
-          console.log(error);
-          this.alert = !this.alert;
-        })
-        .finally(() => {
-          //Perform action in always
-          console.log("finally");
-        });
+      try {
+        await this.Register(this.form);
+        console.log(this.form);
+        this.$router.push("/signIn");
+      } catch (error) {
+        console.error(error);
+        // this.showError = true
+      }
     },
+    // async submit() {
+    //   this.loading = !this.loading;
+    //   // const result = await this.v.$validate()
+    //   this.loader = "loading";
+    //   axios
+    //     .post("https://ecommerce-platform-j.herokuapp.com/register/", this.form)
+    //     .then(() => {
+    //       //Perform Success Action
+    //       this.$router.push("/signIn");
+    //     })
+    //     .catch((error) => {
+    //       // error.response.status Check status code
+    //       console.log(error);
+    //       this.alert = !this.alert;
+    //     })
+    //     .finally(() => {
+    //       //Perform action in always
+    //       console.log("finally");
+    //     });
+    // },
     setFirstName($event) {
       this.form.first_name = $event.target.value.toUpperCase();
       this.v.first_name.$touch();
