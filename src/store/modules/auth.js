@@ -8,7 +8,7 @@ const state = {
 const getters = {
     isAuthenticated: state => !!state.user,
     StatePosts: state => state.posts,
-    StateUser: state => state.user,
+    StateUser: state.user,
 };
 
 const actions = {
@@ -42,7 +42,7 @@ const mutations = {
     increment(state) {
         state.count++
     },
-    setUser(state, username) {
+    setUser(username) {
         state.user = username
     },
     setPosts(state, posts) {
