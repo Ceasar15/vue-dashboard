@@ -276,6 +276,7 @@ export default {
     },
   },
   mounted() {
+    console.log(33, this.$store.getters.StateUser);
     console.log(6767, VueCookies.get("token"));
     console.log(9090, VueCookies.get("refresh_token"));
   },
