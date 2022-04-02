@@ -89,6 +89,8 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "SideNavbar",
   props: {
@@ -272,8 +274,13 @@ export default {
     //       console.log("finally");
     //     });
     // },
+    ...mapActions(["LogOut"]),
     async logout() {
-      await this.$store.dispatch("LogOut");
+      var data = {
+        'refresh_token': this.$store.getters.StateRefreshToken
+      }
+      console.log(data);
+      await this.LogOut(data);
       this.$router.push("/signIn");
     },
   },

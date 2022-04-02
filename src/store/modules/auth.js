@@ -34,9 +34,8 @@ const actions = {
         await axios.post('api/token/', User)
             .then((response) => {
                 commit('setTokens', response.data)
+                commit('setUser', User.username)
             })
-            .catch((error) => console.log(55, error))
-        await commit('setUser', User.username)
     },
     async LogOut({
         commit
@@ -65,7 +64,7 @@ const mutations = {
     LogOut(state) {
         state.user = null
         state.products = null
-        state.accessToken = null,
+        state.accessToken = null
         state.refreshToken = null
     },
 

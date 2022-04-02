@@ -12,10 +12,9 @@ import VueAxios from 'vue-axios'
 import store from './store/modules';
 import Vuex from 'vuex';
 
-
 // axios.defaults.withCredentials = true
 axios.defaults.baseURL = 'https://ecommerce-platform-j.herokuapp.com/';
-
+// axios.defaults.headers.common["Authorization"] = "Bearer " + store.getters.StateAccessToken;
 
 loadFonts()
 

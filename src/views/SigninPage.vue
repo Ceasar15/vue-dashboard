@@ -1,78 +1,70 @@
 <template>
-  <v-form
-      lazy-validation
-  >
-    <v-container class="container"
-                 :style="{
-                       'width': '100%',
-                  }"
+  <v-form lazy-validation>
+    <v-container
+      class="container"
+      :style="{
+        width: '100%',
+      }"
     >
       <v-img
-          width="400px"
-          height="350px"
-          position="center"
-          style="margin-left: 540px;"
-          src="https://media.istockphoto.com/vectors/web-ad-vector-id1322792803?k=20&m=1322792803&s=612x612&w=0&h=nOcC5ld1h2p25tTwin6JHAPTLBWIIygqRvq6QydAwOk="
+        width="400px"
+        height="350px"
+        position="center"
+        style="margin-left: 540px"
+        src="https://media.istockphoto.com/vectors/web-ad-vector-id1322792803?k=20&m=1322792803&s=612x612&w=0&h=nOcC5ld1h2p25tTwin6JHAPTLBWIIygqRvq6QydAwOk="
       >
-
       </v-img>
-      <v-text class="text-black font-weight-bold text-high-emphasis text-size-bold"
-              style="padding-left: 170px; margin-left: 190px;"
+      <v-text
+        class="text-black font-weight-bold text-high-emphasis text-size-bold"
+        style="padding-left: 170px; margin-left: 190px"
       >
         Login
       </v-text>
       <v-alert
-          v-model="alert"
-          type="error"
-          light
-          class="ml-90"
-          style="width: 350px; margin-left: 350px;"
+        v-model="alert"
+        type="error"
+        light
+        class="ml-90"
+        style="width: 350px; margin-left: 350px"
       >
         Wrong Username/Password
       </v-alert>
-      <v-row style="margin-top: 20px; margin-left: 190px; padding-left: 150px;">
-        <v-col
-            cols="12"
-            sm="7"
-            align-self="center"
-        >
-          <v-text-field style="width: 350px;"
-                        v-model="form.username"
-                        label="Username"
+      <v-row style="margin-top: 20px; margin-left: 190px; padding-left: 150px">
+        <v-col cols="12" sm="7" align-self="center">
+          <v-text-field
+            style="width: 350px"
+            v-model="form.username"
+            label="Username"
           ></v-text-field>
         </v-col>
-        <v-col
-            cols="12"
-            sm="7"
-        >
+        <v-col cols="12" sm="7">
           <v-text-field
-              style="width: 380px;"
-              v-model="form.password"
-              :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-              @click:append="show1 = !show1"
-              :type="show1 ? 'text' : 'password'"
-              label="Password"
+            style="width: 380px"
+            v-model="form.password"
+            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+            @click:append="show1 = !show1"
+            :type="show1 ? 'text' : 'password'"
+            label="Password"
           >
           </v-text-field>
         </v-col>
         <v-col cols="12" class="mt-0">
           <v-btn
-              class="ml-0 text-center"
-              type="submit"
-              x-large
-              color="light-blue lighten-2"
-              @click="submit"
+            class="ml-0 text-center"
+            type="submit"
+            x-large
+            color="light-blue lighten-2"
+            @click="submit"
           >
             Login
           </v-btn>
           <span style="margin-left: 29px; margin-top: 20px">
-               Don't have an account yet?   <a href="signUp">SignUp</a>
+            Don't have an account yet? <a href="signUp">SignUp</a>
           </span>
         </v-col>
       </v-row>
     </v-container>
   </v-form>
-
 </template>
 
 
@@ -88,25 +80,27 @@ export default {
       show1: false,
       alert: false,
       form: {
-        username: '',
-        password: ''
-      }
-    }
+        username: "",
+        password: "",
+      },
+    };
   },
   methods: {
     ...mapActions(["LogIn"]),
     async submit() {
-      try {
-        await this.LogIn(this.form);
-        this.$router.push("/dashboard");
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }
-}
+      await this.LogIn(this.form)
+        .then((result) => {
+          console.log(result);
+          this.$router.push("/dashboard");
+        })
+        .catch((error) => {
+          this.alert = !this.alert;
+          console.log(error);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 </style>
