@@ -104,7 +104,6 @@ export default {
         this.$router.push("/dashboard");
       } catch (error) {
         console.error(error);
-        // this.showError = true
       }
     }
     // async submit() {

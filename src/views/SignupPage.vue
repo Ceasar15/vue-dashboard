@@ -175,7 +175,6 @@ export default {
     async submit() {
       try {
         await this.Register(this.form);
-        console.log(this.form);
         this.$router.push("/signIn");
       } catch (error) {
         console.error(error);

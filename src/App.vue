@@ -74,7 +74,6 @@ export default {
     },
   },
   mounted () {
-    console.log('isAuthenticated', this.$store.getters.isAuthenticated);
   },
 };
 </script>

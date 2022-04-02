@@ -40,7 +40,8 @@ const actions = {
     },
     async LogOut({
         commit
-    }) {
+    }, User) {
+        await axios.post('logout/', User)
         let user = null
         commit('LogOut', user)
     }
