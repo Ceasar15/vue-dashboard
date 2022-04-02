@@ -1,19 +1,14 @@
 import axios from 'axios';
+import VueCookies from 'vue-cookies'
 
 const state = {
-    accessToken: null,
-    refreshToken: null,
     user: null,
-    products: null,
-    count: 9
+    welcome: false,
 };
 const getters = {
     isAuthenticated: state => !!state.user,
-    StateProducts: state => state.products,
     StateUser: state => state.user,
-    StateAccessToken: state => state.accessToken,
-    StateRefreshToken: state => state.refreshToken,
-
+    StateWelcome: state => state.welcome
 };
 
 const actions = {
@@ -33,14 +28,24 @@ const actions = {
     }, User) {
         await axios.post('api/token/', User)
             .then((response) => {
-                commit('setTokens', response.data)
+                VueCookies.set('accessToken', response.data.access)
+                VueCookies.set('refreshToken', response.data.refresh)
                 commit('setUser', User.username)
             })
     },
     async LogOut({
         commit
     }, User) {
-        await axios.post('logout/', User)
+        let config = {
+            headers: {
+              Authorization: 'Bearer ' + VueCookies.get('accessToken'),
+            }
+          }
+        await axios.post('logout/', User, config).then((response) => {
+            console.log('logout successful', response.data)
+        }).catch((err) => {
+            console.log(99, err)
+        })
         let user = null
         commit('LogOut', user)
     }
@@ -48,25 +53,15 @@ const actions = {
 
 };
 const mutations = {
-    increment(state) {
-        state.count++
-    },
-    setTokens(state, data) {
-        state.accessToken = data.access
-        state.refreshToken = data.refresh
-    },
     setUser(state, username) {
         state.user = username
-    },
-    setProducts(state, products) {
-        state.products = products
+        state.welcome = true
     },
     LogOut(state) {
         state.user = null
-        state.products = null
-        state.accessToken = null
-        state.refreshToken = null
-    },
+        VueCookies.set('accessToken', null)
+        VueCookies.set('refreshToken', null)
+},
 
 };
 export default {

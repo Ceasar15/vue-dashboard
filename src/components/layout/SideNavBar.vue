@@ -90,6 +90,8 @@
 
 <script>
 import { mapActions } from "vuex";
+import VueCookies from 'vue-cookies'
+
 
 export default {
   name: "SideNavbar",
@@ -277,9 +279,8 @@ export default {
     ...mapActions(["LogOut"]),
     async logout() {
       var data = {
-        'refresh_token': this.$store.getters.StateRefreshToken
+        'refresh_token': VueCookies.get('refreshToken')
       }
-      console.log(data);
       await this.LogOut(data);
       this.$router.push("/signIn");
     },

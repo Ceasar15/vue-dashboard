@@ -1,14 +1,15 @@
 <template>
-  <!--  <v-alert-->
-  <!--      v-model="dialog"-->
-  <!--      color="green lighten-2"-->
-  <!--      type="success"-->
-  <!--      light-->
-  <!--      class="ml-90"-->
-  <!--      style="width: 450px; margin-left: 450px;"-->
-  <!--  >-->
-  <!--    Succesfully registered!-->
-  <!--  </v-alert>-->
+  <v-alert
+    v-model="welcome"
+    color="green lighten-2"
+    type="success"
+    light
+    dismissible="true"
+    class="ml-90 text-center"
+    style="width: 450px; margin-left: 450px"
+  >
+    welcome back {{ name }}, enjoy your stay here.
+  </v-alert>
   <v-row>
     <v-col cols="12" md="12" class="text-grey-darken-1">
       <v-title style="padding: 28px">
@@ -249,7 +250,6 @@
 import { DoughnutChart, LineChart, BarChart } from "vue-chart-3";
 import { Chart, registerables } from "chart.js";
 import { desserts, headers, testData, items } from "@/utils/desserts";
-
 Chart.register(...registerables);
 
 export default {
@@ -257,20 +257,21 @@ export default {
   components: { DoughnutChart, LineChart, BarChart },
 
   data() {
+    const name = this.$store.getters.StateUser || 'Admin'
+    // const welcome = this.$store.getters.StateWelcome
     return {
       isEditing: false,
       model: null,
-      loading: false,
+      welcome: true,
       selection: 1,
       items: items,
       desserts: desserts,
       headers: headers,
       testData: testData,
+      name: name.toUpperCase(),
     };
   },
-  methods: {
-
-  },
+  methods: {},
   computed: {
     // ...mapGetters([
     //   "StateUser",
