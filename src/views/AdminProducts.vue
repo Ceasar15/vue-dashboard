@@ -141,22 +141,26 @@
   <div class="text-center">
     <v-pagination v-model="page" :length="15" :total-visible="7"></v-pagination>
   </div>
-  <v-dialog v-model="dialog" max-width="290" attach="true" style="">
+  <v-dialog
+    class="productDialog"
+    v-model="dialog"
+    max-width="120"
+    attach="true"
+    style=""
+  >
     <v-card>
       <v-card-text class="text-h5">
         Are you sure you want to delete this product
       </v-card-text>
-      <v-card-actions>
+      <v-card-actions class="v-card-actions">
+        <v-btn color="#81D4FA" text @click="delete_dialog_message"> No </v-btn>
         <v-btn
           class="text-center"
-          color="red darken-1"
+          color="#EF9A9A"
           text
           @click="delete_dialog_message"
         >
           Yes
-        </v-btn>
-        <v-btn color="green darken-1" text @click="delete_dialog_message">
-          No
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -288,9 +292,23 @@ export default {
   height: 20px;
   overflow: hidden;
 }
-.v-overlay__content {
+/* .v-overlay__content {
   left: 372%;
-  top: 50%;
+  top: 50%; 
   transform: translate(-50%, -50%);
+} */
+
+.productDialog {
+  left: 53%;
+  /* top: 50%; */
+  /* transform: translate(-5%, -5%); */
+}
+
+.v-card-actions {
+  /* border: 3px solid tomato; */
+  text-align: center;
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
 }
 </style>
