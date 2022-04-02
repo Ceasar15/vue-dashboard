@@ -77,7 +77,6 @@ body {
   top: 40px;
   margin-left: 90px;
   color: #aaa3a3fa;
-  /* background-color: rgba(230, 247, 0, 0.9); */
 }
 
 .main-nav-icons .bx {
@@ -92,7 +91,6 @@ body {
   width: auto;
   height: auto;
   flex-direction: column;
-  /* background-color: rgba(1, 228, 141, 0.9); */
 }
 
 .main-nav-date {
@@ -104,6 +102,5 @@ body {
   width: auto;
   height: auto;
   flex-direction: column;
-  /* background-color: rgba(54, 0, 201, 0.9); */
 }
 </style>
