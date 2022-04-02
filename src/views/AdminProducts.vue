@@ -249,10 +249,6 @@ export default {
       });
   },
   computed: {
-    isLoggedIn: function () {
-      console.log(this.$store.getters.isAuthenticated)
-      return this.$store.getters.isAuthenticated;
-    },
     filterItems() {
       return this.products.filter(function (val) {
         return (val.category = this.filter);

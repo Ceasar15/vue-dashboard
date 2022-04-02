@@ -76,10 +76,14 @@
                 }}</span>
               </li>
             </span>
-            <li>
-              <!-- <router-link>
+            <li v-if="isLoggedIn">
+              <a @click="logout">
                 <i class="bx bx-log-out" />
-              </router-link> -->
+                <span class="links_name">Sign In</span>
+              </a>
+              <span class="tooltip">Sign In</span>
+            </li>
+            <li v-else>
               <a @click="logout">
                 <i class="bx bx-log-out" />
                 <span class="links_name">LogOut</span>
@@ -90,7 +94,7 @@
         </div>
       </div>
     </div>
-  </v-card>  
+  </v-card>
 </template>
 
 <script>
@@ -303,6 +307,10 @@ export default {
     console.log(77, this.$store.getters.isAuthenticated);
   },
   computed: {
+    isLoggedIn: function () {
+      console.log(this.$store.getters.isAuthenticated);
+      return this.$store.getters.isAuthenticated;
+    },
     cssVars() {
       return {
         // '--padding-left-body': this.isOpened ? this.menuOpenedPaddingLeftBody : this.menuClosedPaddingLeftBody,
