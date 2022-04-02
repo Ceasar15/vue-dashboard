@@ -1,5 +1,4 @@
 import { createStore } from 'vuex';
-// import Vue from 'vue';
 import createPersistedState from "vuex-persistedstate";
 import auth from './auth';
 
