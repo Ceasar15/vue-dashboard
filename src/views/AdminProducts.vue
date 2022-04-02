@@ -37,7 +37,7 @@
           class="ml-1"
           value="Choose a category"
           single-line
-          v-on:input="get_in_category"
+          v-on:input="directCategory"
         >
         </v-select>
       </v-card>
@@ -169,13 +169,13 @@
 
   <v-btn @click="get_in_category"> Change category </v-btn>
   <router-link to="/">Home</router-link> |
-    <span v-if="isLoggedIn">
-      <a @click="logout">Logout</a>
-    </span>
-    <span v-else>
-      <router-link to="/register">Register</router-link> |
-      <router-link to="/login">Login</router-link>
-    </span>
+  <span v-if="isLoggedIn">
+    <a @click="logout">Logout</a>
+  </span>
+  <span v-else>
+    <router-link to="/register">Register</router-link> |
+    <router-link to="/login">Login</router-link>
+  </span>
 </template>
 
 <script>
@@ -202,6 +202,9 @@ export default {
     };
   },
   methods: {
+    increment() {
+      this.$store.commit("increment");
+    },
     createProducts() {
       this.$router.push("/admin-create-products");
     },
@@ -218,6 +221,9 @@ export default {
     delete_dialog_message() {
       this.dialog = false;
     },
+    directCategory() {
+      console.log("Direct category");
+    },
     async get_in_category() {
       try {
         const para = "jewelery";
@@ -231,7 +237,7 @@ export default {
     },
   },
   mounted() {
-    this.increment()
+    this.increment();
     axios
       .get("https://fakestoreapi.com/products")
       .then((response) => {
@@ -243,6 +249,9 @@ export default {
       });
   },
   computed: {
+    isLoggedIn: function () {
+      return this.$store.getters.isAuthenticated;
+    },
     filterItems() {
       return this.products.filter(function (val) {
         return (val.category = this.filter);
