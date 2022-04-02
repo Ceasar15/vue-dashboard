@@ -101,7 +101,6 @@ export default {
     async submit() {
       try {
         await this.LogIn(this.form);
-        console.log(this.form);
         this.$router.push("/dashboard");
       } catch (error) {
         console.error(error);

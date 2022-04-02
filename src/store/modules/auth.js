@@ -8,7 +8,7 @@ const state = {
 const getters = {
     isAuthenticated: state => !!state.user,
     StatePosts: state => state.posts,
-    StateUser: state.user,
+    StateUser: state => state.user,
 };
 
 const actions = {
@@ -42,8 +42,10 @@ const mutations = {
     increment(state) {
         state.count++
     },
-    setUser(username) {
-        state.user = username
+    setUser(state, username) {
+        console.log(22, this.state.user)
+        this.state.user = username
+        console.log(909090, this.state.user)
     },
     setPosts(state, posts) {
         state.posts = posts
