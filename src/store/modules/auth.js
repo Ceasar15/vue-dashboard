@@ -43,9 +43,9 @@ const mutations = {
         state.count++
     },
     setUser(state, username) {
-        console.log(22, this.state.user)
-        this.state.user = username
-        console.log(909090, this.state.user)
+        console.log(22, username)
+        state.user = username
+        console.log(909090, state.user)
     },
     setPosts(state, posts) {
         state.posts = posts
