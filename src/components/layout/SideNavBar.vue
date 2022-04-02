@@ -76,7 +76,7 @@
             </li>
             <li v-else>
               <a href="/signIn">
-                <i class="bx bx-log-out" />
+                <i class="bx bx-log-in" />
                 <span class="links_name">Sign In</span>
               </a>
               <span class="tooltip">Sign In</span>
