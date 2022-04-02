@@ -250,6 +250,7 @@ export default {
   },
   computed: {
     isLoggedIn: function () {
+      console.log(this.$store.getters.isAuthenticated)
       return this.$store.getters.isAuthenticated;
     },
     filterItems() {
