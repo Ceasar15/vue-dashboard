@@ -78,10 +78,7 @@
 
 
 <script>
-// import axios from 'axios';
-// import VueCookies from 'vue-cookies'
 import { mapActions } from "vuex";
-
 
 export default {
   name: "SigninPage",
