@@ -30,11 +30,8 @@
     >
       <MainNavbar />
     </v-app-bar>
-    <!-- Sizes your content based upon application components -->
     <v-main style="height: auto">
-      <!-- Provides the application the proper gutter -->
       <v-container fluid>
-        <!-- If using vue-router -->
         <router-view></router-view>
       </v-container>
     </v-main>
@@ -57,7 +54,6 @@ import MainFooter from "@/components/layout/MainFooter";
 
 export default {
   name: "App",
-
   components: {
     MainNavbar,
     SideNavBar,
@@ -72,8 +68,6 @@ export default {
     delete_dialog_message() {
       this.dialog = false;
     },
-  },
-  mounted () {
   },
 };
 </script>

@@ -30,15 +30,6 @@
       >
         <div id="my-scroll" style="margin: 6px 14px 0 14px">
           <ul class="nav-list" style="overflow: visible">
-            <!-- <li v-if="isSearch" @click="isOpened = true">
-              <i class="bx bx-search" />
-              <input
-                type="text"
-                :placeholder="searchPlaceholder"
-                @input="$emit('search-input-emit', $event.target.value)"
-              />
-              <span class="tooltip">{{ searchTooltip }}</span>
-            </li> -->
             <div
               style="font-size: 19px; margin-left: 20px; text-align: left"
               class="text-grey-darken-1"
