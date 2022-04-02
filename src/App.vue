@@ -73,6 +73,9 @@ export default {
       this.dialog = false;
     },
   },
+  mounted () {
+    console.log('isAuthenticated', this.$store.getters.isAuthenticated);
+  },
 };
 </script>
 <style>

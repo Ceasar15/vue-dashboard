@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 const state = {
+    accessToken: null,
+    refreshToken: null,
     user: null,
     products: null,
     count: 9
@@ -9,6 +11,9 @@ const getters = {
     isAuthenticated: state => !!state.user,
     StateProducts: state => state.products,
     StateUser: state => state.user,
+    StateAccessToken: state => state.accessToken,
+    StateRefreshToken: state => state.refreshToken,
+
 };
 
 const actions = {
@@ -27,13 +32,17 @@ const actions = {
         commit
     }, User) {
         await axios.post('api/token/', User)
+            .then((response) => {
+                commit('setTokens', response.data)
+            })
+            .catch((error) => console.log(55, error))
         await commit('setUser', User.username)
     },
     async LogOut({
         commit
     }) {
         let user = null
-        commit('logout', user)
+        commit('LogOut', user)
     }
 
 
@@ -41,6 +50,10 @@ const actions = {
 const mutations = {
     increment(state) {
         state.count++
+    },
+    setTokens(state, data) {
+        state.accessToken = data.access
+        state.refreshToken = data.refresh
     },
     setUser(state, username) {
         state.user = username
@@ -50,7 +63,9 @@ const mutations = {
     },
     LogOut(state) {
         state.user = null
-        state.posts = null
+        state.products = null
+        state.accessToken = null,
+        state.refreshToken = null
     },
 
 };

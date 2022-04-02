@@ -79,16 +79,16 @@
             <li v-if="isLoggedIn">
               <a @click="logout">
                 <i class="bx bx-log-out" />
+                <span class="links_name">LogOut</span>
+              </a>
+              <span class="tooltip">LogOut</span>
+            </li>
+            <li v-else>
+              <a href="/signIn">
+                <i class="bx bx-log-out" />
                 <span class="links_name">Sign In</span>
               </a>
               <span class="tooltip">Sign In</span>
-            </li>
-            <li v-else>
-              <a @click="logout">
-                <i class="bx bx-log-out" />
-                <span class="links_name">LogOut</span>
-              </a>
-              <span class="tooltip">Logout</span>
             </li>
           </ul>
         </div>
@@ -98,8 +98,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import VueCookies from "vue-cookies";
+// import axios from "axios";
+// import VueCookies from "vue-cookies";
 
 export default {
   name: "SideNavbar",
@@ -270,41 +270,44 @@ export default {
     };
   },
   methods: {
-    logout() {
-      console.log("logout here");
-      const token = VueCookies.get("token");
-      const refresh_token = VueCookies.get("refresh_token");
-      console.log(33, token);
-      console.log(66, refresh_token);
-      axios
-        .post(
-          "https://ecommerce-platform-j.herokuapp.com/logout/",
-          { refresh_token: refresh_token },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
-        .then((res) => {
-          //Perform Success Action
-          console.log(22, res);
-          this.$router.push("/signIn");
-        })
-        .catch((error) => {
-          // error.response.status Check status code
-          console.log(44, error);
-          this.alert = !this.alert;
-        })
-        .finally(() => {
-          //Perform action in always
-          console.log("finally");
-        });
+    // logout() {
+    //   console.log("logout here");
+    //   const token = VueCookies.get("token");
+    //   const refresh_token = VueCookies.get("refresh_token");
+    //   console.log(33, token);
+    //   console.log(66, refresh_token);
+    //   axios
+    //     .post(
+    //       "https://ecommerce-platform-j.herokuapp.com/logout/",
+    //       { refresh_token: refresh_token },
+    //       {
+    //         headers: {
+    //           Authorization: `Bearer ${token}`,
+    //         },
+    //       }
+    //     )
+    //     .then((res) => {
+    //       //Perform Success Action
+    //       console.log(22, res);
+    //       this.$router.push("/signIn");
+    //     })
+    //     .catch((error) => {
+    //       // error.response.status Check status code
+    //       console.log(44, error);
+    //       this.alert = !this.alert;
+    //     })
+    //     .finally(() => {
+    //       //Perform action in always
+    //       console.log("finally");
+    //     });
+    // },
+    async logout() {
+      await this.$store.dispatch("LogOut");
+      this.$router.push("/signIn");
     },
   },
   mounted() {
     this.isOpened = this.isMenuOpen;
-    console.log(77, this.$store.getters.isAuthenticated);
   },
   computed: {
     isLoggedIn: function () {

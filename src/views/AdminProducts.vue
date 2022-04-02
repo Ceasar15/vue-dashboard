@@ -125,7 +125,7 @@
             </strike>
           </v-card-title>
           <v-card-actions>
-            <v-btn color="#81D4FA" text @click="reserve" plain>
+            <v-btn color="#81D4FA" text @click="open_dialog" plain>
               <v-icon> mdi-border-color </v-icon>
               Edit
             </v-btn>
@@ -168,14 +168,6 @@
   <!--End Delete Dialog -->
 
   <v-btn @click="get_in_category"> Change category </v-btn>
-  <router-link to="/">Home</router-link> |
-  <span v-if="isLoggedIn">
-    <a @click="logout">Logout</a>
-  </span>
-  <span v-else>
-    <router-link to="/register">Register</router-link> |
-    <router-link to="/login">Login</router-link>
-  </span>
 </template>
 
 <script>
@@ -211,18 +203,11 @@ export default {
     viewDetailProduct() {
       this.$router.push("/admin-detail-product");
     },
-    reserve() {
-      this.loading = true;
-      setTimeout(() => (this.loading = false), 2000);
-    },
     open_dialog() {
       this.dialog = true;
     },
     delete_dialog_message() {
       this.dialog = false;
-    },
-    directCategory() {
-      console.log("Direct category");
     },
     async get_in_category() {
       try {
@@ -237,7 +222,6 @@ export default {
     },
   },
   mounted() {
-    this.increment();
     axios
       .get("https://fakestoreapi.com/products")
       .then((response) => {
