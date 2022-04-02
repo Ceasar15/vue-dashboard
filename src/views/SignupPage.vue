@@ -110,7 +110,6 @@
 </template>
 
 <script>
-// import axios from "axios";
 import useVuelidate from "@vuelidate/core";
 import { required, helpers, sameAs } from "@vuelidate/validators";
 import { mapActions } from "vuex";
