@@ -103,25 +103,6 @@ export default {
         console.error(error);
       }
     }
-    // async submit() {
-    //   // const result = await this.v.$validate()
-    //   axios.post('https://ecommerce-platform-j.herokuapp.com/api/token/', this.form)
-    //       .then((res) => {
-    //         //Perform Success Action
-    //         console.log(res.data)
-    //         VueCookies.set('token' , res.data.access, "1h")
-    //         VueCookies.set('refresh_token' , res.data.refresh, "1h")
-    //         this.$router.push('/dashboard')
-    //       })
-    //       .catch((error) => {
-    //         // error.response.status Check status code
-    //         console.log(error)
-    //         this.alert = !this.alert
-    //       }).finally(() => {
-    //     //Perform action in always
-    //     console.log('finally')
-    //   });
-    // },
   }
 }
 </script>

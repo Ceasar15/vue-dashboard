@@ -249,8 +249,6 @@
 import { DoughnutChart, LineChart, BarChart } from "vue-chart-3";
 import { Chart, registerables } from "chart.js";
 import { desserts, headers, testData, items } from "@/utils/desserts";
-import VueCookies from "vue-cookies";
-// import { mapGetters } from "vuex";
 
 Chart.register(...registerables);
 
@@ -278,10 +276,6 @@ export default {
     //   "StateUser",
     //   // ...
     // ]),
-  },
-  mounted() {
-    console.log(6767, VueCookies.get("token"));
-    console.log(9090, VueCookies.get("refresh_token"));
   },
 };
 </script>
