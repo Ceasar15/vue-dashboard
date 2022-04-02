@@ -167,7 +167,7 @@
   </v-dialog>
   <!--End Delete Dialog -->
 
-  <v-btn @click="get_in_category"> Change category </v-btn>
+
 </template>
 
 <script>
@@ -194,6 +194,10 @@ export default {
     };
   },
   methods: {
+    increment() {
+      this.$store.commit("increment");
+      console.log(5656, this.$store.state.count);
+    },
     createProducts() {
       this.$router.push("/admin-create-products");
     },
@@ -203,11 +207,6 @@ export default {
     reserve() {
       this.loading = true;
       setTimeout(() => (this.loading = false), 2000);
-    },
-    async remove() {
-      this.loading = true;
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-      this.loading = false;
     },
     open_dialog() {
       this.dialog = true;
@@ -231,9 +230,7 @@ export default {
     },
   },
   mounted() {
-    setTimeout(() => {
-      console.log(676);
-    }, 7000);
+    this.increment()
     axios
       .get("https://fakestoreapi.com/products")
       .then((response) => {

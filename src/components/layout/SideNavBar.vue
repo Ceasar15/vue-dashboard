@@ -90,7 +90,7 @@
         </div>
       </div>
     </div>
-  </v-card>
+  </v-card>  
 </template>
 
 <script>
