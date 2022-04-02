@@ -300,6 +300,7 @@ export default {
   },
   mounted() {
     this.isOpened = this.isMenuOpen;
+    console.log(77, this.$store.getters.isAuthenticated);
   },
   computed: {
     cssVars() {

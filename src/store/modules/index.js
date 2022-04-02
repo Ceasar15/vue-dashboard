@@ -5,7 +5,7 @@ import auth from './auth';
 
 const store = createStore({
   state: auth.state,
-  getter: auth.getters,
+  getters: auth.getters,
   mutations: auth.mutations,
   actions: auth.actions,
   plugins: [createPersistedState]
