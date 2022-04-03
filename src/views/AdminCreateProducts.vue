@@ -261,21 +261,12 @@ export default {
   methods: {
     onFileChange(e) {
       const file = e.target.files;
-      console.dir(21, file);
-      // for (let i of file) {
-      //   console.log(1, i);
-      //   this.url = URL.createObjectURL(file[0]);
-      // }
-      console.log(file[0]);
       this.form.image1 = URL.createObjectURL(file[0]);
       this.form.image2 = URL.createObjectURL(file[1]);
       this.form.image3 = URL.createObjectURL(file[2]);
     },
     saveProducts() {
       console.log("before", this.form);
-      // this.form.image1 = this.files[0]
-      // this.form.image2 = this.files[1]
-      // this.form.image3 = this.files[2]
       console.log("after", this.form);
       const token = VueCookies.get("token");
       axios
