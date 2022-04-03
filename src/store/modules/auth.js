@@ -43,8 +43,6 @@ const actions = {
           }
         await axios.post('logout/', User, config).then((response) => {
             console.log('logout successful', response.data)
-        }).catch((err) => {
-            console.log(99, err)
         })
         let user = null
         commit('LogOut', user)

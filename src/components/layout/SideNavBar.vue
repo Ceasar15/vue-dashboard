@@ -296,9 +296,16 @@ export default {
       var data = {
         refresh_token: VueCookies.get("refreshToken"),
       };
-      await this.LogOut(data);
-      this.$router.push("/signIn");
-      this.loadingI = !this.loadingI;
+      await this.LogOut(data)
+        .then(() => {
+          this.$router.push("/signIn");
+        })
+        .catch((err) => {
+          console.log("Err", err);
+        })
+        .finally(() => {
+          this.loadingI = !this.loadingI;
+        });
     },
   },
   mounted() {

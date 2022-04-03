@@ -96,12 +96,19 @@
             @click="submit"
           >
             Create Account
+            <clip-loader
+              :loading="loadingI"
+              color="#0D47A1"
+              size="10px"
+              class="ml-3"
+            ></clip-loader>
           </v-btn>
           <span style="margin-left: 29px; margin-top: 20px">
-            Already have an account? <a href="signIn">SignIn</a>
+            Already have an account?
+            <router-link to="signIn">SignIn</router-link>
           </span>
           <span style="margin-left: 29px; margin-top: 20px">
-            Back to <a href="dashboard">Home</a>
+            Back to <router-link to="dashboard">Home</router-link>
           </span>
         </v-col>
       </v-row>
@@ -113,10 +120,11 @@
 import useVuelidate from "@vuelidate/core";
 import { required, helpers, sameAs } from "@vuelidate/validators";
 import { mapActions } from "vuex";
+import ClipLoader from "vue-spinner/src/ClipLoader.vue";
 
 export default {
   name: "SignupPage",
-  components: {},
+  components: { ClipLoader },
   setup: () => ({ v: useVuelidate() }),
   data() {
     return {
@@ -126,6 +134,7 @@ export default {
       loading: false,
       show1: false,
       show2: false,
+      loadingI: false,
       select: null,
       form: {
         first_name: "",
@@ -172,9 +181,11 @@ export default {
   methods: {
     ...mapActions(["Register"]),
     async submit() {
+      this.loadingI = !this.loadingI;
       try {
         await this.Register(this.form);
         this.$router.push("/signIn");
+        this.loadingI = !this.loadingI;
       } catch (error) {
         console.error(error);
       }
@@ -233,5 +244,4 @@ export default {
 </script>
 
 <style>
-
 </style>

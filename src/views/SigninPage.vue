@@ -45,6 +45,8 @@
             @click:append="show1 = !show1"
             :type="show1 ? 'text' : 'password'"
             label="Password"
+            name="input-10-2"
+            class="input-group--focused"
           >
           </v-text-field>
         </v-col>
@@ -102,12 +104,12 @@ export default {
         .then((result) => {
           console.log(result);
           this.$router.push("/dashboard");
-          this.loadingI = !this.loadingI;
         })
         .catch((error) => {
           this.alert = !this.alert;
           console.log(error);
-        });
+        })
+        .finally(() => (this.loadingI = !this.loadingI));
     },
   },
 };
