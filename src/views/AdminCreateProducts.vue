@@ -268,7 +268,7 @@ export default {
     saveProducts() {
       console.log("before", this.form);
       console.log("after", this.form);
-      const token = VueCookies.get("token");
+      const token = VueCookies.get("accessToken");
       axios
         .post(
           "https://ecommerce-platform-j.herokuapp.com/product/",
