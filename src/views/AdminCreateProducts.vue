@@ -111,7 +111,7 @@
                     <v-img
                       style="width: 100%; height: 100%; object-fit: fill"
                       v-if="form.image1"
-                      :src="form.image1"
+                      :src="previewimage1"
                     />
                     <v-img
                       style="width: 100%; height: 100%; object-fit: fill"
@@ -131,7 +131,7 @@
                     <v-img
                       style="width: 100%; height: 100%; object-fit: fill"
                       v-if="form.image2"
-                      :src="form.image2"
+                      :src="previewimage2"
                     />
                     <v-img
                       style="width: 100%; height: 100%; object-fit: fill"
@@ -150,7 +150,7 @@
                     <v-img
                       style="width: 100%; height: 100%; object-fit: fill"
                       v-if="form.image3"
-                      :src="form.image3"
+                      :src="previewimage3"
                     />
                     <v-img
                       style="width: 100%; height: 100%; object-fit: fill"
@@ -256,6 +256,9 @@ export default {
         image2: null,
         image3: null,
       },
+      previewimage1: null,
+      previewimage2: null,
+      previewimage3: null,
     };
   },
   methods: {
