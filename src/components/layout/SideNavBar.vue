@@ -70,22 +70,27 @@
             <li v-if="isLoggedIn">
               <a @click="logout">
                 <i class="bx bx-log-out" />
-                <span class="links_name"
-                  >LogOut
-                  <clip-loader
-                    :loading="loadingI"
-                    color="#0D47A1"
-                    size="10px"
-                  ></clip-loader
-                ></span>
+                <span class="links_name">LogOut </span>
+                <clip-loader
+                  :loading="loadingI"
+                  color="#0D47A1"
+                  size="10px"
+                  class="ml-3"
+                ></clip-loader>
               </a>
               <span class="tooltip">LogOut</span>
             </li>
             <li v-else>
-              <a href="/signIn">
+              <router-link to="signIn">
                 <i class="bx bx-log-in" />
                 <span class="links_name">Sign In</span>
-              </a>
+                <clip-loader
+                  :loading="loadingI"
+                  color="#0D47A1"
+                  size="10px"
+                  class="ml-3"
+                ></clip-loader>
+              </router-link>
               <span class="tooltip">Sign In</span>
             </li>
           </ul>
@@ -99,7 +104,6 @@
 import { mapActions } from "vuex";
 import VueCookies from "vue-cookies";
 import ClipLoader from "vue-spinner/src/ClipLoader.vue";
-
 
 export default {
   name: "SideNavbar",
@@ -251,6 +255,7 @@ export default {
   data() {
     return {
       isOpened: false,
+      loadingI: false,
     };
   },
   methods: {
@@ -287,11 +292,13 @@ export default {
     // },
     ...mapActions(["LogOut"]),
     async logout() {
+      this.loadingI = !this.loadingI;
       var data = {
         refresh_token: VueCookies.get("refreshToken"),
       };
       await this.LogOut(data);
       this.$router.push("/signIn");
+      this.loadingI = !this.loadingI;
     },
   },
   mounted() {

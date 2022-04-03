@@ -64,7 +64,8 @@
             ></clip-loader>
           </v-btn>
           <span style="margin-left: 29px; margin-top: 20px">
-            Don't have an account yet? <a href="signUp">SignUp</a>
+            Don't have an account yet?
+            <router-link to="signUp">SignUp</router-link>
           </span>
         </v-col>
       </v-row>
