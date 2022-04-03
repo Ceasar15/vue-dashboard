@@ -185,9 +185,10 @@ export default {
       try {
         await this.Register(this.form);
         this.$router.push("/signIn");
-        this.loadingI = !this.loadingI;
       } catch (error) {
-        console.error(error);
+        console.error(33, error);
+      } finally {
+        this.loadingI = !this.loadingI;
       }
     },
     // async submit() {

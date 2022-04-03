@@ -17,11 +17,10 @@ const actions = {
     }, form) {
         await axios.post('register/', form)
             .then((response) => console.log(44, response))
-            .catch((error) => console.log(55, error))
         let UserForm = new FormData()
-        UserForm.append('username', form.username)
-        UserForm.append('password', form.password)
-        await dispatch('api/token/', UserForm)
+        UserForm.set('username', form.username)
+        UserForm.set('password', form.password1)
+        await dispatch('LogIn', UserForm)
     },
     async LogIn({
         commit
