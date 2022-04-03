@@ -264,18 +264,31 @@ export default {
   methods: {
     onFileChange(e) {
       const file = e.target.files;
-      this.form.image1 = URL.createObjectURL(file[0]);
-      this.form.image2 = URL.createObjectURL(file[1]);
-      this.form.image3 = URL.createObjectURL(file[2]);
+      this.form.image1 = file[0]
+      this.form.image2 = file[1]
+      this.form.image3 = file[2]
+      this.previewimage1 = URL.createObjectURL(file[0]);
+      this.previewimage2 = URL.createObjectURL(file[1]);
+      this.previewimage3 = URL.createObjectURL(file[2]);
     },
     saveProducts() {
       console.log("before", this.form);
-      console.log("after", this.form);
+      let formData = new FormData();
+      formData.append("name", this.form.name)
+      formData.append("description", this.form.description)
+      formData.append("price", this.form.price)
+      formData.append("discount", this.form.discount)
+      formData.append("category", 'ELT')
+      formData.append("image1", this.form.image1)
+      formData.append("image2", this.form.image2)
+      formData.append("image3", this.form.image3)
+
+      console.log("after", formData);
       const token = VueCookies.get("accessToken");
       axios
         .post(
           "https://ecommerce-platform-j.herokuapp.com/product/",
-          this.form,
+          formData,
           {
             headers: {
               Authorization: `Bearer ${token}`,
