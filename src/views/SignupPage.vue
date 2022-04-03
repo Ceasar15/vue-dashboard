@@ -191,7 +191,7 @@ export default {
         this.loadingI = !this.loadingI;
       }
     },
-    //   // const result = await this.v.$validate()
+    // // const result = await this.v.$validate()
 
     setFirstName($event) {
       this.form.first_name = $event.target.value.toUpperCase();
