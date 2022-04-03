@@ -182,14 +182,13 @@ export default {
     ...mapActions(["Register"]),
     async submit() {
       this.loadingI = !this.loadingI;
-      try {
-        await this.Register(this.form);
-        this.$router.push("/signIn");
-      } catch (error) {
+      await this.Register(this.form).then(() => {
+        this.$router.push("/signin");
+      }).catch((error) => {
         console.error(33, error);
-      } finally {
+      }).finally(() => {
         this.loadingI = !this.loadingI;
-      }
+      });
     },
     // // const result = await this.v.$validate()
 

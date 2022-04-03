@@ -8,7 +8,7 @@
     class="ml-90 text-center"
     style="width: 450px; margin-left: 450px"
   >
-    welcome back {{ name }}, enjoy your stay here.
+    welcome {{ name }}, enjoy your stay here.
   </v-alert>
   <v-row>
     <v-col cols="12" md="12" class="text-grey-darken-1">
@@ -257,17 +257,18 @@ export default {
   components: { DoughnutChart, LineChart, BarChart },
 
   data() {
-    const name = this.$store.getters.StateUser || 'Admin'
+    const name = this.$store.getters.StateUser || "Admin";
     // const welcome = this.$store.getters.StateWelcome
     return {
       isEditing: false,
       model: null,
       welcome: true,
       selection: 1,
-      items: items,
-      desserts: desserts,
-      headers: headers,
-      testData: testData,
+      items,
+      desserts,
+      headers,
+      testData,
+      welcomeBuddy: "",
       name: name.toUpperCase(),
     };
   },
@@ -277,6 +278,16 @@ export default {
     //   "StateUser",
     //   // ...
     // ]),
+  },
+  mounted() {
+    setTimeout(() => {
+      this.welcome = !this.welcome;
+    }, 4000);
+  },
+  watch: {
+    welcome() {
+      console.log("watcher");
+    },
   },
 };
 </script>
