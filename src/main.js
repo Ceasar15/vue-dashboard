@@ -14,7 +14,6 @@ import Vuex from 'vuex';
 
 // axios.defaults.withCredentials = true
 axios.defaults.baseURL = 'https://ecommerce-platform-j.herokuapp.com/';
-// axios.defaults.headers.common["Authorization"] = "Bearer " + VueCookies.get('accessToken');
 
 loadFonts()
 
