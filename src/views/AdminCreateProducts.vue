@@ -232,6 +232,28 @@
       </v-row>
     </v-container>
   </v-form>
+    <v-dialog
+    class="productDialog"
+    v-model="successDialog"
+    attach="true"
+    style="width: 90px;"
+  >
+    <v-card>
+      <v-card-text class="text-h6">
+          You have successfully uploaded your product.
+      </v-card-text>
+      <v-card-actions class="v-card-actions">
+        <v-btn
+          class="text-center"
+          color="#81D4FA"
+          text
+          @click="delete_dialog_message"
+        >
+          Okay
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
@@ -250,6 +272,7 @@ export default {
     return {
       url: null,
       image: [],
+      successDialog: false,
       loadingI: false,
       files: [],
       loadingStatus: false,
@@ -297,7 +320,10 @@ export default {
           },
         })
         .then(() => {
-          this.$router.push("/admin-products");
+          this.successDialog = true;
+          setTimeout(() => {
+            this.$router.push("/admin-products");
+          }, 2000);
         })
         .catch((error) => {
           console.log(44, error);
@@ -306,6 +332,10 @@ export default {
         .finally(() => {
           this.loadingI = !this.loadingI;
         });
+    },
+      delete_dialog_message() {
+      this.successDialog = false;
+      this.$router.push("/admin-products");
     },
   },
   setup() {

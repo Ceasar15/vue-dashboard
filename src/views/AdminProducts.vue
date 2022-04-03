@@ -149,8 +149,8 @@
     style=""
   >
     <v-card>
-      <v-card-text class="text-h5">
-        Are you sure you want to delete this product
+      <v-card-text class="text-h6">
+        Are you sure you want to delete this product?
       </v-card-text>
       <v-card-actions class="v-card-actions">
         <v-btn color="#81D4FA" text @click="delete_dialog_message"> No </v-btn>
