@@ -198,6 +198,12 @@
             >
               Save
               <v-icon right="true"> mdi-arrow-down-drop-circle-outline </v-icon>
+              <clip-loader
+                :loading="loadingI"
+                color="#0D47A1"
+                size="10px"
+                class="ml-3"
+              ></clip-loader>
             </v-btn>
             <v-btn class="ma-4" color="#81D4FA">
               Draft
@@ -233,17 +239,18 @@ import { categoryA } from "@/utils/desserts";
 import { ref, reactive } from "vue";
 import axios from "axios";
 import VueCookies from "vue-cookies";
-import SearchBar from "@/components/common/SearchBar.vue"
+import SearchBar from "@/components/common/SearchBar.vue";
 import ExportButton from "@/components/common/ExportButton.vue";
-
+import ClipLoader from "vue-spinner/src/ClipLoader.vue";
 
 export default {
   name: "AdminCreateProducts",
-  components: { SearchBar, ExportButton },
+  components: { SearchBar, ExportButton, ClipLoader },
   data() {
     return {
       url: null,
       image: [],
+      loadingI: false,
       files: [],
       loadingStatus: false,
       form: {
@@ -264,49 +271,40 @@ export default {
   methods: {
     onFileChange(e) {
       const file = e.target.files;
-      this.form.image1 = file[0]
-      this.form.image2 = file[1]
-      this.form.image3 = file[2]
+      this.form.image1 = file[0];
+      this.form.image2 = file[1];
+      this.form.image3 = file[2];
       this.previewimage1 = URL.createObjectURL(file[0]);
       this.previewimage2 = URL.createObjectURL(file[1]);
       this.previewimage3 = URL.createObjectURL(file[2]);
     },
     saveProducts() {
-      console.log("before", this.form);
+      this.loadingI = !this.loadingI;
       let formData = new FormData();
-      formData.append("name", this.form.name)
-      formData.append("description", this.form.description)
-      formData.append("price", this.form.price)
-      formData.append("discount", this.form.discount)
-      formData.append("category", 'ELT')
-      formData.append("image1", this.form.image1)
-      formData.append("image2", this.form.image2)
-      formData.append("image3", this.form.image3)
-
-      console.log("after", formData);
+      formData.append("name", this.form.name);
+      formData.append("description", this.form.description);
+      formData.append("price", this.form.price);
+      formData.append("discount", this.form.discount);
+      formData.append("category", "ELT");
+      formData.append("image1", this.form.image1);
+      formData.append("image2", this.form.image2);
+      formData.append("image3", this.form.image3);
       const token = VueCookies.get("accessToken");
       axios
-        .post(
-          "https://ecommerce-platform-j.herokuapp.com/product/",
-          formData,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
-        .then((res) => {
-          //Perform Success Action
-          console.log(22, res);
+        .post("https://ecommerce-platform-j.herokuapp.com/product/", formData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(() => {
+          this.$router.push("/admin-products");
         })
         .catch((error) => {
-          // error.response.status Check status code
           console.log(44, error);
           this.alert = !this.alert;
         })
         .finally(() => {
-          //Perform action in always
-          console.log("finally");
+          this.loadingI = !this.loadingI;
         });
     },
   },
