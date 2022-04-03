@@ -57,6 +57,11 @@
             @click="submit"
           >
             Login
+            <clip-loader
+              :loading="loadingI"
+              color="#0D47A1"
+              size="10px"
+            ></clip-loader>
           </v-btn>
           <span style="margin-left: 29px; margin-top: 20px">
             Don't have an account yet? <a href="signUp">SignUp</a>
@@ -71,14 +76,17 @@
 
 <script>
 import { mapActions } from "vuex";
+import ClipLoader from "vue-spinner/src/ClipLoader.vue";
 
 export default {
   name: "SigninPage",
+  components: { ClipLoader },
   props: {},
   data() {
     return {
       show1: false,
       alert: false,
+      loadingI: false,
       form: {
         username: "",
         password: "",
@@ -88,10 +96,12 @@ export default {
   methods: {
     ...mapActions(["LogIn"]),
     async submit() {
+      this.loadingI = !this.loadingI;
       await this.LogIn(this.form)
         .then((result) => {
           console.log(result);
           this.$router.push("/dashboard");
+          this.loadingI = !this.loadingI;
         })
         .catch((error) => {
           this.alert = !this.alert;

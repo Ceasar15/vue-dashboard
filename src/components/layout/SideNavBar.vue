@@ -70,7 +70,14 @@
             <li v-if="isLoggedIn">
               <a @click="logout">
                 <i class="bx bx-log-out" />
-                <span class="links_name">LogOut</span>
+                <span class="links_name"
+                  >LogOut
+                  <clip-loader
+                    :loading="loadingI"
+                    color="#0D47A1"
+                    size="10px"
+                  ></clip-loader
+                ></span>
               </a>
               <span class="tooltip">LogOut</span>
             </li>
@@ -90,11 +97,13 @@
 
 <script>
 import { mapActions } from "vuex";
-import VueCookies from 'vue-cookies'
+import VueCookies from "vue-cookies";
+import ClipLoader from "vue-spinner/src/ClipLoader.vue";
 
 
 export default {
   name: "SideNavbar",
+  components: { ClipLoader },
   props: {
     //! Menu settings
     isMenuOpen: {
@@ -279,8 +288,8 @@ export default {
     ...mapActions(["LogOut"]),
     async logout() {
       var data = {
-        'refresh_token': VueCookies.get('refreshToken')
-      }
+        refresh_token: VueCookies.get("refreshToken"),
+      };
       await this.LogOut(data);
       this.$router.push("/signIn");
     },
@@ -301,7 +310,7 @@ export default {
         "--logo-title-color": this.logoTitleColor,
         "--icons-color": this.iconsColor,
         "--items-tooltip-color": this.itemsTooltipColor,
-          "--menu-items-hover-color": this.menuItemsHoverColor,
+        "--menu-items-hover-color": this.menuItemsHoverColor,
         "--menu-items-text-color": this.menuItemsTextColor,
         "--menu-footer-text-color": this.menuFooterTextColor,
       };
@@ -620,7 +629,6 @@ body {
 
 #my-scroll::-webkit-scrollbar {
   display: none;
-
 }
 @media (max-width: 420px) {
   .sidebar li .tooltip {
