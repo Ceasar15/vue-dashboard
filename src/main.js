@@ -11,7 +11,6 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import store from './store/modules';
 import Vuex from 'vuex';
-// import VueCookies from 'vue-cookies'
 
 // axios.defaults.withCredentials = true
 axios.defaults.baseURL = 'https://ecommerce-platform-j.herokuapp.com/';
