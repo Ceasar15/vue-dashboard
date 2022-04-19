@@ -12,7 +12,6 @@
     <v-col cols="12" md="12" class="text-grey-darken-1">
       <v-title style="padding: 28px">
         <p class="ml-5" style="font-size: 1.5rem">Overview</p>
-        <!-- <button @click="toast">Toast it!</button> -->
       </v-title>
     </v-col>
     <v-col cols="3" md="3">
@@ -261,7 +260,6 @@ export default {
 
   data() {
     const name = this.$store.getters.StateUser || "Admin";
-    // const welcome = this.$store.getters.StateWelcome
     return {
       isEditing: false,
       model: null,
@@ -276,26 +274,22 @@ export default {
     };
   },
   methods: {},
-  computed: {
-    // ...mapGetters([
-    //   "StateUser",
-    //   // ...
-    // ]),
-  },
+  computed: {},
   setup() {
     const toast = () => {
       createToast("Welcome Admin, Enjoy your stay!", {
         type: "success",
         transition: "bounce",
-position: 'top-center',      });
+        position: "top-center",
+      });
     };
     return { toast };
   },
   mounted() {
-    // setTimeout(() => {
-    //   this.welcome = !this.welcome;
-    // }, 4000);
-    this.toast();
+    if (localStorage.alertTriggered == 'false') {
+      localStorage.setItem("alertTriggered", "true");
+      this.toast();
+    }
   },
   watch: {
     welcome() {
