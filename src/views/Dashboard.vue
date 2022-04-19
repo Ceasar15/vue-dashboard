@@ -1,12 +1,10 @@
 <template>
   <v-alert
     v-model="welcome"
-    color="green lighten-2"
     type="success"
     light
     dismissible="true"
-    class="ml-90 text-center"
-    style="width: 450px; margin-left: 450px"
+    class="ml-90 text-center welcomeAlert"
   >
     welcome {{ name }}, enjoy your stay here.
   </v-alert>
@@ -14,6 +12,7 @@
     <v-col cols="12" md="12" class="text-grey-darken-1">
       <v-title style="padding: 28px">
         <p class="ml-5" style="font-size: 1.5rem">Overview</p>
+        <!-- <button @click="toast">Toast it!</button> -->
       </v-title>
     </v-col>
     <v-col cols="3" md="3">
@@ -251,6 +250,10 @@ import { DoughnutChart, LineChart, BarChart } from "vue-chart-3";
 import { Chart, registerables } from "chart.js";
 import { desserts, headers, testData, items } from "@/utils/desserts";
 Chart.register(...registerables);
+// import the library
+import { createToast } from "mosha-vue-toastify";
+// import the styling for the toast
+import "mosha-vue-toastify/dist/style.css";
 
 export default {
   name: "AdminDashboard",
@@ -262,7 +265,7 @@ export default {
     return {
       isEditing: false,
       model: null,
-      welcome: true,
+      welcome: false,
       selection: 1,
       items,
       desserts,
@@ -279,10 +282,20 @@ export default {
     //   // ...
     // ]),
   },
+  setup() {
+    const toast = () => {
+      createToast("Welcome Admin, Enjoy your stay!", {
+        type: "success",
+        transition: "bounce",
+position: 'top-center',      });
+    };
+    return { toast };
+  },
   mounted() {
-    setTimeout(() => {
-      this.welcome = !this.welcome;
-    }, 4000);
+    // setTimeout(() => {
+    //   this.welcome = !this.welcome;
+    // }, 4000);
+    this.toast();
   },
   watch: {
     welcome() {
@@ -334,5 +347,12 @@ th {
 
 .list-item:hover {
   background-color: #ddd;
+}
+
+.welcomeAlert {
+  width: 450px;
+  margin-left: 450px;
+  position: absolute;
+  right: -40px;
 }
 </style>
