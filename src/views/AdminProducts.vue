@@ -90,9 +90,17 @@
           class="my-3"
           v-bind="props"
         >
-          <v-img height="300" :src="product.image">
-            <v-chip class="ma-0" color="deep-orange accent-4"> 15% </v-chip>
-          </v-img>
+          <router-link
+            :to="{
+              name: 'AdminDetailProduct',
+              params: { productID: product.id },
+            }"
+          >
+            <v-img height="300" :src="product.image">
+              <v-chip class="ma-0" color="deep-orange accent-4"> 15% </v-chip>
+            </v-img>
+          </router-link>
+
           <v-card-title
             style="
               white-space: nowrap;
@@ -103,7 +111,10 @@
             "
           >
             <router-link
-              to="/admin-detail-product"
+              :to="{
+                name: 'AdminDetailProduct',
+                params: { productID: product.id },
+              }"
               custom
               v-slot="{ href, navigate }"
             >
@@ -125,7 +136,7 @@
             </strike>
           </v-card-title>
           <v-card-actions>
-            <v-btn color="#81D4FA" text @click="open_dialog" plain>
+            <v-btn color="#4e9af1" @click="open_dialog" plain>
               <v-icon> mdi-border-color </v-icon>
               Edit
             </v-btn>
@@ -166,7 +177,6 @@
     </v-card>
   </v-dialog>
   <!--End Delete Dialog -->
-
   <v-btn @click="get_in_category"> Change category </v-btn>
 </template>
 
@@ -181,7 +191,6 @@ import ClipLoader from "vue-spinner/src/ClipLoader.vue";
 export default {
   name: "AdminProducts",
   components: { SearchBar, ExportButton, ClipLoader },
-  props: {},
   data() {
     return {
       color: "green",
@@ -289,5 +298,30 @@ export default {
   color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
+}
+
+.button4 {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.1em 0.1em 0;
+  border: 0.16em solid rgba(255, 255, 255, 0);
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transition: all 0.2s;
+}
+.button4:hover {
+  border-color: rgba(255, 255, 255, 1);
+}
+@media all and (max-width: 30em) {
+  .button4 {
+    display: block;
+    margin: 0.2em auto;
+  }
 }
 </style>

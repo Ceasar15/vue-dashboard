@@ -51,9 +51,10 @@ const routes = [{
         component: AdminCreateProducts,
     },
     {
-        path: "/admin-detail-product",
+        path: "/admin-detail-product/:productID",
         name: "AdminDetailProduct",
         component: AdminDetailProduct,
+        props: true,
     },
     {
         path: "/analytics",
