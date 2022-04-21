@@ -126,14 +126,16 @@
           <v-card-text>
             <v-row align="center" class="mx-0">
               <v-rating :value="4.5" color="amber" dense size="14"></v-rating>
-              <div class="grey--text ms-4">4.5 (413)</div>
+              <div class="grey--text ms-4">
+                {{ product.rating.rate }} ({{ product.rating.count }})
+              </div>
             </v-row>
           </v-card-text>
           <v-card-title>
             $ {{ product.price }}
-            <strike class="ml-3 text-grey-darken-1">
-              $ {{ product.discount }}
-            </strike>
+            <del class="ml-3 text-grey-darken-1">
+              $ 1,290.59
+            </del>
           </v-card-title>
           <v-card-actions>
             <v-btn color="#4e9af1" @click="open_dialog" plain>
@@ -244,7 +246,7 @@ export default {
   computed: {
     filterItems() {
       return this.products.filter(function (val) {
-        return (val.category = this.filter);
+        return val.category == this.filter;
       });
     },
   },
@@ -298,30 +300,5 @@ export default {
   color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
-}
-
-.button4 {
-  display: inline-block;
-  padding: 0.3em 1.2em;
-  margin: 0 0.1em 0.1em 0;
-  border: 0.16em solid rgba(255, 255, 255, 0);
-  border-radius: 2em;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  color: #ffffff;
-  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
-  text-align: center;
-  transition: all 0.2s;
-}
-.button4:hover {
-  border-color: rgba(255, 255, 255, 1);
-}
-@media all and (max-width: 30em) {
-  .button4 {
-    display: block;
-    margin: 0.2em auto;
-  }
 }
 </style>
