@@ -178,7 +178,7 @@
       :key="recom.name"
     >
       <v-card class="pa-2 mainCard" outlined tile>
-        <v-img height="150" :src="recom.image"> </v-img>
+        <v-img height="250" :src="recom.image"> </v-img>
         <v-card-title class="recomTitle">
           {{ recom.title }}
         </v-card-title>
