@@ -21,26 +21,26 @@
       </v-text>
     </v-col>
   </v-row>
+
   <v-row class="ml-10" no-gutters>
-    <div
-      v-show="loadingI"
-      style="
-        height: 500px;
-        width: 100vw;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      "
-      class="ml-9"
-    >
-      <clip-loader
-        :loading="loadingI"
-        color="#0D47A1"
-        size="86px"
-      ></clip-loader>
-    </div>
     <v-col cols="12" sm="6" md="6" class="imageContainer">
-      <img class="detailImage" alt="product image" :src="products.image" />
+      <div
+        v-show="loadingI"
+        style="display: flex; align-items: center; justify-content: center"
+        class="ml-9"
+      >
+        <clip-loader
+          style="margin-left: 250px"
+          :loading="loadingI"
+          color="#0D47A1"
+          size="86px"
+        ></clip-loader>
+      </div>
+      <img
+        alt="product image loading..."
+        class="detailImage"
+        :src="products.image"
+      />
     </v-col>
     <v-col cols="6" md="6">
       <p class="mx-4 font-medium-bold text-decoration-underline">Description</p>
@@ -95,7 +95,7 @@
         >
       </div>
       <div class="ml-4">
-        <input class="quantity" type="number" placeholder="0" />
+        <input class="quantity" type="number" min="1" placeholder="0" />
         <v-btn
           style="width: 200px; height: 40px; border-radius: 3px"
           class="addToCart"
@@ -150,9 +150,34 @@
       </v-card>
     </v-col>
   </v-row>
-  <v-row cols="12">
-    <v-col cols="12" md="3" v-for="recom in finalCategory" :key="recom.name">
-      <v-card class="pa-2" outlined tile>
+
+  <v-row
+    cols="12"
+    style="
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid orange;
+    "
+  >
+    <div
+      v-if="loadingCat"
+      style="margin-left: 400px; width: 200px; align-self: center"
+    >
+      <clip-loader
+        :loading="loadingCat"
+        color="#0D47A1"
+        size="86px"
+      ></clip-loader>
+    </div>
+    <v-col
+      v-else
+      cols="12"
+      md="3"
+      class="mainCol"
+      v-for="recom in finalCategory"
+      :key="recom.name"
+    >
+      <v-card class="pa-2 mainCard" outlined tile>
         <v-img height="150" :src="recom.image"> </v-img>
         <v-card-title class="recomTitle">
           {{ recom.title }}
@@ -181,22 +206,53 @@
         </v-btn>
       </v-card>
     </v-col>
-    <v-col cols="6" md="3">
-      <v-card class="pa-2" outlined tile>
-        There are many variations of passages of Lorem Ipsum available, but the
-        majority have suffered alteration in some form, by injected humour, or
-        randomised words which don't look even slightly believable. If you are
-        going to use a passage of Lorem Ipsum, you need to be sure there isn't
-        anything embarrassing hidden in the middle of text. All the Lorem Ipsum
-        generators on the Internet tend to repeat predefined chunks as
-        necessary, making this the first true generator on the Internet. It uses
-        a dictionary of over 200 Latin words, combined with a handful of model
-        sentence structures, to generate Lorem Ipsum which looks reasonable. The
-        generated Lorem Ipsum is therefore always free from repetition, injected
-        humour, or non-characteristic words etc.
+    <v-col cols="12" md="3" style="border: 1px solid blue">
+      <v-card class="pa-6" outlined tile style="border: 1px solid black">
+        <div>
+          <p>4.8</p>
+          <p>Overall Rating</p>
+          <v-rating :value="4.5" color="amber" dense size="20"></v-rating>
+        </div>
+        <div style="color: #9ba7ca;">
+          <ul>
+            <li>
+              <span>5 star</span>
+              <small class="float-right">593</small>
+              <progress class="progress" value="100" max="100">100%</progress>
+            </li>
+            <li>
+              <span class="mb-0">4 star</span>
+              <small class="float-right">322</small>
+              <progress class="progress" value="80" max="100">80%</progress>
+            </li>
+            <li>
+              <span>3 star</span>
+              <small class="float-right">231 </small>
+              <progress class="progress" value="60" max="100">60%</progress>
+            </li>
+            <li>
+              <span>2 star</span>
+              <small class="float-right">176</small>
+              <progress class="progress" value="40" max="100">40%</progress>
+            </li>
+            <li>
+              <span>1 star</span>
+              <small class="float-right">65</small>
+              <progress class="progress" value="20" max="100">20%</progress>
+            </li>
+          </ul>
+
+
+        </div>
+        <div>
+          <p>100%</p>
+          <p>Satisfied Customer</p>
+          <p>All Customers give this product 4 and 5 Star Rating.</p>
+        </div>
       </v-card>
     </v-col>
   </v-row>
+
   <v-row style="height: 150px">
     <v-col cols="12" md="3">
       <v-card class="pa-2" outlined tile>
@@ -248,10 +304,11 @@ export default {
   data() {
     return {
       loadingI: true,
+      loadingCat: true,
       products: {},
       categoryProducts: "",
       finalCategory: {},
-      categoryName: {},
+      categoryName: "",
       dialog: false,
     };
   },
@@ -267,29 +324,35 @@ export default {
     axios
       .get("https://fakestoreapi.com/products/" + this.productID + "/")
       .then((response) => {
-        this.loadingI = false;
         this.products = response.data;
-        this.categoryName = this.products.category;
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  },
-  mounted() {
-    axios
-      .get("https://fakestoreapi.com/products/category/jewelery")
-      .then((response) => {
+        const categoryName = this.products.category;
+        console.log(33, categoryName);
+        const baseUrl = "https://fakestoreapi.com/products/category/";
+        const url = baseUrl + categoryName;
         this.loadingI = false;
-        this.categoryProducts = response.data;
-        const first = this.categoryProducts;
-        console.log(1541, this.categoryName);
-        const second = Object.fromEntries(Object.entries(first).slice(0, 3));
-        this.finalCategory = second;
+        axios
+          .get(url)
+          .then((res) => {
+            this.categoryProducts = res.data;
+            const first = this.categoryProducts;
+            const second = Object.fromEntries(
+              Object.entries(first).slice(0, 3)
+            );
+            this.finalCategory = second;
+            this.loadingCat = false;
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       })
       .catch(function (error) {
         console.log(error);
+      })
+      .finally(function () {
+        console.log(55);
       });
   },
+  mounted() {},
 };
 </script>
 
@@ -306,7 +369,6 @@ export default {
   width: 100%;
   display: block;
   object-fit: contain;
-  /* border: 2px solid tomato; */
 }
 .gtgt {
   height: 100%;
@@ -350,5 +412,42 @@ export default {
   color: #8997bd;
   font-weight: 400;
   font-size: 13px;
+}
+.mainCard {
+  border: 1px solid chartreuse;
+  height: 100%;
+}
+.mainCol {
+  border: 1px solid yellow;
+}
+.progress {
+  background: #f1f5fa;
+  color: yellow;
+}
+progress {
+  border: none;
+  width: 350px;
+  height: 5px;
+  background: gray;
+  border-radius: 5px;
+}
+
+progress::-moz-progress-bar {
+  background: #0dc8de;
+}
+progress::-webkit-progress-bar-value {
+  background: gray;
+}
+progress::-webkit-progress-bar {
+  background: #f1f5fa;
+}
+progress.xp::-webkit-progress-value {
+  background: #0dc8de;
+}
+ul {
+    list-style-type: none;
+}
+li {
+  margin-top: 0px !important;
 }
 </style>
