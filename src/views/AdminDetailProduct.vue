@@ -151,14 +151,7 @@
     </v-col>
   </v-row>
 
-  <v-row
-    cols="12"
-    style="
-      display: flex;
-      justify-content: space-between;
-      border: 1px solid orange;
-    "
-  >
+  <v-row cols="12" style="display: flex; justify-content: space-between">
     <div
       v-if="loadingCat"
       style="margin-left: 400px; width: 200px; align-self: center"
@@ -178,7 +171,7 @@
       :key="recom.name"
     >
       <v-card class="pa-2 mainCard" outlined tile>
-        <v-img height="250" :src="recom.image"> </v-img>
+        <v-img class="imageRecom" height="300" :src="recom.image"> </v-img>
         <v-card-title class="recomTitle">
           {{ recom.title }}
         </v-card-title>
@@ -206,14 +199,26 @@
         </v-btn>
       </v-card>
     </v-col>
-    <v-col cols="12" md="3" style="border: 1px solid blue">
-      <v-card class="pa-6" outlined tile style="border: 1px solid black">
-        <div>
-          <p>4.8</p>
-          <p>Overall Rating</p>
-          <v-rating :value="4.5" color="amber" dense size="20"></v-rating>
+    <v-col cols="12" md="3">
+      <v-card class="pa-6" outlined tile>
+        <div class="pa-9 mb-4 ratingCardHead">
+          <p class="ratingScore">4.8</p>
+          <p class="overallRating">Overall Rating</p>
+          <span class="universalColor text-sm">
+            <v-rating
+              color="amber"
+              empty-icon="mdi-star-outline"
+              full-icon="mdi-star"
+              half-icon="mdi-star-half"
+              length="5"
+              hover
+              size="22"
+              value="3"
+            ></v-rating>
+            Total Review (700)
+          </span>
         </div>
-        <div style="color: #9ba7ca;">
+        <div style="color: #9ba7ca">
           <ul>
             <li>
               <span>5 star</span>
@@ -241,32 +246,14 @@
               <progress class="progress" value="20" max="100">20%</progress>
             </li>
           </ul>
-
-
         </div>
-        <div>
-          <p>100%</p>
-          <p>Satisfied Customer</p>
-          <p>All Customers give this product 4 and 5 Star Rating.</p>
+        <div class="ratingCardHead">
+          <p class="overallRating">100%</p>
+          <p class="overallRating">Satisfied Customer</p>
+          <p class="text-small universalColor">
+            All Customers give this product 4 and 5 Star Rating.
+          </p>
         </div>
-      </v-card>
-    </v-col>
-  </v-row>
-
-  <v-row style="height: 150px">
-    <v-col cols="12" md="3">
-      <v-card class="pa-2" outlined tile>
-        There are many variations of passages
-      </v-card>
-    </v-col>
-    <v-col cols="12" md="3">
-      <v-card class="pa-2" outlined tile>
-        There are many variations of passages
-      </v-card>
-    </v-col>
-    <v-col cols="12" md="3">
-      <v-card class="pa-2" outlined tile>
-        There are many variations of passages
       </v-card>
     </v-col>
   </v-row>
@@ -414,12 +401,9 @@ export default {
   font-size: 13px;
 }
 .mainCard {
-  border: 1px solid chartreuse;
   height: 100%;
 }
-.mainCol {
-  border: 1px solid yellow;
-}
+
 .progress {
   background: #f1f5fa;
   color: yellow;
@@ -445,9 +429,52 @@ progress.xp::-webkit-progress-value {
   background: #0dc8de;
 }
 ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 li {
   margin-top: 0px !important;
+}
+.ratingScore {
+  font-size: 48px;
+  color: #f14b4b;
+  line-height: 43px;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-right: 0px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+}
+.overallRating {
+  margin-bottom: 8px;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 0;
+  color: #303e67;
+  text-shadow: 0 0 1px rgba(241, 245, 250, 0.1);
+  font-family: "Roboto", sans-serif;
+}
+.ratingCardHead {
+  background-color: #f8f8fc;
+  padding: 20px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.text-small {
+  font-size: 11px;
+}
+.imageRecom {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  background-color: #fafbfe;
 }
 </style>
