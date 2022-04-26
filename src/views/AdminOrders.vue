@@ -1,8 +1,8 @@
 <template>
   <v-row>
     <v-col cols="12" class="text-grey-darken-1" style="display: flex; justify-content:space-between;">
-      <v-title style="padding: 28px; ">
-        <p class="ml-7" style="font-size:1.5rem">Orders</p>
+      <v-title>
+        <p class="ml-5" style="margin-top: 15px; font-size:1.5rem">Orders</p>
       </v-title>
       <v-text>
         <v-btn>
@@ -36,8 +36,8 @@
       </v-text>
     </v-col>
   </v-row>
-  <v-row>
-    <v-col cols="4">
+  <v-row class="ml-1" cols="12">
+    <v-col cols="6">
       <v-card>
         <v-text-field
             v-model="search"
@@ -74,19 +74,6 @@
             label="Department"
             single-line
             class="ml-2"
-        ></v-select>
-      </v-card>
-    </v-col>
-    <v-col cols="2">
-      <v-card>
-        <v-select
-            :items="status"
-            prepend-inner-icon="mdi-filter "
-            menu-props="auto"
-            hide-details
-            label="Saved Filters"
-            class="ml-2"
-            single-line
         ></v-select>
       </v-card>
     </v-col>

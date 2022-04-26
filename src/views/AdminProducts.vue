@@ -5,8 +5,8 @@
       class="text-grey-darken-1"
       style="display: flex; justify-content: space-between"
     >
-      <v-title style="padding: 28px">
-        <p class="ml-7" style="font-size: 1.5rem">Products</p>
+      <v-title>
+        <p class="ml-12" style=" margin-top: 10px; font-size: 1.5rem">Products</p>
       </v-title>
       <v-text>
         <v-btn>
@@ -15,13 +15,13 @@
         </v-btn>
         <ExportButton></ExportButton>
         <v-btn class="ma-2" color="#0D47A1" @click="createProducts">
-          <v-icon left="True"> mdi-plus </v-icon>
+          <v-icon left="True" color="orange"> mdi-plus </v-icon>
           <span style="color: white; font-weight: 900"> Create Product </span>
         </v-btn>
       </v-text>
     </v-col>
   </v-row>
-  <v-row>
+  <v-row class="ml-9" cols="12">
     <v-col cols="6">
       <SearchBar></SearchBar>
     </v-col>
@@ -57,7 +57,7 @@
       </v-card>
     </v-col>
   </v-row>
-  <v-row class="ml-10">
+  <v-row class="ml-10" cols="12">
     <div
       v-show="loadingI"
       style="
@@ -75,19 +75,13 @@
         size="86px"
       ></clip-loader>
     </div>
-    <v-col
-      v-for="product in products"
-      :key="product.name"
-      class="ml-9"
-      cols="2"
-    >
+    <v-col v-for="product in products" :key="product.name" cols="12" md="3">
       <v-hover v-slot="{ isHovering, props }" close-delay="100">
         <v-card
           :elevation="isHovering ? 16 : 2"
           :class="{ 'on-hover': isHovering }"
           :key="product.name"
           max-width="450"
-          class="my-3"
           v-bind="props"
         >
           <router-link
@@ -109,6 +103,7 @@
               text-overflow: ellipsis;
               display: block;
             "
+            class="recomTitle"
           >
             <router-link
               :to="{
@@ -126,32 +121,53 @@
           <v-card-text>
             <v-row align="center" class="mx-0">
               <v-rating :value="4.5" color="amber" dense size="14"></v-rating>
-              <div class="grey--text ms-4">
+              <div
+                class="grey--text ms-4"
+                style="font-size: 10px; display: flex; align-items: center"
+              >
                 {{ product.rating.rate }} ({{ product.rating.count }})
               </div>
             </v-row>
           </v-card-text>
-          <v-card-title>
-            $ {{ product.price }}
-            <del class="ml-3 text-grey-darken-1">
-              $ 1,290.59
-            </del>
+          <v-card-title
+            class="recomPriceProduct"
+            style="
+              display: flex !important;
+              justify-content: space-between !important;
+            "
+          >
+            <div>
+              $ {{ product.price }}
+              <span class="ml-3">
+                <del
+                  class="
+                    discount
+                    universalColor
+                    font-weight-bold
+                    text-sm-body-2
+                  "
+                >
+                  $ 1,290.59
+                </del>
+              </span>
+            </div>
           </v-card-title>
-          <v-card-actions>
-            <v-btn color="#4e9af1" @click="open_dialog" plain>
-              <v-icon> mdi-border-color </v-icon>
-              Edit
+          <div class="ml-3" style="height: 50px">
+            <v-btn
+              style="width: 150px; height: 40px; border-radius: 3px"
+              class="addToCart"
+              color="#0D47A1"
+              @click.stop="open_dialog"
+            >
+              <v-icon color="orange" left="True"> mdi-cart </v-icon>
+              <span style="color: white; font-weight: 900"> Add To Cart</span>
             </v-btn>
-            <v-btn color="#EF9A9A" @click.stop="open_dialog">
-              <v-icon> mdi-delete </v-icon>
-              Delete
-            </v-btn>
-          </v-card-actions>
+          </div>
         </v-card>
       </v-hover>
     </v-col>
   </v-row>
-  <div class="text-center">
+  <div class="text-center mt-4">
     <v-pagination v-model="page" :length="15" :total-visible="7"></v-pagination>
   </div>
   <v-dialog
@@ -163,23 +179,19 @@
   >
     <v-card>
       <v-card-text class="text-h6">
-        Are you sure you want to delete this product?
+        Successfully added product to cart
       </v-card-text>
       <v-card-actions class="v-card-actions">
-        <v-btn color="#81D4FA" text @click="delete_dialog_message"> No </v-btn>
-        <v-btn
-          class="text-center"
-          color="#EF9A9A"
-          text
-          @click="delete_dialog_message"
-        >
-          Yes
+        <v-btn color="#81D4FA" text @click="delete_dialog_message">
+          Okay
         </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
   <!--End Delete Dialog -->
-  <v-btn @click="get_in_category"> Change category </v-btn>
+  <div>
+    <v-btn @click="get_in_category"> Change category </v-btn>
+  </div>
 </template>
 
 <script>
@@ -300,5 +312,19 @@ export default {
   color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
+}
+.quantityProducts {
+  border: 1px solid black;
+  width: 50px;
+  height: 20px;
+  border-radius: 3px;
+  text-align: center;
+  margin-right: 10px;
+}
+.recomPriceProduct {
+  color: #303e67;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 </style>

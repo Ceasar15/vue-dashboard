@@ -4,8 +4,8 @@
     class="text-grey-darken-1"
     style="display: flex; justify-content: space-between"
   >
-    <v-title style="padding: 20px">
-      <p class="" style="font-size: 1.5rem">Add Products</p>
+    <v-title>
+      <p class="ml-1" style="margin-top: 20px; font-size: 1.5rem">Add Products</p>
     </v-title>
     <v-text>
       <v-btn>
@@ -14,13 +14,13 @@
       </v-btn>
       <ExportButton></ExportButton>
       <v-btn class="ma-2" color="#0D47A1" @click="addProduct">
-        <v-icon left="True"> mdi-attachment </v-icon>
+        <v-icon color="orange" left="True"> mdi-attachment </v-icon>
         <span style="color: white; font-weight: 900"> Attachment </span>
       </v-btn>
     </v-text>
   </v-col>
 
-  <v-row>
+  <v-row class="ml-0" cols="12">
     <v-col cols="6">
       <SearchBar></SearchBar>
     </v-col>

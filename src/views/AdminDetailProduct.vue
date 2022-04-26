@@ -5,8 +5,8 @@
       class="text-grey-darken-1"
       style="display: flex; justify-content: space-between"
     >
-      <v-title style="padding: 28px">
-        <p class="ml-7" style="font-size: 1.5rem">Product-Detail</p>
+      <v-title>
+        <p style="margin-top: 20px; font-size: 1.5rem">Product-Detail</p>
       </v-title>
       <v-text>
         <v-btn>
@@ -95,7 +95,7 @@
         >
       </div>
       <div class="ml-4">
-        <input class="quantity" type="number" min="1" placeholder="0" />
+        <input class="quantity" type="number" min="1" placeholder="1" />
         <v-btn
           style="width: 200px; height: 40px; border-radius: 3px"
           class="addToCart"
@@ -150,7 +150,9 @@
       </v-card>
     </v-col>
   </v-row>
-
+  <div class="pa-1">
+    <p class="overallRating">Recommended Products</p>
+  </div>
   <v-row cols="12" style="display: flex; justify-content: space-between">
     <div
       v-if="loadingCat"
@@ -166,7 +168,6 @@
       v-else
       cols="12"
       md="3"
-      class="mainCol"
       v-for="recom in finalCategory"
       :key="recom.name"
     >
@@ -395,7 +396,7 @@ export default {
   margin-bottom: 10px;
   font-size: 24px;
 }
-.recomPrice .discount {
+.discount {
   color: #8997bd;
   font-weight: 400;
   font-size: 13px;
@@ -475,6 +476,5 @@ li {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  background-color: #fafbfe;
 }
 </style>
